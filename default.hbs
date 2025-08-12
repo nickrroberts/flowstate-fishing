@@ -6,14 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{asset "built/index.css"}}" />
     <script src="{{asset "built/index.js"}}" defer></script>
+    <script src="{{asset "js/calendly.js"}}" defer></script>
+    <script src="{{asset "js/smooth-scroll.js"}}" defer></script>
 
     <title>{{meta_title}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
 
     {{ghost_head}}
     {{!-- Outputs important meta data and settings, should always be in <head> --}}
 
 </head>
-<body class="{{body_class}}">
+<body class="{{body_class}}"{{#if @custom.calendly_url}} data-calendly-url="{{@custom.calendly_url}}"{{/if}}>
 <div class="gh-viewport">
 
 <header id="gh-head" class="gh-head">
@@ -21,31 +26,26 @@
 
         <div class="gh-head-brand">
             <a class="gh-head-logo" href="{{@site.url}}">
-                {{#if @site.logo}}
-                    <img src="{{@site.logo}}" alt="{{@site.title}}" />
-                {{else}}
-                    {{@site.title}}
-                {{/if}}
+                <img src="{{asset "images/Concepts/black-fly.png"}}" alt="Flow State Fishing" />
+                <span class="gh-head-logo-text">Flow State Fishing</span>
             </a>
-            <a class="gh-burger" role="button" aria-label="menu">
-                <div class="gh-burger-box">
-                    <div class="gh-burger-inner"></div>
-                </div>
-            </a>
+            <button class="gh-burger" role="button" aria-label="menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="gh-burger-icon">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="gh-burger-close">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
         </div>
         <div class="gh-head-menu">
-            {{navigation}}
+            {{> "navigation"}}
         </div>
         <div class="gh-head-actions">
             <div class="gh-head-actions-list">
-                {{search}}
-                {{#if @site.members_enabled}}
-                    {{^if @member}}
-                    <a class="gh-button" href="{{@site.signup_url}}">Subscribe</a>
-                    {{else}}
-                    <a class="gh-button" href="#/portal/account">Account</a>
-                    {{/if}}
-                {{/if}}
             </div>
         </div>
     </nav>
@@ -58,16 +58,7 @@
 
 </main>
 
-<footer class="gh-foot">
-    <div class="gh-container">
-        <div class="gh-foot-menu">
-            {{navigation type="secondary"}}
-        </div>
-        <div class="gh-foot-meta">
-            Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
-        </div>
-    </div>
-</footer>
+{{> "footer"}}
 
 </div>
 

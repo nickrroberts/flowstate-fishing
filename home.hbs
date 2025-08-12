@@ -1,0 +1,32 @@
+{{!< default}}
+
+{{!-- Store Calendly URL for JavaScript usage --}}
+{{#if @custom.calendly_url}}
+<meta name="calendly-url" content="{{@custom.calendly_url}}" />
+{{/if}}
+
+<section class="hero-section">
+  <div class="gh-container hero-inner">
+    {{> "hero"}}
+  </div>
+  </section>
+
+<section id="services" class="services-section">
+  <div class="gh-container">
+    {{> "services"}}
+  </div>
+</section>
+
+<section id="about" class="about-section">
+  <div class="gh-container">
+    {{> "about"}}
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div class="gh-container">
+    {{> "gallery"}}
+  </div>
+</section>
+
+

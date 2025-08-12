@@ -1,0 +1,60 @@
+/* Global Style Overrides
+/* ---------------------------------------------------------- */
+
+/* Section Backgrounds */
+.hero-section {
+    background-color: var(--white);
+}
+
+.services-section {
+    background-color: var(--warm-beige);
+}
+
+.about-section {
+    background-color: var(--white);
+}
+
+.gallery-section {
+    background-color: var(--sage-green);
+}
+
+.booking-section {
+    background-color: var(--forest-green);
+}
+
+/* Container Adjustments */
+.gh-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .gh-container {
+        padding: 0 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .gh-container {
+        padding: 0 2rem;
+    }
+}
+
+/* Section Spacing - Removed to allow individual section control */
+
+/* Mobile section spacing also removed for individual control */
+
+/* Background Colors Utility */
+.bg-white { background-color: var(--white); }
+.bg-dark-red { background-color: var(--dark-red); }
+.bg-dark-teal { background-color: var(--dark-teal); }
+.bg-warm-beige { background-color: var(--warm-beige); }
+.bg-forest-green { background-color: var(--forest-green); }
+.bg-olive-brown { background-color: var(--olive-brown); }
+.bg-burnt-orange { background-color: var(--burnt-orange); }
+.bg-sage-green { background-color: var(--sage-green); }
+.bg-light-brown { background-color: var(--light-brown); }
+
+

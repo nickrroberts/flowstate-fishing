@@ -1,20 +1,80 @@
 {{!< default}}
-<div class="gh-page">
+
+<div class="blog-index">
+    {{!-- Header --}}
+    <div class="blog-header">
+        <div class="gh-container">
+            <div class="badge-wrapper">
+                <span class="blog-badge">Insights & Stories</span>
+            </div>
+            <h1 class="blog-title">
+                <span class="blog-title-line1">Tales from</span>
+                <span class="blog-title-line2">The Water</span>
+            </h1>
+            <p class="blog-description">
+                {{#if @custom.blog_subtitle}}{{@custom.blog_subtitle}}{{else}}Insights, adventures, and wisdom from years on the river{{/if}}
+            </p>
+        </div>
+    </div>
+
+    {{!-- Featured Posts --}}
     <div class="gh-container">
-
-        <div class="gh-postfeed">
-        {{#foreach posts}}
-
-            {{> "card" page=../pagination.page }} {{!-- partials/card.hbs --}}
-
-        {{/foreach}}
+        <div class="blog-grid">
+            {{#foreach posts}}
+                <article class="blog-card {{#if featured}}blog-card-featured{{/if}}">
+                    <a class="blog-card-link" href="{{url}}">
+                        {{#if feature_image}}
+                        <div class="blog-card-image-wrapper">
+                            <img class="blog-card-image" src="{{feature_image}}" alt="{{title}}" loading="lazy" />
+                            <div class="blog-card-overlay"></div>
+                            {{#primary_tag}}
+                            <span class="blog-card-badge">{{name}}</span>
+                            {{/primary_tag}}
+                        </div>
+                        {{/if}}
+                        
+                        <div class="blog-card-content">
+                            <div class="blog-card-meta">
+                                <span class="blog-card-author">{{primary_author.name}}</span>
+                                <time class="blog-card-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+                                <span class="blog-card-reading-time">{{reading_time}}</span>
+                            </div>
+                            
+                            <h2 class="blog-card-title">{{title}}</h2>
+                            
+                            {{#if excerpt}}
+                            <p class="blog-card-excerpt">{{excerpt}}</p>
+                            {{/if}}
+                            
+                            <span class="blog-card-cta">
+                                Read More
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                </article>
+            {{/foreach}}
         </div>
 
-        {{!-- If JS isn't enabled, fallback to standard pagination --}}
-        <noscript>
-            <div class="gh-pagination">
-                {{pagination}}
-            </div>
-        </noscript>
+        {{!-- Pagination --}}
+        {{pagination}}
     </div>
+
+    {{!-- Newsletter Sidebar --}}
+    <aside class="blog-sidebar">
+        <div class="gh-container">
+            <div class="newsletter-card">
+                <h3 class="newsletter-title">Weekly Water Reports</h3>
+                <p class="newsletter-description">
+                    Get exclusive fishing reports, technique tips, and seasonal insights delivered to your inbox.
+                </p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" class="newsletter-input" required />
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </aside>
 </div>

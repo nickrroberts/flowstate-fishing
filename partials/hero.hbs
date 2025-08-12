@@ -1,0 +1,51 @@
+<div class="hero-content">
+  <div class="hero-heading">
+    <h1 class="hero-title">
+      <span class="title-line-1">Find Your</span>
+      <span class="title-line-2">
+        <span class="flow-text">Flow</span>
+        <span class="state-text">State</span>
+      </span>
+    </h1>
+  </div>
+  
+  <p class="hero-description">
+    {{#if @custom.hero_subtitle}}{{@custom.hero_subtitle}}{{else}}Experience the intersection of skill and serenity on pristine waters with professional fly fishing instruction. Where challenge meets absolute control, and every cast becomes meditation.{{/if}}
+  </p>
+  
+  <div class="hero-actions">
+    <a class="btn btn-primary btn-lg hero-cta" href="#booking">
+      Book Your Experience
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </a>
+    <a class="btn btn-outline-accent btn-lg btn-stories" href="/blog/">
+      See Stories
+    </a>
+  </div>
+  
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-number">{{#if @custom.stats_years}}{{@custom.stats_years}}{{else}}12+{{/if}}</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">{{#if @custom.stats_clients}}{{@custom.stats_clients}}{{else}}500+{{/if}}</div>
+      <div class="stat-label">Clients Instructed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">{{#if @custom.stats_knots}}{{@custom.stats_knots}}{{else}}10,000+{{/if}}</div>
+      <div class="stat-label">Knots Tied</div>
+    </div>
+  </div>
+</div>
+
+<div class="hero-image">
+  <div class="hero-image-wrapper">
+    <img src="{{asset "images/hero.png"}}" alt="Watercolor circular composition of fly fisherman casting line by serene river" />
+    <div class="hero-image-overlay"></div>
+  </div>
+  <div class="hero-decoration hero-decoration-1"></div>
+  <div class="hero-decoration hero-decoration-2"></div>
+</div>
+</content>
+</invoke>

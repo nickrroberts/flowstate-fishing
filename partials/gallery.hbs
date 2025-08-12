@@ -1,0 +1,55 @@
+<div class="gallery-header">
+  <div class="badge-wrapper">
+    <span class="gallery-badge">Visual Stories</span>
+  </div>
+  <h2 class="gallery-title">
+    Moments in
+    <span class="gallery-subtitle gallery-underline-svg">Flow</span>
+  </h2>
+  <p class="gallery-description">
+    {{#if @custom.gallery_subtitle}}{{@custom.gallery_subtitle}}{{else}}Every trip is unique, every cast tells a story. Witness the magic that happens when skill meets serenity on the water.{{/if}}
+  </p>
+</div>
+
+{{!-- Gallery Grid using posts tagged gallery --}}
+<div class="gallery-grid">
+  {{#get "posts" filter="tag:gallery" limit="24" include="tags" fields="title,feature_image,slug,url,excerpt"}}
+    {{#foreach posts}}
+      {{#if feature_image}}
+        <figure class="gallery-item">
+          <a href="{{url}}" class="gallery-link">
+            <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy" />
+            <figcaption>
+              <h3>{{title}}</h3>
+              {{#if primary_tag}}
+                <span class="category-tag">{{primary_tag.name}}</span>
+              {{/if}}
+            </figcaption>
+          </a>
+        </figure>
+      {{/if}}
+    {{/foreach}}
+    
+    {{#unless posts}}
+      {{!-- Fallback message if no gallery posts exist --}}
+      <div class="gallery-empty">
+        <p>Gallery images coming soon. Check back for stunning visuals from our fishing adventures!</p>
+      </div>
+    {{/unless}}
+  {{/get}}
+</div>
+
+{{!-- Instagram CTA --}}
+<div class="gallery-cta">
+  <p>Follow our journey on Instagram for daily inspiration from the water</p>
+  <a href="https://instagram.com/flowstatefishingllc" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <rect x="2" y="2" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="14.5" cy="5.5" r="1" fill="currentColor"/>
+    </svg>
+    @flowstatefishingllc
+  </a>
+</div>
+</content>
+</invoke>

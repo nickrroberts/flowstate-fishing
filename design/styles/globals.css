@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Source Serif Pro', Georgia, serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  
+  /* Southwestern Color Palette - Exact Colors Only */
+  --white: #ffffff;
+  --dark-red: #932E11;
+  --dark-teal: #2B4949;
+  --warm-beige: #D9B97C;
+  --forest-green: #2F402B;
+  --olive-brown: #57512D;
+  --burnt-orange: #C15F1C;
+  --sage-green: #76887A;
+  --light-brown: #AD996C;
+  
+  /* Design System Mapping */
+  --background: var(--white);
+  --foreground: var(--forest-green);
+  --card: var(--white);
+  --card-foreground: var(--forest-green);
+  --popover: var(--white);
+  --popover-foreground: var(--forest-green);
+  --primary: var(--dark-teal);
+  --primary-foreground: var(--white);
+  --secondary: var(--warm-beige);
+  --secondary-foreground: var(--forest-green);
+  --muted: var(--warm-beige);
+  --muted-foreground: var(--olive-brown);
+  --accent: var(--burnt-orange);
+  --accent-foreground: var(--white);
+  --destructive: var(--dark-red);
+  --destructive-foreground: var(--white);
+  --border: rgba(45, 73, 73, 0.15);
+  --input: var(--white);
+  --input-background: var(--white);
+  --switch-background: var(--sage-green);
+  --ring: rgba(45, 73, 73, 0.2);
+  
+  /* Typography Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --radius: 0.5rem;
+  
+  /* Font Sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+}
+
+.dark {
+  --background: var(--forest-green);
+  --foreground: var(--white);
+  --card: var(--olive-brown);
+  --card-foreground: var(--white);
+  --popover: var(--olive-brown);
+  --popover-foreground: var(--white);
+  --primary: var(--sage-green);
+  --primary-foreground: var(--forest-green);
+  --secondary: var(--warm-beige);
+  --secondary-foreground: var(--forest-green);
+  --muted: var(--olive-brown);
+  --muted-foreground: var(--light-brown);
+  --accent: var(--burnt-orange);
+  --accent-foreground: var(--white);
+  --border: rgba(217, 185, 124, 0.15);
+  --input: rgba(255, 255, 255, 0.05);
+  --ring: rgba(118, 136, 122, 0.2);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    font-size: var(--font-size);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  /* Southwestern Color Utilities */
+  .text-white { color: var(--white); }
+  .bg-white { background-color: var(--white); }
+  
+  .text-dark-red { color: var(--dark-red); }
+  .bg-dark-red { background-color: var(--dark-red); }
+  
+  .text-dark-teal { color: var(--dark-teal); }
+  .bg-dark-teal { background-color: var(--dark-teal); }
+  
+  .text-warm-beige { color: var(--warm-beige); }
+  .bg-warm-beige { background-color: var(--warm-beige); }
+  
+  .text-forest-green { color: var(--forest-green); }
+  .bg-forest-green { background-color: var(--forest-green); }
+  
+  .text-olive-brown { color: var(--olive-brown); }
+  .bg-olive-brown { background-color: var(--olive-brown); }
+  
+  .text-burnt-orange { color: var(--burnt-orange); }
+  .bg-burnt-orange { background-color: var(--burnt-orange); }
+  
+  .text-sage-green { color: var(--sage-green); }
+  .bg-sage-green { background-color: var(--sage-green); }
+  
+  .text-light-brown { color: var(--light-brown); }
+  .bg-light-brown { background-color: var(--light-brown); }
+}
+
+/**
+ * Enhanced typography system with southwestern aesthetic
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-5xl);
+      font-weight: var(--font-weight-bold);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      font-family: var(--font-display);
+      color: var(--forest-green);
+    }
+
+    h2 {
+      font-size: var(--text-4xl);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      font-family: var(--font-display);
+      color: var(--forest-green);
+    }
+
+    h3 {
+      font-size: var(--text-3xl);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      font-family: var(--font-display);
+      color: var(--forest-green);
+    }
+
+    h4 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.4;
+      font-family: var(--font-sans);
+      color: var(--forest-green);
+    }
+
+    p {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.6;
+      font-family: var(--font-serif);
+      color: var(--olive-brown);
+    }
+
+    .lead {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+      font-family: var(--font-serif);
+      color: var(--olive-brown);
+    }
+
+    label {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+      font-family: var(--font-sans);
+      color: var(--forest-green);
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+      font-family: var(--font-sans);
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.4;
+      font-family: var(--font-sans);
+    }
+  }
+}
+
+/* Section-specific backgrounds - No textures */
+.hero-section {
+  background-color: var(--white);
+}
+
+.services-section {
+  background-color: var(--warm-beige);
+}
+
+.about-section {
+  background-color: var(--white);
+}
+
+.gallery-section {
+  background-color: var(--sage-green);
+  color: var(--white);
+}
+
+.booking-section {
+  background-color: var(--forest-green);
+  color: var(--white);
+}
+
+.footer-section {
+  background-color: var(--olive-brown);
+  color: var(--warm-beige);
+}
+
+/* Image fill utility for Frame components */
+.frame-fill {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.frame-fill > * {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}

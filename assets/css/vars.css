@@ -2,23 +2,71 @@
 /* ---------------------------------------------------------- */
 
 :root {
+    /* Southwestern Color Palette - Primary */
+    --white: #ffffff;
+    --dark-red: #932E11;
+    --dark-teal: #2B4949;
+    --warm-beige: #D9B97C;
+    --forest-green: #2F402B;
+    --olive-brown: #57512D;
+    --burnt-orange: #C15F1C;
+    --sage-green: #76887A;
+    --light-brown: #AD996C;
 
-    /* Colours */
-    --color-primary: var(--ghost-accent-color, #3eb0ef);
-    --color-base: #131313;
-    --color-border: #ddd;
-    --color-bg: #f5f5f5;
-    --color-success: #80b912;
-    --color-error: #f05230;
+    /* Design System Color Mapping */
+    --color-primary: var(--dark-teal);
+    --color-secondary: var(--warm-beige);
+    --color-accent: var(--burnt-orange);
+    --color-base: var(--forest-green);
+    --color-muted: var(--olive-brown);
+    --color-border: rgba(45, 73, 73, 0.15);
+    --color-bg: var(--white);
+    --color-success: var(--sage-green);
+    --color-error: var(--dark-red);
 
-    /* Fonts */
-    --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    --font-serif: Georgia, Times, serif;
+    /* Typography - Font Families */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-serif: 'Source Serif Pro', Georgia, serif;
+    --font-display: 'Playfair Display', Georgia, serif;
     --font-mono: Menlo, Courier, monospace;
-    --font-light: 100;
+    
+    /* Font Weights */
+    --font-light: 300;
     --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
     --font-bold: 700;
-    --font-heavy: 800;
+
+    /* Typography Scale */
+    --text-xs: 0.75rem;     /* 12px */
+    --text-sm: 0.875rem;    /* 14px */
+    --text-base: 1rem;      /* 16px */
+    --text-lg: 1.125rem;    /* 18px */
+    --text-xl: 1.25rem;     /* 20px */
+    --text-2xl: 1.5rem;     /* 24px */
+    --text-3xl: 1.875rem;   /* 30px */
+    --text-4xl: 2.25rem;    /* 36px */
+    --text-5xl: 3rem;       /* 48px */
+    --text-6xl: 3.75rem;    /* 60px */
+    --text-7xl: 4.5rem;     /* 72px */
+
+    /* Line Heights */
+    --leading-tight: 1.1;
+    --leading-snug: 1.25;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.6;
+    --leading-loose: 1.75;
+
+    /* Letter Spacing */
+    --tracking-tighter: -0.025em;
+    --tracking-tight: -0.02em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.025em;
+    --tracking-wider: 0.05em;
+
+    /* Ghost font settings support */
+    --gh-font-body: var(--font-serif);
+    --gh-font-heading: var(--font-display);
 
     /* Breakpoints */
     --xlarge: 1680px;
@@ -27,9 +75,34 @@
     --small: 740px;
     --xsmall: 480px;
 
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    --spacing-4xl: 6rem;
+
     /* Sizes */
     --height: 4rem;
     --margin: 2rem;
     --radius: 0.5rem;
+    --radius-sm: 0.25rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-full: 9999px;
 
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(47, 64, 43, 0.05);
+    --shadow: 0 1px 3px 0 rgba(47, 64, 43, 0.1), 0 1px 2px 0 rgba(47, 64, 43, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(47, 64, 43, 0.1), 0 2px 4px -1px rgba(47, 64, 43, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(47, 64, 43, 0.1), 0 4px 6px -2px rgba(47, 64, 43, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(47, 64, 43, 0.1), 0 10px 10px -5px rgba(47, 64, 43, 0.04);
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 350ms ease;
 }

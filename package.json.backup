@@ -1,0 +1,501 @@
+{
+    "name": "flow-state-fishing",
+    "description": "A starter theme for Ghost theme development",
+    "demo": "https://starter.ghost.io",
+    "version": "1.0.0",
+    "engines": {
+        "ghost": ">=5.0.0"
+    },
+    "license": "MIT",
+    "screenshots": {
+        "desktop": "assets/screenshot-desktop.jpg"
+    },
+    "scripts": {
+        "dev": "rollup -c --environment BUILD:development -w",
+        "build": "rollup -c --environment BUILD:production",
+        "zip": "npm run build && bestzip $npm_package_name.zip assets/* partials/* members/* *.hbs package.json",
+        "test": "npx gscan .",
+        "pretest": "npm run build"
+    },
+    "author": {
+        "name": "Ghost Foundation",
+        "email": "hello@ghost.org",
+        "url": "https://ghost.org"
+    },
+    "gpm": {
+        "type": "theme",
+        "categories": [
+            "Minimal",
+            "Magazine"
+        ]
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TryGhost/Starter.git"
+    },
+    "bugs": "https://github.com/TryGhost/Starter/issues",
+    "contributors": "https://github.com/TryGhost/Starter/graphs/contributors",
+    "devDependencies": {
+        "@babel/core": "^7.21.0",
+        "@babel/preset-env": "^7.20.2",
+        "@rollup/plugin-babel": "^6.0.3",
+        "@rollup/plugin-commonjs": "^25.0.0",
+        "@rollup/plugin-node-resolve": "^15.0.1",
+        "@rollup/plugin-terser": "^0.4.0",
+        "bestzip": "^2.2.1",
+        "postcss": "^8.4.24",
+        "postcss-import": "^15.1.0",
+        "postcss-preset-env": "^8.0.1",
+        "rollup": "^3.18.0",
+        "rollup-plugin-livereload": "^2.0.5",
+        "rollup-plugin-postcss": "^4.0.2"
+    },
+    "browserslist": [
+        "defaults"
+    ],
+    "config": {
+        "card_assets": true,
+        "posts_per_page": 15,
+        "custom": {
+            "calendly_url": {
+                "type": "text",
+                "default": "",
+                "group": "booking",
+                "label": "Calendly URL",
+                "description": "Your Calendly scheduling page URL (e.g. https://calendly.com/your-handle/meet)"
+            },
+            "hero_badge": {
+                "type": "text",
+                "default": "Professional Fly Fishing Instructor",
+                "group": "hero",
+                "label": "Hero Badge Text",
+                "description": "Small badge text above the main heading"
+            },
+            "hero_title_line1": {
+                "type": "text",
+                "default": "Find Your",
+                "group": "hero",
+                "label": "Hero Title Line 1",
+                "description": "First line of the main heading"
+            },
+            "hero_title_flow": {
+                "type": "text",
+                "default": "Flow",
+                "group": "hero",
+                "label": "Hero Title - Flow Word",
+                "description": "The 'Flow' word in the title"
+            },
+            "hero_title_state": {
+                "type": "text",
+                "default": "State",
+                "group": "hero",
+                "label": "Hero Title - State Word",
+                "description": "The 'State' word in the title"
+            },
+            "hero_description": {
+                "type": "text",
+                "default": "Experience the intersection of skill and serenity on pristine waters. Where challenge meets absolute control, and every cast becomes meditation.",
+                "group": "hero",
+                "label": "Hero Description",
+                "description": "Description text below the main heading. Use **word** to add underline decoration"
+            },
+            "hero_cta_text": {
+                "type": "text",
+                "default": "Book Your Experience",
+                "group": "hero",
+                "label": "Hero CTA Button Text",
+                "description": "Text for the main call-to-action button"
+            },
+            "hero_stat1_number": {
+                "type": "text",
+                "default": "12+",
+                "group": "hero",
+                "label": "Hero Stat 1 Number",
+                "description": "First statistic number"
+            },
+            "hero_stat1_label": {
+                "type": "text",
+                "default": "Years Experience",
+                "group": "hero",
+                "label": "Hero Stat 1 Label",
+                "description": "First statistic label"
+            },
+            "hero_stat2_number": {
+                "type": "text",
+                "default": "500+",
+                "group": "hero",
+                "label": "Hero Stat 2 Number",
+                "description": "Second statistic number"
+            },
+            "hero_stat2_label": {
+                "type": "text",
+                "default": "Guided Trips",
+                "group": "hero",
+                "label": "Hero Stat 2 Label",
+                "description": "Second statistic label"
+            },
+            "hero_stat3_number": {
+                "type": "text",
+                "default": "25+",
+                "group": "hero",
+                "label": "Hero Stat 3 Number",
+                "description": "Third statistic number"
+            },
+            "hero_stat3_label": {
+                "type": "text",
+                "default": "River Systems",
+                "group": "hero",
+                "label": "Hero Stat 3 Label",
+                "description": "Third statistic label"
+            },
+            "services_badge": {
+                "type": "text",
+                "default": "Guided Experiences",
+                "group": "services",
+                "label": "Services Badge",
+                "description": "Badge text above services heading"
+            },
+            "services_title": {
+                "type": "text",
+                "default": "Fly Casting",
+                "group": "services",
+                "label": "Services Title",
+                "description": "Main services section title"
+            },
+            "services_subtitle": {
+                "type": "text",
+                "default": "Lessons",
+                "group": "services",
+                "label": "Services Subtitle",
+                "description": "Services subtitle (appears after main title)"
+            },
+            "services_description": {
+                "type": "text",
+                "default": "Tailored experiences for every skill level. From your first cast to mastering advanced presentations, each session is designed to deepen your connection with the water.",
+                "group": "services",
+                "label": "Services Description",
+                "description": "Services section description. Use **word** to add underline decoration"
+            },
+            "service1_title": {
+                "type": "text",
+                "default": "Introduction to Fly Fishing",
+                "group": "services",
+                "label": "Service 1 - Title",
+                "description": "Title for the first service"
+            },
+            "service1_price": {
+                "type": "text",
+                "default": "$450",
+                "group": "services",
+                "label": "Service 1 - Price",
+                "description": "Price for the first service"
+            },
+            "service1_badge": {
+                "type": "text",
+                "default": "Perfect for Beginners",
+                "group": "services",
+                "label": "Service 1 - Badge",
+                "description": "Badge text for the first service"
+            },
+            "service1_description": {
+                "type": "text",
+                "default": "Learn the fundamentals of fly fishing with comprehensive instruction on casting, reading water, and fly selection.",
+                "group": "services",
+                "label": "Service 1 - Description",
+                "description": "Description for the first service"
+            },
+            "service1_duration": {
+                "type": "text",
+                "default": "Half Day (4 hours)",
+                "group": "services",
+                "label": "Service 1 - Duration",
+                "description": "Duration for the first service"
+            },
+            "service1_group_size": {
+                "type": "text",
+                "default": "1-2 people",
+                "group": "services",
+                "label": "Service 1 - Group Size",
+                "description": "Group size for the first service"
+            },
+            "service2_title": {
+                "type": "text",
+                "default": "Advanced Technique Refinement",
+                "group": "services",
+                "label": "Service 2 - Title",
+                "description": "Title for the second service"
+            },
+            "service2_price": {
+                "type": "text",
+                "default": "$750",
+                "group": "services",
+                "label": "Service 2 - Price",
+                "description": "Price for the second service"
+            },
+            "service2_badge": {
+                "type": "text",
+                "default": "For Experienced Anglers",
+                "group": "services",
+                "label": "Service 2 - Badge",
+                "description": "Badge text for the second service"
+            },
+            "service2_description": {
+                "type": "text",
+                "default": "Elevate your skills with advanced casting techniques, presentation refinement, and tactical approaches to challenging waters.",
+                "group": "services",
+                "label": "Service 2 - Description",
+                "description": "Description for the second service"
+            },
+            "service2_duration": {
+                "type": "text",
+                "default": "Full Day (8 hours)",
+                "group": "services",
+                "label": "Service 2 - Duration",
+                "description": "Duration for the second service"
+            },
+            "service2_group_size": {
+                "type": "text",
+                "default": "1-3 people",
+                "group": "services",
+                "label": "Service 2 - Group Size",
+                "description": "Group size for the second service"
+            },
+            "service3_title": {
+                "type": "text",
+                "default": "Flow State Immersion",
+                "group": "services",
+                "label": "Service 3 - Title",
+                "description": "Title for the third service"
+            },
+            "service3_price": {
+                "type": "text",
+                "default": "$1,200/day",
+                "group": "services",
+                "label": "Service 3 - Price",
+                "description": "Price for the third service"
+            },
+            "service3_badge": {
+                "type": "text",
+                "default": "The Complete Experience",
+                "group": "services",
+                "label": "Service 3 - Badge",
+                "description": "Badge text for the third service"
+            },
+            "service3_description": {
+                "type": "text",
+                "default": "A transformative multi-day journey focusing on finding your flow state through mindful fishing practices and deep water connection.",
+                "group": "services",
+                "label": "Service 3 - Description",
+                "description": "Description for the third service"
+            },
+            "service3_duration": {
+                "type": "text",
+                "default": "Multi-Day (2-3 days)",
+                "group": "services",
+                "label": "Service 3 - Duration",
+                "description": "Duration for the third service"
+            },
+            "service3_group_size": {
+                "type": "text",
+                "default": "1-2 people",
+                "group": "services",
+                "label": "Service 3 - Group Size",
+                "description": "Group size for the third service"
+            },
+            "services_footer": {
+                "type": "text",
+                "default": "All experiences are customized to your skill level and interests. Whether you're seeking adventure, meditation, or mastery, we'll find your perfect flow.",
+                "group": "services",
+                "label": "Services Footer Text",
+                "description": "Footer text for services section. Use **word** to add underline decoration"
+            },
+            "about_badge": {
+                "type": "text",
+                "default": "Understanding Flow State",
+                "group": "about",
+                "label": "About Badge",
+                "description": "Badge text above about heading"
+            },
+            "about_title": {
+                "type": "text",
+                "default": "The Flow State",
+                "group": "about",
+                "label": "About Title",
+                "description": "Main about section title"
+            },
+            "about_lead": {
+                "type": "text",
+                "default": "It's at the intersection of skill and challenge. A sense of absolute control. A merging of actions and intent.",
+                "group": "about",
+                "label": "About Lead Text",
+                "description": "Lead paragraph for about section. Use **word** to add underline decoration"
+            },
+            "about_description": {
+                "type": "text",
+                "default": "It's a mental condition of complete immersion, focus, and enjoyment. Where time seems to stop, and every movement becomes intuitive.",
+                "group": "about",
+                "label": "About Description",
+                "description": "Description paragraph for about section"
+            },
+            "about_divider_text": {
+                "type": "text",
+                "default": "We can help you find your flow.",
+                "group": "about",
+                "label": "About Divider Text",
+                "description": "Text in the divider section"
+            },
+            "about_guide_badge": {
+                "type": "text",
+                "default": "Your Guide",
+                "group": "about",
+                "label": "Guide Section Badge",
+                "description": "Badge for guide section"
+            },
+            "about_guide_title": {
+                "type": "text",
+                "default": "Mastery Through",
+                "group": "about",
+                "label": "Guide Title",
+                "description": "Guide section title"
+            },
+            "about_guide_subtitle": {
+                "type": "text",
+                "default": "**Dedication**",
+                "group": "about",
+                "label": "Guide Subtitle",
+                "description": "Guide section subtitle. Use **word** to add underline decoration"
+            },
+            "about_guide_name": {
+                "type": "text",
+                "default": "Tanner Hall",
+                "group": "about",
+                "label": "Guide Name",
+                "description": "Name of the guide"
+            },
+            "about_guide_role": {
+                "type": "text",
+                "default": "Professional Fly Fishing Instructor",
+                "group": "about",
+                "label": "Guide Role",
+                "description": "Role/title of the guide"
+            },
+            "about_story_p1": {
+                "type": "text",
+                "default": "For over a decade, I've dedicated my life to mastering the art of fly fishing. What started as a childhood passion has evolved into a profound understanding of water, weather, and the delicate dance between angler and nature.",
+                "group": "about",
+                "label": "Story Paragraph 1",
+                "description": "First paragraph of the guide's story"
+            },
+            "about_story_p2": {
+                "type": "text",
+                "default": "My approach isn't just about catching fish—it's about finding that perfect moment where skill meets intuition, where the noise of everyday life fades away, and you discover what it truly means to be in flow.",
+                "group": "about",
+                "label": "Story Paragraph 2",
+                "description": "Second paragraph of the guide's story"
+            },
+            "about_story_p3": {
+                "type": "text",
+                "default": "Whether you're taking your first cast or refining techniques developed over years, I'll guide you toward that transcendent state where fishing becomes meditation, and every moment on the water is exactly where you're meant to be.",
+                "group": "about",
+                "label": "Story Paragraph 3",
+                "description": "Third paragraph of the guide's story"
+            },
+            "about_quote": {
+                "type": "text",
+                "default": "The river teaches patience, presence, and the art of letting go. Every cast is a conversation with nature.",
+                "group": "about",
+                "label": "Quote Text",
+                "description": "Inspirational quote text"
+            },
+            "about_quote_author": {
+                "type": "text",
+                "default": "— Tanner Hall",
+                "group": "about",
+                "label": "Quote Author",
+                "description": "Author of the quote"
+            },
+            "gallery_badge": {
+                "type": "text",
+                "default": "Visual Stories",
+                "group": "gallery",
+                "label": "Gallery Badge",
+                "description": "Badge text above gallery heading"
+            },
+            "gallery_title": {
+                "type": "text",
+                "default": "Moments in",
+                "group": "gallery",
+                "label": "Gallery Title",
+                "description": "Main gallery section title"
+            },
+            "gallery_subtitle": {
+                "type": "text",
+                "default": "**Flow**",
+                "group": "gallery",
+                "label": "Gallery Subtitle",
+                "description": "Gallery subtitle. Use **word** to add underline decoration"
+            },
+            "gallery_description": {
+                "type": "text",
+                "default": "Every trip is unique, every cast tells a story. Witness the magic that happens when skill meets serenity on the water.",
+                "group": "gallery",
+                "label": "Gallery Description",
+                "description": "Gallery section description"
+            },
+            "gallery_empty_message": {
+                "type": "text",
+                "default": "Gallery images coming soon. Check back for stunning visuals from our fishing adventures!",
+                "group": "gallery",
+                "label": "Gallery Empty Message",
+                "description": "Message shown when no gallery posts exist"
+            },
+            "gallery_cta_text": {
+                "type": "text",
+                "default": "Follow our journey on Instagram for daily inspiration from the water",
+                "group": "gallery",
+                "label": "Gallery CTA Text",
+                "description": "Call-to-action text below gallery"
+            },
+            "gallery_instagram": {
+                "type": "text",
+                "default": "@flowstatefishingllc",
+                "group": "gallery",
+                "label": "Instagram Handle",
+                "description": "Instagram username/handle"
+            },
+            "gallery_instagram_url": {
+                "type": "text",
+                "default": "https://instagram.com/flowstatefishingllc",
+                "group": "gallery",
+                "label": "Instagram URL",
+                "description": "Full Instagram profile URL"
+            }
+        },
+        "image_sizes": {
+            "xxs": {
+                "width": 30
+            },
+            "xs": {
+                "width": 100
+            },
+            "s": {
+                "width": 300
+            },
+            "m": {
+                "width": 600
+            },
+            "l": {
+                "width": 1200
+            },
+            "xl": {
+                "width": 2000
+            }
+        }
+    },
+    "type": "module"
+}

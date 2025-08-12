@@ -1,0 +1,188 @@
+{
+    "name": "flow-state-fishing",
+    "description": "A starter theme for Ghost theme development",
+    "demo": "https://starter.ghost.io",
+    "version": "1.0.0",
+    "engines": {
+        "ghost": ">=5.0.0"
+    },
+    "license": "MIT",
+    "screenshots": {
+        "desktop": "assets/screenshot-desktop.jpg"
+    },
+    "scripts": {
+        "dev": "rollup -c --environment BUILD:development -w",
+        "build": "rollup -c --environment BUILD:production",
+        "zip": "npm run build && bestzip $npm_package_name.zip assets/* partials/* members/* *.hbs package.json",
+        "test": "npx gscan .",
+        "pretest": "npm run build"
+    },
+    "author": {
+        "name": "Ghost Foundation",
+        "email": "hello@ghost.org",
+        "url": "https://ghost.org"
+    },
+    "gpm": {
+        "type": "theme",
+        "categories": [
+            "Minimal",
+            "Magazine"
+        ]
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TryGhost/Starter.git"
+    },
+    "bugs": "https://github.com/TryGhost/Starter/issues",
+    "contributors": "https://github.com/TryGhost/Starter/graphs/contributors",
+    "devDependencies": {
+        "@babel/core": "^7.21.0",
+        "@babel/preset-env": "^7.20.2",
+        "@rollup/plugin-babel": "^6.0.3",
+        "@rollup/plugin-commonjs": "^25.0.0",
+        "@rollup/plugin-node-resolve": "^15.0.1",
+        "@rollup/plugin-terser": "^0.4.0",
+        "bestzip": "^2.2.1",
+        "postcss": "^8.4.24",
+        "postcss-import": "^15.1.0",
+        "postcss-preset-env": "^8.0.1",
+        "rollup": "^3.18.0",
+        "rollup-plugin-livereload": "^2.0.5",
+        "rollup-plugin-postcss": "^4.0.2"
+    },
+    "browserslist": [
+        "defaults"
+    ],
+    "config": {
+        "card_assets": true,
+        "posts_per_page": 15,
+        "custom": {
+            "calendly_url": {
+                "type": "text",
+                "default": "",
+                "group": "booking",
+                "label": "Calendly URL",
+                "description": "Your Calendly scheduling page URL (e.g. https://calendly.com/your-handle/meet)"
+            },
+            "hero_content": {
+                "type": "text",
+                "default": "Professional Fly Fishing Instructor|Find Your|Flow|State|Experience the **intersection** of skill and serenity on pristine waters. Where challenge meets absolute control, and every cast becomes meditation.|Book Your Experience",
+                "group": "hero",
+                "label": "Hero Content",
+                "description": "Format: Badge|Title Line 1|Flow Word|State Word|Description (use **word** for underline)|CTA Text - Separate with |"
+            },
+            "hero_stats": {
+                "type": "text",
+                "default": "12+|Years Experience|500+|Guided Trips|25+|River Systems",
+                "group": "hero",
+                "label": "Hero Statistics",
+                "description": "Format: Number1|Label1|Number2|Label2|Number3|Label3 - Separate with |"
+            },
+            "services_header": {
+                "type": "text",
+                "default": "Guided Experiences|Fly Casting|Lessons|Tailored experiences for every skill level. From your **first cast** to mastering advanced presentations, each session is designed to deepen your connection with the water.",
+                "group": "services",
+                "label": "Services Header",
+                "description": "Format: Badge|Title|Subtitle|Description (use **word** for underline) - Separate with |"
+            },
+            "service_1": {
+                "type": "text",
+                "default": "Introduction to Fly Fishing|$450|Perfect for Beginners|Learn the fundamentals of fly fishing with comprehensive instruction on casting, reading water, and fly selection.|Half Day (4 hours)|1-2 people",
+                "group": "services",
+                "label": "Service 1 Details",
+                "description": "Format: Title|Price|Badge|Description|Duration|Group Size - Separate with |"
+            },
+            "service_2": {
+                "type": "text",
+                "default": "Advanced Technique Refinement|$750|For Experienced Anglers|Elevate your skills with advanced casting techniques, presentation refinement, and tactical approaches to challenging waters.|Full Day (8 hours)|1-3 people",
+                "group": "services",
+                "label": "Service 2 Details",
+                "description": "Format: Title|Price|Badge|Description|Duration|Group Size - Separate with |"
+            },
+            "service_3": {
+                "type": "text",
+                "default": "Flow State Immersion|$1,200/day|The Complete Experience|A transformative multi-day journey focusing on finding your flow state through mindful fishing practices and deep water connection.|Multi-Day (2-3 days)|1-2 people",
+                "group": "services",
+                "label": "Service 3 Details",
+                "description": "Format: Title|Price|Badge|Description|Duration|Group Size - Separate with |"
+            },
+            "services_footer": {
+                "type": "text",
+                "default": "All experiences are customized to your skill level and interests. Whether you're seeking adventure, meditation, or mastery, we'll find your **perfect flow**.",
+                "group": "services",
+                "label": "Services Footer",
+                "description": "Footer text for services section. Use **word** to add underline decoration"
+            },
+            "about_intro": {
+                "type": "text",
+                "default": "Understanding Flow State|The Flow State|It's at the **intersection** of skill and challenge. A sense of absolute control. A merging of actions and intent.|It's a mental condition of complete immersion, focus, and enjoyment. Where time seems to stop, and every movement becomes intuitive.|We can help you find your flow.",
+                "group": "about",
+                "label": "About Introduction",
+                "description": "Format: Badge|Title|Lead Text|Description|Divider Text (use **word** for underline) - Separate with |"
+            },
+            "about_guide": {
+                "type": "text",
+                "default": "Your Guide|Mastery Through|**Dedication**|Tanner Hall|Professional Fly Fishing Instructor",
+                "group": "about",
+                "label": "Guide Info",
+                "description": "Format: Badge|Title|Subtitle|Name|Role (use **word** for underline) - Separate with |"
+            },
+            "about_story": {
+                "type": "text",
+                "default": "For over a decade, I've dedicated my life to mastering the art of fly fishing. What started as a childhood passion has evolved into a profound understanding of water, weather, and the delicate dance between angler and nature.|My approach isn't just about catching fish—it's about finding that perfect moment where skill meets intuition, where the noise of everyday life fades away, and you discover what it truly means to be in flow.|Whether you're taking your first cast or refining techniques developed over years, I'll guide you toward that transcendent state where fishing becomes meditation, and every moment on the water is exactly where you're meant to be.",
+                "group": "about",
+                "label": "Guide Story",
+                "description": "Three paragraphs separated by | character"
+            },
+            "about_quote": {
+                "type": "text",
+                "default": "The river teaches patience, presence, and the art of letting go. Every cast is a conversation with nature.|— Tanner Hall",
+                "group": "about",
+                "label": "Quote",
+                "description": "Format: Quote Text|Author - Separate with |"
+            },
+            "gallery_header": {
+                "type": "text",
+                "default": "Visual Stories|Moments in|**Flow**|Every trip is unique, every cast tells a story. Witness the magic that happens when skill meets serenity on the water.",
+                "group": "gallery",
+                "label": "Gallery Header",
+                "description": "Format: Badge|Title|Subtitle|Description (use **word** for underline) - Separate with |"
+            },
+            "gallery_footer": {
+                "type": "text",
+                "default": "Gallery images coming soon. Check back for stunning visuals from our fishing adventures!|Follow our journey on Instagram for daily inspiration from the water|@flowstatefishingllc|https://instagram.com/flowstatefishingllc",
+                "group": "gallery",
+                "label": "Gallery Footer",
+                "description": "Format: Empty Message|CTA Text|Instagram Handle|Instagram URL - Separate with |"
+            }
+        },
+        "image_sizes": {
+            "xxs": {
+                "width": 30
+            },
+            "xs": {
+                "width": 100
+            },
+            "s": {
+                "width": 300
+            },
+            "m": {
+                "width": 600
+            },
+            "l": {
+                "width": 1200
+            },
+            "xl": {
+                "width": 2000
+            }
+        }
+    },
+    "type": "module"
+}
+</content>
+</invoke>

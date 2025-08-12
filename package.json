@@ -1,5 +1,5 @@
 {
-    "name": "ghost-starter-theme",
+    "name": "flow-state-fishing",
     "description": "A starter theme for Ghost theme development",
     "demo": "https://starter.ghost.io",
     "version": "1.0.0",
@@ -61,6 +61,141 @@
     "config": {
         "card_assets": true,
         "posts_per_page": 15,
+        "custom": {
+            "calendly_url": {
+                "type": "text",
+                "default": "",
+                "group": "booking",
+                "label": "Calendly URL",
+                "description": "Your Calendly scheduling page URL (e.g. https://calendly.com/your-handle/meet)"
+            },
+            "hero_subtitle": {
+                "type": "text",
+                "default": "Experience the intersection of skill and serenity on pristine waters. Where challenge meets absolute control, and every cast becomes meditation.",
+                "group": "hero",
+                "label": "Hero Subtitle",
+                "description": "Subtitle text that appears below the main title"
+            },
+            "services_subtitle": {
+                "type": "text",
+                "default": "Tailored experiences for every skill level. From your first cast to mastering advanced presentations, each session is designed to deepen your connection with the water.",
+                "group": "services",
+                "label": "Services Subtitle",
+                "description": "Subtitle text for the services section"
+            },
+            "service_beginner_title": {
+                "type": "text",
+                "default": "Introduction to Fly Fishing",
+                "group": "services",
+                "label": "Beginner Service Title",
+                "description": "Title for the beginner service card"
+            },
+            "service_beginner_price": {
+                "type": "text",
+                "default": "$450",
+                "group": "services",
+                "label": "Beginner Service Price",
+                "description": "Price for the beginner service"
+            },
+            "service_intermediate_title": {
+                "type": "text",
+                "default": "Advanced Technique Refinement",
+                "group": "services",
+                "label": "Intermediate Service Title",
+                "description": "Title for the intermediate service card"
+            },
+            "service_intermediate_price": {
+                "type": "text",
+                "default": "$750",
+                "group": "services",
+                "label": "Intermediate Service Price",
+                "description": "Price for the intermediate service"
+            },
+            "service_full_title": {
+                "type": "text",
+                "default": "Flow State Immersion",
+                "group": "services",
+                "label": "Full Service Title",
+                "description": "Title for the full experience service card"
+            },
+            "service_full_price": {
+                "type": "text",
+                "default": "$1,200/day",
+                "group": "services",
+                "label": "Full Service Price",
+                "description": "Price for the full experience service"
+            },
+            "about_subtitle": {
+                "type": "text",
+                "default": "It's at the intersection of skill and challenge. A sense of absolute control. A merging of actions and intent.",
+                "group": "about",
+                "label": "About Subtitle",
+                "description": "Lead text for the about section"
+            },
+            "about_description": {
+                "type": "text",
+                "default": "It's a mental condition of complete immersion, focus, and enjoyment. Where time seems to stop, and every movement becomes intuitive.",
+                "group": "about",
+                "label": "About Description",
+                "description": "Additional description text for about section"
+            },
+            "about_blurb": {
+                "type": "text",
+                "default": "For over a decade, I've dedicated my life to mastering the art of fly fishing. What started as a childhood passion has evolved into a profound understanding of water, weather, and the delicate dance between angler and nature. My approach isn't just about catching fish—it's about finding that perfect moment where skill meets intuition, where the noise of everyday life fades away, and you discover what it truly means to be in flow. Whether you're taking your first cast or refining techniques developed over years, I'll guide you toward that transcendent state where fishing becomes meditation, and every moment on the water is exactly where you're meant to be.",
+                "group": "about",
+                "label": "About Blurb",
+                "description": "The main story content under 'Mastery Through Dedication'"
+            },
+            "about_quote": {
+                "type": "text",
+                "default": "The river teaches patience, presence, and the art of letting go. Every cast is a conversation with nature.",
+                "group": "about",
+                "label": "About Quote",
+                "description": "Inspirational quote in the about section"
+            },
+            "gallery_subtitle": {
+                "type": "text",
+                "default": "Every trip is unique, every cast tells a story. Witness the magic that happens when skill meets serenity on the water.",
+                "group": "gallery",
+                "label": "Gallery Subtitle",
+                "description": "Subtitle text for the gallery section"
+            },
+            "blog_subtitle": {
+                "type": "text",
+                "default": "Insights, adventures, and wisdom from years on the river",
+                "group": "blog",
+                "label": "Blog Page Subtitle",
+                "description": "Subtitle text for the blog/stories page"
+            },
+            "stats_years": {
+                "type": "text",
+                "default": "12+",
+                "group": "stats",
+                "label": "Years Experience",
+                "description": "Number of years experience"
+            },
+            "stats_clients": {
+                "type": "text",
+                "default": "500+",
+                "group": "stats",
+                "label": "Clients Instructed",
+                "description": "Number of clients instructed"
+            },
+            "stats_knots": {
+                "type": "text",
+                "default": "10,000+",
+                "group": "stats",
+                "label": "Knots Tied",
+                "description": "Number of knots tied"
+            },
+            "footer_blurb": {
+                "type": "text",
+                "default": "Dedicated to helping you discover the intersection of skill and serenity. Where every cast becomes a meditation, and every moment on the water brings you closer to your flow state.",
+                "group": "footer",
+                "label": "Footer Blurb",
+                "description": "The description text that appears in the footer"
+            }
+        },
         "image_sizes": {
             "xxs": {
                 "width": 30

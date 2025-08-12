@@ -1,0 +1,336 @@
+/* Design Polish - Flow State Fishing */
+/* ---------------------------------------------------------- */
+
+/* Hero Section Enhancements */
+.hero-section {
+  background: linear-gradient(135deg, var(--white) 0%, rgba(249, 247, 243, 0.3) 100%);
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -10%;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(217, 185, 124, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  33% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  66% {
+    transform: translateY(20px) translateX(-10px);
+  }
+}
+
+/* Animate hero elements on load */
+.hero-content > * {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+.hero-content > *:nth-child(4) { animation-delay: 0.4s; }
+.hero-content > *:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Badge Enhancement */
+.hero-badge span {
+  background: linear-gradient(135deg, var(--white) 0%, rgba(118, 136, 122, 0.03) 100%);
+  box-shadow: 0 2px 15px rgba(118, 136, 122, 0.12);
+  transition: all 0.3s ease;
+}
+
+.hero-badge span:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(118, 136, 122, 0.2);
+}
+
+/* Hero Title Enhancements */
+.hero-title {
+  position: relative;
+}
+
+.flow-text {
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.hero-title:hover .flow-text {
+  color: var(--burnt-orange);
+  transform: scale(1.02);
+}
+
+.state-text {
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.hero-title:hover .state-text {
+  color: var(--sage-green);
+}
+
+/* Hero Stats Enhancement */
+.stat-item {
+  cursor: default;
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+}
+
+.stat-number {
+  background: linear-gradient(135deg, var(--dark-teal) 0%, var(--burnt-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover .stat-number {
+  transform: scale(1.1);
+}
+
+/* Hero Image Enhancement */
+.hero-image {
+  animation: slideInRight 0.8s ease-out 0.3s both;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-image-wrapper {
+  position: relative;
+}
+
+.hero-image-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(circle at center, rgba(43, 73, 73, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.hero-image-wrapper img {
+  box-shadow: 0 25px 70px rgba(43, 73, 73, 0.18);
+  transition: all 0.5s ease;
+}
+
+.hero-image-wrapper:hover img {
+  transform: scale(1.02) rotate(1deg);
+  box-shadow: 0 35px 90px rgba(43, 73, 73, 0.25);
+}
+
+/* Services Section Enhancement */
+.service-card {
+  transition: all 0.4s ease;
+  position: relative;
+  background: linear-gradient(135deg, var(--white) 0%, rgba(249, 247, 243, 0.5) 100%);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(43, 73, 73, 0.02) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: var(--radius-lg);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(43, 73, 73, 0.15);
+}
+
+.service-badge.popular::before {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Service CTA button animation removed for cleaner interaction */
+
+/* Gallery Section Enhancement */
+.gallery-grid {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  transition: all 0.4s ease;
+}
+
+.gallery-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(47, 64, 43, 0.7) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.gallery-item:hover::before {
+  opacity: 1;
+}
+
+.gallery-item img {
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1) rotate(1deg);
+}
+
+.gallery-category {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.gallery-category::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--burnt-orange);
+  transition: width 0.3s ease;
+}
+
+.gallery-category:hover::after,
+.gallery-category.active::after {
+  width: 100%;
+}
+
+/* Navigation Enhancement */
+.gh-head {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+}
+
+.gh-head-menu a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.gh-head-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--burnt-orange);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.gh-head-menu a:hover::after {
+  width: 80%;
+}
+
+/* Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection Colors */
+::selection {
+  background: var(--dark-teal);
+  color: var(--white);
+}
+
+::-moz-selection {
+  background: var(--dark-teal);
+  color: var(--white);
+}
+
+/* Focus States */
+:focus-visible {
+  outline: 2px solid var(--burnt-orange);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Loading Animation for Images */
+img {
+  animation: imageLoad 0.5s ease-out;
+}
+
+@keyframes imageLoad {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

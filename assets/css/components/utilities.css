@@ -1,0 +1,28 @@
+.frame-fill {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.font-display { font-family: 'Playfair Display', Georgia, serif; }
+.font-serif { font-family: 'Source Serif Pro', Georgia, serif; }
+.font-sans { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+
+/* Underline SVG decoration for editable text fields */
+.underline-svg {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-svg .squiggly-line {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  color: var(--color-accent);
+  pointer-events: none;
+}
+
+

@@ -1,0 +1,176 @@
+<div class="services-header">
+  <div class="badge-wrapper">
+    <span class="services-badge">Guided Experiences</span>
+  </div>
+  <h2 class="services-title">
+    Fly Casting
+    <span class="services-subtitle">Lessons</span>
+  </h2>
+  <p class="services-description">
+    {{#if @custom.services_subtitle}}{{@custom.services_subtitle}}{{else}}Tailored experiences for every skill level. From your first cast to mastering advanced presentations, each session is designed to deepen your connection with the water.{{/if}}
+  </p>
+</div>
+
+<div class="services-grid">
+  {{!-- Introduction to Fly Fishing --}}
+  <article class="service-card">
+    <div class="service-header">
+      <div class="service-price">{{#if @custom.service_beginner_price}}{{@custom.service_beginner_price}}{{else}}$450{{/if}}</div>
+    </div>
+    
+    <h3 class="service-title">{{#if @custom.service_beginner_title}}{{@custom.service_beginner_title}}{{else}}Introduction to Fly Fishing{{/if}}</h3>
+    <div style="text-align: center;">
+      <span class="service-badge badge-beginner">Perfect for Beginners</span>
+    </div>
+    <p class="service-description">
+      Learn the fundamentals of fly fishing with comprehensive instruction on casting, reading water, and fly selection.
+    </p>
+    
+    <div class="service-meta">
+      <div class="meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <span>Half Day (4 hours)</span>
+      </div>
+      <div class="meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span>1-2 people</span>
+      </div>
+    </div>
+    
+    <div class="service-features">
+      <h4>What's Included:</h4>
+      <ul>
+        <li>Basic casting instruction</li>
+        <li>Equipment introduction</li>
+        <li>Water reading fundamentals</li>
+        <li>Fly selection guidance</li>
+        <li>All equipment provided</li>
+        <li>Refreshments included</li>
+      </ul>
+    </div>
+    
+    <a href="#booking" class="btn btn-primary btn-block service-cta" data-service="intro">
+      Book This Experience
+    </a>
+  </article>
+
+  {{!-- Advanced Technique Refinement --}}
+  <article class="service-card service-popular">
+    <span class="popular-badge">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+      Most Popular
+    </span>
+    
+    <div class="service-header">
+      <div class="service-price">{{#if @custom.service_intermediate_price}}{{@custom.service_intermediate_price}}{{else}}$750{{/if}}</div>
+    </div>
+    
+    <h3 class="service-title">{{#if @custom.service_intermediate_title}}{{@custom.service_intermediate_title}}{{else}}Advanced Technique Refinement{{/if}}</h3>
+    <div style="text-align: center;">
+      <span class="service-badge badge-advanced">For Experienced Anglers</span>
+    </div>
+    <p class="service-description">
+      Elevate your skills with advanced casting techniques, presentation refinement, and tactical approaches to challenging waters.
+    </p>
+    
+    <div class="service-meta">
+      <div class="meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <span>Full Day (8 hours)</span>
+      </div>
+      <div class="meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span>1-3 people</span>
+      </div>
+    </div>
+    
+    <div class="service-features">
+      <h4>What's Included:</h4>
+      <ul>
+        <li>Advanced casting techniques</li>
+        <li>Presentation refinement</li>
+        <li>Tactical water approaches</li>
+        <li>Entomology education</li>
+        <li>Equipment optimization</li>
+        <li>Lunch & refreshments</li>
+        <li>Photo documentation</li>
+      </ul>
+    </div>
+    
+    <a href="#booking" class="btn btn-primary btn-block service-cta" data-service="advanced">
+      Book This Experience
+    </a>
+  </article>
+
+  {{!-- Flow State Immersion --}}
+  <article class="service-card">
+    <div class="service-header">
+      <div class="service-price">{{#if @custom.service_full_price}}{{@custom.service_full_price}}{{else}}$1,200/day{{/if}}</div>
+    </div>
+    
+    <h3 class="service-title">{{#if @custom.service_full_title}}{{@custom.service_full_title}}{{else}}Flow State Immersion{{/if}}</h3>
+    <div style="text-align: center;">
+      <span class="service-badge badge-premium">The Complete Experience</span>
+    </div>
+    <p class="service-description">
+      A transformative multi-day journey focusing on finding your flow state through mindful fishing practices and deep water connection.
+    </p>
+    
+    <div class="service-meta">
+      <div class="meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <span>Multi-Day (2-3 days)</span>
+      </div>
+      <div class="meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span>1-2 people</span>
+      </div>
+    </div>
+    
+    <div class="service-features">
+      <h4>What's Included:</h4>
+      <ul>
+        <li>Multi-river exploration</li>
+        <li>Mindfulness integration</li>
+        <li>Photography workshop</li>
+        <li>Campfire discussions</li>
+        <li>All meals included</li>
+        <li>Premium accommodation</li>
+        <li>Personal development focus</li>
+      </ul>
+    </div>
+    
+    <a href="#booking" class="btn btn-primary btn-block service-cta" data-service="flow-state">
+      Book This Experience
+    </a>
+  </article>
+</div>
+
+<div class="services-footer">
+  <p class="services-footer-text">
+    All experiences are customized to your skill level and interests. 
+    Whether you're seeking adventure, meditation, or mastery, we'll find your perfect flow.
+  </p>
+  
+  <div class="services-features">
+    <div class="feature-item">
+      <img src="{{asset "images/fish.png"}}" alt="Fish icon" class="feature-icon-img" />
+      <h4>Personalized Approach</h4>
+      <p>Every lesson adapted to your goals and experience level</p>
+    </div>
+    
+    <div class="feature-item">
+      <img src="{{asset "images/fly.png"}}" alt="Fly icon" class="feature-icon-img" />
+      <h4>Small Groups</h4>
+      <p>Intimate sessions ensure personal attention and faster learning</p>
+    </div>
+    
+    <div class="feature-item">
+      <img src="{{asset "images/rod.png"}}" alt="Rod icon" class="feature-icon-img" />
+      <h4>Premium Equipment</h4>
+      <p>High-quality rods, reels, and flies provided for optimal experience</p>
+    </div>
+  </div>
+</div>
+</content>
+</invoke>
