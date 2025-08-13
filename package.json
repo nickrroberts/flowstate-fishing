@@ -62,30 +62,30 @@
         "card_assets": true,
         "posts_per_page": 15,
         "custom": {
-            "calendly_url": {
+            "formspree_url": {
                 "type": "text",
                 "default": "",
                 "group": "booking",
-                "label": "Calendly URL",
-                "description": "Your Calendly scheduling page URL (e.g. https://calendly.com/your-handle/meet)"
+                "label": "Formspree Form URL",
+                "description": "Your Formspree form endpoint URL (e.g. https://formspree.io/f/YOUR_FORM_ID)"
             },
             "hero_subtitle": {
                 "type": "text",
-                "default": "Experience the intersection of skill and serenity on pristine waters. Where challenge meets absolute control, and every cast becomes meditation.",
+                "default": "Wanna catch fish? Hell yeah you do. Let's slap some water and trick some trout. Warning: May cause excessive good times and uncontrollable fish stories.",
                 "group": "hero",
                 "label": "Hero Subtitle",
                 "description": "Subtitle text that appears below the main title"
             },
             "services_subtitle": {
                 "type": "text",
-                "default": "Tailored experiences for every skill level. From your first cast to mastering advanced presentations, each session is designed to deepen your connection with the water.",
+                "default": "Whether you're a total rookie or a seasoned fish botherer, we've got the perfect lesson to get you absolutely sending it. Choose your class and let's get weird with some fish.",
                 "group": "services",
                 "label": "Services Subtitle",
                 "description": "Subtitle text for the services section"
             },
             "service_beginner_title": {
                 "type": "text",
-                "default": "Introduction to Fly Fishing",
+                "default": "Fish School 101",
                 "group": "services",
                 "label": "Beginner Service Title",
                 "description": "Title for the beginner service card"
@@ -99,7 +99,7 @@
             },
             "service_intermediate_title": {
                 "type": "text",
-                "default": "Advanced Technique Refinement",
+                "default": "Level Up Your Game",
                 "group": "services",
                 "label": "Intermediate Service Title",
                 "description": "Title for the intermediate service card"
@@ -113,7 +113,7 @@
             },
             "service_full_title": {
                 "type": "text",
-                "default": "Flow State Immersion",
+                "default": "Full Send Mode",
                 "group": "services",
                 "label": "Full Service Title",
                 "description": "Title for the full experience service card"
@@ -127,42 +127,42 @@
             },
             "about_subtitle": {
                 "type": "text",
-                "default": "It's at the intersection of skill and challenge. A sense of absolute control. A merging of actions and intent.",
+                "default": "It's that magical moment when you stop sucking and start slaying.",
                 "group": "about",
                 "label": "About Subtitle",
                 "description": "Lead text for the about section"
             },
             "about_description": {
                 "type": "text",
-                "default": "It's a mental condition of complete immersion, focus, and enjoyment. Where time seems to stop, and every movement becomes intuitive.",
+                "default": "You know that feeling when everything just clicks? When you're absolutely crushing it and the fish can't resist your sexy casts? That's flow state, baby. It's like being Neo in The Matrix, but with fish.",
                 "group": "about",
                 "label": "About Description",
                 "description": "Additional description text for about section"
             },
             "about_blurb": {
                 "type": "text",
-                "default": "For over a decade, I've dedicated my life to mastering the art of fly fishing. What started as a childhood passion has evolved into a profound understanding of water, weather, and the delicate dance between angler and nature. My approach isn't just about catching fish—it's about finding that perfect moment where skill meets intuition, where the noise of everyday life fades away, and you discover what it truly means to be in flow. Whether you're taking your first cast or refining techniques developed over years, I'll guide you toward that transcendent state where fishing becomes meditation, and every moment on the water is exactly where you're meant to be.",
+                "default": "Yo, I'm Tanner. I've been absolutely sending it on the water for 12+ years. Started as a kid who thought fish were cool, now I'm basically the fish whisperer. I'll teach you how to cast like a boss, read water like a psychic, and catch fish like it's your job. Whether you're a total noob or already pretty sick at this, I'll get you dialed in. Fair warning: side effects include permanent stoke, excessive high-fives, and an uncontrollable urge to quit your job and fish full-time.",
                 "group": "about",
                 "label": "About Blurb",
                 "description": "The main story content under 'Mastery Through Dedication'"
             },
             "about_quote": {
                 "type": "text",
-                "default": "The river teaches patience, presence, and the art of letting go. Every cast is a conversation with nature.",
+                "default": "Fish don't care about your feelings. But I do. Let's catch some slippery boys together.",
                 "group": "about",
                 "label": "About Quote",
                 "description": "Inspirational quote in the about section"
             },
             "gallery_subtitle": {
                 "type": "text",
-                "default": "Every trip is unique, every cast tells a story. Witness the magic that happens when skill meets serenity on the water.",
+                "default": "Check out these absolute units we've yanked out of the water. Fair warning: viewing these pics may cause sudden urges to quit your job and go fishing.",
                 "group": "gallery",
                 "label": "Gallery Subtitle",
                 "description": "Subtitle text for the gallery section"
             },
             "blog_subtitle": {
                 "type": "text",
-                "default": "Insights, adventures, and wisdom from years on the river",
+                "default": "Fish stories, hot tips, and proof that we actually catch fish sometimes",
                 "group": "blog",
                 "label": "Blog Page Subtitle",
                 "description": "Subtitle text for the blog/stories page"
@@ -190,7 +190,7 @@
             },
             "footer_blurb": {
                 "type": "text",
-                "default": "Dedicated to helping you discover the intersection of skill and serenity. Where every cast becomes a meditation, and every moment on the water brings you closer to your flow state.",
+                "default": "We're here to help you master fly casting and have a ridiculously good time doing it. Life's too short for boring fishing lessons.",
                 "group": "footer",
                 "label": "Footer Blurb",
                 "description": "The description text that appears in the footer"

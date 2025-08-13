@@ -1,0 +1,37 @@
+/* Header overrides for larger brand/logo on desktop */
+
+.gh-head-logo {
+    display: inline-flex;
+    align-items: center;
+}
+
+.gh-head-logo-text {
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 12px;
+    line-height: 1.1;
+}
+
+.gh-head-logo-text span:first-child {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--forest-green);
+}
+
+.gh-head-logo-text .subtitle {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--olive-brown);
+}
+
+@media (min-width: 900px) {
+    .gh-head-brand {
+        max-width: 800px;
+    }
+
+    .gh-head-logo img {
+        max-height: 130px;
+    }
+}
+
+

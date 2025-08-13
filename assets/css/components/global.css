@@ -1,3 +1,6 @@
+/* Import Psychedelic Fonts - 1980s Arcade Style */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Bungee+Shade&family=Righteous:wght@400&family=Fredoka:wght@400;600;700&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 /* Reset
 /* ---------------------------------------------------------- */
 
@@ -16,16 +19,17 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    color: #464646;
-    font-family: var(--font-sans-serif);
-    font-size: 1.5rem;
-    line-height: 1.6em;
+    color: var(--deep-purple);
+    font-family: var(--font-sans);
+    font-size: 1.6rem;
+    line-height: 1.5;
     font-weight: 400;
     font-style: normal;
-    background: #fff;
+    background: var(--cream);
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 
@@ -91,11 +95,14 @@ hr {
 
 ::selection {
     text-shadow: none;
-    background: #cbeafb;
+    background: var(--neon-pink);
+    color: var(--cream);
 }
 
 mark {
-    background-color: #fdffb6;
+    background-color: var(--lime-shock);
+    color: var(--deep-purple);
+    padding: 0.1em 0.2em;
 }
 
 small {

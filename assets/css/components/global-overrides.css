@@ -1,26 +1,8 @@
 /* Global Style Overrides
 /* ---------------------------------------------------------- */
 
-/* Section Backgrounds */
-.hero-section {
-    background-color: var(--white);
-}
-
-.services-section {
-    background-color: var(--warm-beige);
-}
-
-.about-section {
-    background-color: var(--white);
-}
-
-.gallery-section {
-    background-color: var(--sage-green);
-}
-
-.booking-section {
-    background-color: var(--forest-green);
-}
+/* Section Backgrounds - Removed to allow gradient backgrounds */
+/* Gradients are now defined in individual component CSS files */
 
 /* Container Adjustments */
 .gh-container {

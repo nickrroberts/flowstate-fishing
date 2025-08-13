@@ -2,32 +2,49 @@
 /* ---------------------------------------------------------- */
 
 :root {
-    /* Southwestern Color Palette - Primary */
+    /* Logo-Inspired Palette - Melon Green & Pink */
     --white: #ffffff;
-    --dark-red: #932E11;
-    --dark-teal: #2B4949;
-    --warm-beige: #D9B97C;
-    --forest-green: #2F402B;
-    --olive-brown: #57512D;
-    --burnt-orange: #C15F1C;
-    --sage-green: #76887A;
-    --light-brown: #AD996C;
+    --neon-pink: #F57483;          /* Bright pink from logo */
+    --melon-green: #90EE90;        /* Soft melon green from logo */
+    --logo-pink: #F57483;          /* Secondary pink from logo */
+    --seafoam: #20B2AA;            /* Complementary blue-green */
+    --hot-magenta: #F57483;        /* Primary brand pink */
+    --lime-fresh: #98FB98;         /* Light melon green variant */
+    --coral-accent: #F57483;       /* Soft coral accent */
+    --sand-tan: #D2B48C;          /* Neutral tan */
+    --sage-mist: #9CAF88;         /* Muted green */
+    --forest-green: #228B22;       /* Deep green accent */
+    --peach-cream: #FFCBA4;       /* Warm neutral */
+    --deep-purple: #4B0082;       /* Dark contrast */
+    --cream: #FFF8DC;             /* Light base */
+    
+    /* Legacy aliases for compatibility */
+    --acid-green: var(--melon-green);
+    --laser-orange: var(--coral-accent);
+    --electric-blue: var(--seafoam);
+    --lime-shock: var(--lime-fresh);
+    --desert-coral: var(--coral-accent);
+    --sunset-peach: var(--peach-cream);
+    --cactus-green: var(--forest-green);
 
     /* Design System Color Mapping */
-    --color-primary: var(--dark-teal);
-    --color-secondary: var(--warm-beige);
-    --color-accent: var(--burnt-orange);
-    --color-base: var(--forest-green);
-    --color-muted: var(--olive-brown);
-    --color-border: rgba(45, 73, 73, 0.15);
-    --color-bg: var(--white);
-    --color-success: var(--sage-green);
-    --color-error: var(--dark-red);
+    --color-primary: var(--neon-pink);
+    --color-secondary: var(--melon-green);
+    --color-accent: var(--coral-accent);
+    --color-base: var(--deep-purple);
+    --color-muted: var(--sand-tan);
+    --color-border: rgba(255, 20, 147, 0.3);
+    --color-bg: var(--cream);
+    --color-success: var(--melon-green);
+    --color-error: var(--hot-magenta);
 
     /* Typography - Font Families */
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-serif: 'Source Serif Pro', Georgia, serif;
-    --font-display: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-serif: 'Work Sans', Georgia, serif;
+    --font-display: 'Kaushan Script', cursive;
+    --font-chunky: 'Kaushan Script', cursive;
+    --font-fun: 'Kaushan Script', cursive;
+    --font-arcade: 'Press Start 2P', 'Courier New', monospace;
     --font-mono: Menlo, Courier, monospace;
     
     /* Font Weights */
@@ -94,12 +111,14 @@
     --radius-xl: 1.5rem;
     --radius-full: 9999px;
 
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(47, 64, 43, 0.05);
-    --shadow: 0 1px 3px 0 rgba(47, 64, 43, 0.1), 0 1px 2px 0 rgba(47, 64, 43, 0.06);
-    --shadow-md: 0 4px 6px -1px rgba(47, 64, 43, 0.1), 0 2px 4px -1px rgba(47, 64, 43, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(47, 64, 43, 0.1), 0 4px 6px -2px rgba(47, 64, 43, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(47, 64, 43, 0.1), 0 10px 10px -5px rgba(47, 64, 43, 0.04);
+    /* Shadows - Psychedelic Style */
+    --shadow-sm: 2px 2px 0px var(--neon-pink);
+    --shadow: 3px 3px 0px var(--laser-orange), 6px 6px 0px var(--acid-green);
+    --shadow-md: 4px 4px 0px var(--neon-pink), 8px 8px 0px var(--laser-orange);
+    --shadow-lg: 4px 4px 0px var(--neon-pink), 8px 8px 0px var(--laser-orange), 12px 12px 0px var(--acid-green);
+    --shadow-xl: 0 0 20px var(--neon-pink), 0 0 40px var(--acid-green);
+    --shadow-neon: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink), 0 0 15px var(--neon-pink), 0 0 20px var(--neon-pink);
+    --shadow-sticker: 3px 3px 0px var(--deep-purple), 0 0 0 3px var(--cream), 0 0 0 6px var(--neon-pink);
 
     /* Transitions */
     --transition-fast: 150ms ease;

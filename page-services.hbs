@@ -1,0 +1,23 @@
+{{!< default}}
+
+{{!-- Services Page Template --}}
+<div class="services-page">
+    {{!-- Services Section --}}
+    <section id="services" class="services-section">
+        <div class="gh-container">
+            {{> "services"}}
+        </div>
+    </section>
+</div>
+
+<style>
+    .services-page {
+        padding-top: 0;
+        min-height: 100vh;
+    }
+    
+    .services-page .services-section {
+        padding-top: 100px !important; /* Start content right after navbar */
+        margin-top: 0;
+    }
+</style>

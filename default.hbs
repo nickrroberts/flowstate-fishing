@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{asset "built/index.css"}}" />
     <script src="{{asset "built/index.js"}}" defer></script>
-    <script src="{{asset "js/calendly.js"}}" defer></script>
+    <script src="{{asset "js/booking-form.js"}}" defer></script>
     <script src="{{asset "js/smooth-scroll.js"}}" defer></script>
 
     <title>{{meta_title}}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
 
     {{ghost_head}}
     {{!-- Outputs important meta data and settings, should always be in <head> --}}
 
 </head>
-<body class="{{body_class}}"{{#if @custom.calendly_url}} data-calendly-url="{{@custom.calendly_url}}"{{/if}}>
+<body class="{{body_class}}"{{#if @custom.formspree_url}} data-formspree-url="{{@custom.formspree_url}}"{{/if}}>
 <div class="gh-viewport">
 
 <header id="gh-head" class="gh-head">
@@ -26,8 +26,7 @@
 
         <div class="gh-head-brand">
             <a class="gh-head-logo" href="{{@site.url}}">
-                <img src="{{asset "images/Concepts/black-fly.png"}}" alt="Flow State Fishing" />
-                <span class="gh-head-logo-text">Flow State Fishing</span>
+                <img src="{{asset "images/logo.svg"}}" alt="Flow State Fishing" class="logo-svg" />
             </a>
             <button class="gh-burger" role="button" aria-label="menu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="gh-burger-icon">

@@ -1,7 +1,8 @@
-{{#if @custom.calendly_url}}
-  <div class="calendly-inline-widget" data-url="{{@custom.calendly_url}}" style="min-width:320px;height:700px;"></div>
+{{#if @custom.formspree_url}}
+  <div class="formspree-form-placeholder" data-url="{{@custom.formspree_url}}" style="display:none;"></div>
 {{else}}
-  <p>Set your Calendly URL in Design → Site-wide settings to enable booking.</p>
+  <p>Set your Formspree URL in Design → Site-wide settings to enable booking.</p>
+  <p>Get your form endpoint at <a href="https://formspree.io" target="_blank">formspree.io</a></p>
 {{/if}}
 
 

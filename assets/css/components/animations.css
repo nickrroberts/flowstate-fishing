@@ -1,5 +1,77 @@
-/* Animations - Flow State Fishing */
+/* Animations - Flow State Fishing - Psychedelic Desert Theme */
 /* ---------------------------------------------------------- */
+
+/* Psychedelic Animations */
+@keyframes psychedelic-pulse {
+  0%, 100% { 
+    transform: scale(1);
+    filter: hue-rotate(0deg) saturate(1) brightness(1);
+  }
+  25% { 
+    transform: scale(1.02);
+    filter: hue-rotate(90deg) saturate(1.2) brightness(1.1);
+  }
+  50% { 
+    transform: scale(1.05);
+    filter: hue-rotate(180deg) saturate(1.4) brightness(1.2);
+  }
+  75% { 
+    transform: scale(1.02);
+    filter: hue-rotate(270deg) saturate(1.2) brightness(1.1);
+  }
+}
+
+@keyframes retro-bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0,0,0) rotate(0deg);
+  }
+  40%, 43% {
+    transform: translate3d(0, -8px, 0) rotate(-1deg);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0) rotate(0.5deg);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0) rotate(-0.2deg);
+  }
+}
+
+@keyframes neon-flicker {
+  0%, 100% { 
+    opacity: 1;
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+  }
+  50% { 
+    opacity: 0.8;
+    text-shadow: 0 0 2px currentColor, 0 0 5px currentColor;
+  }
+}
+
+@keyframes rainbow-shift {
+  0% { filter: hue-rotate(0deg); }
+  25% { filter: hue-rotate(90deg); }
+  50% { filter: hue-rotate(180deg); }
+  75% { filter: hue-rotate(270deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes neon-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink), 0 0 15px var(--neon-pink);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--acid-green), 0 0 20px var(--acid-green), 0 0 30px var(--acid-green);
+  }
+}
+
+@keyframes laser-sweep {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
 
 /* Fade In Animations */
 @keyframes fadeIn {
@@ -73,29 +145,92 @@
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 0, 128, 0.7);
   }
   50% {
     transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(255, 0, 128, 0);
   }
 }
 
-/* Shine Effect */
+@keyframes disco-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg) scale(1.1);
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.1);
+    filter: hue-rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Shine Effect - Enhanced */
 @keyframes shine {
   from {
     left: -100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 128, 0.4), transparent);
   }
   to {
     left: 100%;
+    background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.4), transparent);
+  }
+}
+
+@keyframes holographic {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(360deg);
   }
 }
 
 /* Float Animation */
 @keyframes float {
   0%, 100% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  33% {
+    transform: translateY(-8px) rotate(1deg);
+    filter: hue-rotate(120deg);
+  }
+  66% {
+    transform: translateY(-12px) rotate(-1deg);
+    filter: hue-rotate(240deg);
+  }
+}
+
+@keyframes trippy-wiggle {
+  0%, 100% {
+    transform: rotate(0deg) skew(0deg, 0deg);
+  }
+  25% {
+    transform: rotate(1deg) skew(1deg, 0deg);
   }
   50% {
-    transform: translateY(-10px);
+    transform: rotate(0deg) skew(0deg, 1deg);
+  }
+  75% {
+    transform: rotate(-1deg) skew(-1deg, 0deg);
   }
 }
 
@@ -124,6 +259,39 @@
   animation: float 3s ease-in-out infinite;
 }
 
+/* Psychedelic Animation Utilities */
+.animate-psychedelic-pulse {
+  animation: psychedelic-pulse 4s ease-in-out infinite;
+}
+
+.animate-retro-bounce {
+  animation: retro-bounce 3s ease-in-out infinite;
+}
+
+.animate-neon-flicker {
+  animation: neon-flicker 2s ease-in-out infinite;
+}
+
+.animate-rainbow-shift {
+  animation: rainbow-shift 3s linear infinite;
+}
+
+.animate-neon-glow {
+  animation: neon-glow 2s ease-in-out infinite alternate;
+}
+
+.animate-disco-spin {
+  animation: disco-spin 4s linear infinite;
+}
+
+.animate-trippy-wiggle {
+  animation: trippy-wiggle 2s ease-in-out infinite;
+}
+
+.animate-laser-sweep {
+  animation: laser-sweep 3s ease-in-out infinite;
+}
+
 /* Stagger Delays */
 .delay-100 {
   animation-delay: 0.1s;
@@ -147,4 +315,34 @@
 
 .delay-600 {
   animation-delay: 0.6s;
+}
+
+.delay-700 {
+  animation-delay: 0.7s;
+}
+
+.delay-800 {
+  animation-delay: 0.8s;
+}
+
+/* Animation Speed Modifiers */
+.animate-slow {
+  animation-duration: 2s;
+}
+
+.animate-fast {
+  animation-duration: 0.5s;
+}
+
+/* Hover Trigger Animations */
+.hover-psychedelic:hover {
+  animation: psychedelic-pulse 1s ease-in-out;
+}
+
+.hover-rainbow:hover {
+  animation: rainbow-shift 2s linear;
+}
+
+.hover-bounce:hover {
+  animation: retro-bounce 1s ease-in-out;
 }

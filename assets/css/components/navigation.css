@@ -8,20 +8,22 @@
     left: 0;
     right: 0;
     z-index: 50;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
+    background: linear-gradient(90deg, rgba(75, 0, 130, 0.6) 0%, rgba(255, 0, 128, 0.6) 50%, rgba(255, 69, 0, 0.6) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     padding: 0;
     font-family: var(--font-sans);
     font-size: var(--text-base);
     transition: all var(--transition-base);
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 0, 128, 0.3);
+    border-bottom: 3px solid var(--acid-green);
 }
 
 .gh-head-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 70px;
+    height: 120px;
     padding: 0;
     max-width: 1280px;
     margin: 0 auto;
@@ -50,20 +52,31 @@
     transform: scale(1.05);
 }
 
+.gh-head-logo img.logo-svg {
+    height: 90px !important;
+    width: auto !important;
+    max-width: 500px !important;
+    min-width: 400px !important;
+    object-fit: contain;
+    transition: transform var(--transition-fast);
+}
+
 .gh-head-logo img {
-    height: 40px;
+    height: 50px;
     width: auto;
     object-fit: contain;
     transition: transform var(--transition-fast);
 }
 
 .gh-head-logo-text {
-    font-family: 'Pacifico', cursive;
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--forest-green);
+    font-family: var(--font-arcade);
+    font-size: 1.2rem;
+    font-weight: var(--font-bold);
+    color: var(--acid-green);
     line-height: 1;
     white-space: nowrap;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8), 0 0 10px var(--acid-green);
+    letter-spacing: -0.05em;
 }
 
 /* Primary Navigation Menu */
@@ -94,15 +107,19 @@
     padding: 0.5rem 0.25rem;
     font-family: var(--font-sans);
     font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--forest-green);
+    font-weight: 700;
+    color: var(--white);
     text-decoration: none;
-    letter-spacing: 0.025em;
-    transition: color 200ms;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.8);
+    transition: all var(--transition-base);
 }
 
 .gh-head-menu .nav a:not(.gh-button):hover {
-    color: var(--dark-teal);
+    color: var(--deep-purple);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
 }
 
 .gh-head-menu .nav a:not(.gh-button)::after {
@@ -111,16 +128,19 @@
     left: 0;
     right: 0;
     bottom: -1px;
-    height: 1px;
-    background-color: var(--burnt-orange);
+    height: 3px;
+    background: var(--white);
     transform: scaleX(0);
     transform-origin: center;
-    transition: transform 200ms;
+    transition: transform var(--transition-base);
+    border-radius: var(--radius-full);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .gh-head-menu .nav a:hover::after,
 .gh-head-menu .nav-current a::after {
     transform: scaleX(1);
+    animation: neon-flicker 2s ease-in-out infinite;
 }
 
 /* Actions Section */
@@ -157,13 +177,20 @@
 /* Subscribe Button (Ghost) */
 .gh-head-actions .gh-button:first-of-type {
     background: transparent;
-    color: var(--forest-green);
-    border-color: var(--color-border);
+    color: var(--lime-shock);
+    border-color: var(--lime-shock);
+    text-shadow: 0 0 8px var(--lime-shock);
+    font-family: var(--font-sans);
+    text-transform: uppercase;
 }
 
 .gh-head-actions .gh-button:first-of-type:hover {
-    background: var(--warm-beige);
-    border-color: var(--warm-beige);
+    background: linear-gradient(45deg, var(--lime-fresh), var(--melon-green));
+    border-color: var(--neon-pink);
+    color: var(--deep-purple);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), 0 0 20px var(--lime-shock);
+    animation: retro-bounce 1s ease-in-out;
 }
 
 /* Book Now Button in Navigation */
@@ -171,37 +198,54 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 1rem;
-    background: var(--dark-teal);
-    color: var(--white);
-    border: 2px solid var(--dark-teal);
-    border-radius: var(--radius);
+    padding: 0.75rem 1.5rem;
+    background: var(--melon-green);
+    color: black;
+    border: 3px solid var(--neon-pink);
+    border-radius: 50px;
+    font-family: var(--font-sans);
     font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
-    transition: all var(--transition-fast);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: none;
+    box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-base);
 }
 
 .gh-head-menu .nav .gh-button-primary:hover {
-    background: var(--forest-green);
-    border-color: var(--forest-green);
-    color: var(--white);
+    background: var(--lime-fresh);
+    border-color: var(--hot-magenta);
+    color: black;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 16px rgba(255, 20, 147, 0.4), 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 /* Book Now Button - Primary CTA */
 .gh-head-actions .gh-button-primary,
 .gh-head-actions .gh-button.gh-button-primary {
-    background: var(--dark-teal) !important;
-    color: var(--white) !important;
-    border-color: var(--dark-teal) !important;
+    background: var(--melon-green) !important;
+    color: black !important;
+    border: 3px solid var(--neon-pink) !important;
     margin-left: 0;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: none;
+    box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    padding: 0.75rem 1.5rem;
 }
 
 .gh-head-actions .gh-button-primary:hover,
 .gh-head-actions .gh-button.gh-button-primary:hover {
-    background: var(--forest-green) !important;
-    border-color: var(--forest-green) !important;
-    color: var(--white) !important;
+    background: var(--lime-fresh) !important;
+    border-color: var(--hot-magenta) !important;
+    color: black !important;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 16px rgba(255, 20, 147, 0.4), 0 3px 6px rgba(0, 0, 0, 0.15) !important;
 }
 
 /* Mobile menu button reset */
@@ -222,12 +266,16 @@
     border: none;
     background: transparent;
     cursor: pointer;
-    color: var(--forest-green);
-    transition: color var(--transition-fast);
+    color: var(--cream);
+    transition: all var(--transition-base);
+    text-shadow: 0 0 8px var(--cream);
 }
 
 .gh-search:hover {
-    color: var(--dark-teal);
+    color: var(--acid-green);
+    text-shadow: 0 0 15px var(--acid-green);
+    transform: scale(1.1);
+    animation: neon-flicker 1.5s ease-in-out;
 }
 
 .gh-search svg {
@@ -239,28 +287,39 @@
 .gh-burger {
     display: none;
     position: relative;
-    padding: 8px;
+    padding: 12px;
     border: none;
     background: transparent;
     cursor: pointer;
-    color: var(--forest-green);
-    transition: color var(--transition-fast);
+    color: var(--deep-purple);
+    transition: all var(--transition-base);
+    flex-shrink: 0;
+    min-width: 48px;
+    min-height: 48px;
+    margin-right: 0;
 }
 
 .gh-burger:hover {
-    color: var(--dark-teal);
+    color: var(--neon-pink);
+    transform: scale(1.1);
 }
 
 .gh-burger-icon,
 .gh-burger-close {
     display: block;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     transition: opacity var(--transition-fast), transform var(--transition-fast);
+    color: var(--deep-purple);
 }
 
 .gh-burger-close {
     display: none;
+    color: white !important;
+    stroke-width: 3;
+    fill: white !important;
+    opacity: 1 !important;
+    filter: drop-shadow(2px 2px 0px black);
 }
 
 /* Mobile Menu Open State */
@@ -270,11 +329,19 @@
 
 .gh-head-open .gh-burger-close {
     display: block;
+    color: white !important;
+    fill: white !important;
+    opacity: 1 !important;
+    filter: drop-shadow(2px 2px 0px black);
+}
+
+.gh-head-open .gh-burger {
+    color: white !important;
 }
 
 /* Adjust main content for fixed header */
 body {
-    padding-top: 70px;
+    padding-top: 100px;
 }
 
 /* Responsive Styles */
@@ -298,15 +365,34 @@ body {
     }
     
     #gh-head .gh-head-inner {
-        height: 60px;
+        height: 100px;
+        padding: 0 1rem;
     }
     
     body {
-        padding-top: 60px;
+        padding-top: 100px;
     }
     
     #gh-head .gh-head-brand {
         flex: 1;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin-left: -48px; /* Offset to center logo accounting for hamburger button */
+    }
+    
+    /* Much larger logo on mobile - take up more width */
+    .gh-head-logo img.logo-svg {
+        height: 85px !important;
+        width: auto !important;
+        max-width: calc(100vw - 120px) !important;
+        max-height: 85px !important;
+    }
+    
+    /* When menu is open, adjust logo size to fit with close button */
+    .gh-head-open .gh-head-logo img.logo-svg {
+        min-width: calc(100vw - 120px) !important;
+        max-width: calc(100vw - 120px) !important;
     }
     
     #gh-head .gh-head-menu {
@@ -331,7 +417,8 @@ body {
         z-index: 9999;
         height: 100vh;
         overflow-y: auto;
-        background: var(--white);
+        background: linear-gradient(180deg, var(--deep-purple) 0%, var(--neon-pink) 50%, var(--coral-accent) 100%);
+        animation: rainbow-shift 8s linear infinite;
     }
     
     .gh-head-open #gh-head .gh-head-inner {
@@ -347,9 +434,9 @@ body {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 60px;
-        min-height: 60px;
-        max-height: 60px;
+        height: 100px;
+        min-height: 100px;
+        max-height: 100px;
         width: 100%;
         padding: 0 1.5rem;
         border-bottom: 1px solid var(--color-border);
@@ -416,13 +503,14 @@ body {
 @media (max-width: 480px) {
     #gh-head .gh-head-logo {
         font-size: var(--text-lg);
-        max-height: 40px;
+        max-height: 75px;
     }
     
-    #gh-head .gh-head-logo img {
-        height: 32px;
-        max-height: 32px;
-        width: auto;
+    #gh-head .gh-head-logo img.logo-svg {
+        height: 65px !important;
+        max-height: 65px !important;
+        width: auto !important;
+        max-width: calc(100vw - 100px) !important;
     }
     
     #gh-head .gh-head-logo-text {
@@ -430,8 +518,8 @@ body {
     }
     
     .gh-head-open #gh-head .gh-head-brand {
-        height: 60px !important;
-        min-height: 60px !important;
-        max-height: 60px !important;
+        height: 100px !important;
+        min-height: 100px !important;
+        max-height: 100px !important;
     }
 }

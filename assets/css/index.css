@@ -29,6 +29,7 @@ production stylesheet in assets/built/screen.css using: npm run dev
 
 /* Main - Your styles here! Edit below
 /* ---------------------------------------------------------- */
+@import "components/header-overrides.css";
 
 /* Flow State Fishing components */
 @import "components/typography.css";
@@ -40,10 +41,10 @@ production stylesheet in assets/built/screen.css using: npm run dev
 @import "components/about.css";
 @import "components/gallery.css";
 @import "components/booking.css";
+@import "components/booking-form.css";
 @import "components/modal.css";
 @import "components/calendly-overrides.css";
 @import "components/animations.css";
-@import "components/design-polish.css";
 @import "components/blog.css";
 @import "components/footer-custom.css";
 @import "components/error-404.css";

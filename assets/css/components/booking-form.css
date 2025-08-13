@@ -1,0 +1,377 @@
+/* Booking Form Modal Styles
+/* ---------------------------------------------------------- */
+
+/* Modal Overlay */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9998;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.modal-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Modal Container */
+.booking-modal {
+  position: fixed;
+  top: 10vh;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  width: 90%;
+  max-width: 600px;
+  height: 80vh;
+  background: var(--cream);
+  border: 3px solid var(--neon-pink);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 0 40px rgba(255, 20, 147, 0.4), 0 0 20px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.booking-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) scale(1);
+}
+
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid var(--neon-pink);
+  background: var(--cream);
+  flex-shrink: 0;
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--forest-green);
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: var(--font-bold);
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--deep-purple);
+}
+
+.modal-close:hover {
+  background: var(--neon-pink);
+  color: var(--white);
+  transform: rotate(90deg);
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 2rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  flex: 1 1 auto;
+  min-height: 0;
+  background: var(--white);
+  scrollbar-width: thin;
+  scrollbar-color: var(--neon-pink) var(--cream);
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: var(--cream);
+  border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: var(--neon-pink);
+  border-radius: 4px;
+  border: 2px solid var(--cream);
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--hot-magenta);
+}
+
+/* Form Styles */
+#booking-form-container {
+  width: 100%;
+  height: auto;
+}
+
+.booking-form {
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
+.form-intro {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-tagline {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--forest-green);
+  margin: 0 0 0.5rem;
+  font-weight: var(--font-semibold);
+}
+
+.form-description {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--deep-purple);
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Form Row for side-by-side fields */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-row .form-group {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--deep-purple);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--white);
+  border: 2px solid var(--melon-green);
+  border-radius: var(--radius);
+  color: var(--deep-purple);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  transition: all var(--transition-fast);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(75, 0, 130, 0.5);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  background: var(--white);
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 10px rgba(255, 20, 147, 0.2);
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group select option {
+  background: var(--white);
+  color: var(--deep-purple);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Checkbox Group */
+.checkbox-group {
+  margin: 2rem 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--deep-purple);
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: var(--neon-pink);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.checkbox-label span {
+  line-height: 1.2;
+  padding-top: 1px;
+}
+
+/* Form Actions */
+.form-actions {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px;
+  padding: 1rem 2rem;
+  background: var(--melon-green);
+  color: black;
+  border: 3px solid var(--neon-pink);
+  border-radius: 50px;
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3);
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: var(--lime-fresh);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 20, 147, 0.4);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Form Message */
+.form-message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  text-align: center;
+}
+
+.form-message.success {
+  background: rgba(144, 238, 144, 0.2);
+  border: 2px solid var(--acid-green);
+  color: var(--acid-green);
+}
+
+.form-message.error {
+  background: rgba(255, 20, 147, 0.2);
+  border: 2px solid var(--neon-pink);
+  color: var(--neon-pink);
+}
+
+/* Body State When Modal is Open */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* Ensure modal can scroll on all devices */
+@supports (-webkit-overflow-scrolling: touch) {
+  .modal-body {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Force scrollbar visibility */
+.modal-body {
+  overflow-y: scroll !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 640px) {
+  .booking-modal {
+    width: 95%;
+    height: 85vh;
+    top: 7.5vh;
+  }
+  
+  .modal-header {
+    padding: 1rem;
+  }
+  
+  .modal-title {
+    font-size: var(--text-xl);
+  }
+  
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .form-tagline {
+    font-size: var(--text-lg);
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  /* Stack form rows on mobile */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  .form-row .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-row .form-group:last-child {
+    margin-bottom: 0;
+  }
+}

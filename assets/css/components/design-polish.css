@@ -3,7 +3,6 @@
 
 /* Hero Section Enhancements */
 .hero-section {
-  background: linear-gradient(135deg, var(--white) 0%, rgba(249, 247, 243, 0.3) 100%);
   position: relative;
 }
 
@@ -56,7 +55,6 @@
 
 /* Hero Badge Enhancement */
 .hero-badge span {
-  background: linear-gradient(135deg, var(--white) 0%, rgba(118, 136, 122, 0.03) 100%);
   box-shadow: 0 2px 15px rgba(118, 136, 122, 0.12);
   transition: all 0.3s ease;
 }
@@ -101,10 +99,6 @@
 }
 
 .stat-number {
-  background: linear-gradient(135deg, var(--dark-teal) 0%, var(--burnt-orange) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   transition: all 0.3s ease;
 }
 
@@ -132,29 +126,7 @@
   position: relative;
 }
 
-.hero-image-wrapper::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  right: -20px;
-  bottom: -20px;
-  background: radial-gradient(circle at center, rgba(43, 73, 73, 0.05) 0%, transparent 70%);
-  border-radius: 50%;
-  z-index: -1;
-  animation: pulse 3s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.8;
-  }
-}
+/* Removed circular background behind hero image and associated pulse animation */
 
 .hero-image-wrapper img {
   box-shadow: 0 25px 70px rgba(43, 73, 73, 0.18);
@@ -170,7 +142,6 @@
 .service-card {
   transition: all 0.4s ease;
   position: relative;
-  background: linear-gradient(135deg, var(--white) 0%, rgba(249, 247, 243, 0.5) 100%);
 }
 
 .service-card::before {

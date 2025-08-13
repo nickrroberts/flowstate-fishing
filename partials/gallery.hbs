@@ -1,13 +1,13 @@
 <div class="gallery-header">
   <div class="badge-wrapper">
-    <span class="gallery-badge">Visual Stories</span>
+    <span class="gallery-badge">Trophy Shots</span>
   </div>
   <h2 class="gallery-title">
-    Moments in
-    <span class="gallery-subtitle gallery-underline-svg">Flow</span>
+    Fish Pics or
+    <span class="gallery-subtitle gallery-underline-svg">It Didn't Happen</span>
   </h2>
   <p class="gallery-description">
-    {{#if @custom.gallery_subtitle}}{{@custom.gallery_subtitle}}{{else}}Every trip is unique, every cast tells a story. Witness the magic that happens when skill meets serenity on the water.{{/if}}
+    {{#if @custom.gallery_subtitle}}{{@custom.gallery_subtitle}}{{else}}Check out these absolute units we've yanked out of the water. Fair warning: viewing these pics may cause sudden urges to quit your job and go fishing.{{/if}}
   </p>
 </div>
 
@@ -33,7 +33,7 @@
     {{#unless posts}}
       {{!-- Fallback message if no gallery posts exist --}}
       <div class="gallery-empty">
-        <p>Gallery images coming soon. Check back for stunning visuals from our fishing adventures!</p>
+        <p>No fish pics yet. We're too busy catching them to photograph them. Check back soon!</p>
       </div>
     {{/unless}}
   {{/get}}
@@ -41,7 +41,7 @@
 
 {{!-- Instagram CTA --}}
 <div class="gallery-cta">
-  <p>Follow our journey on Instagram for daily inspiration from the water</p>
+  <p>Follow us on the 'gram for daily doses of fish content and bad puns</p>
   <a href="https://instagram.com/flowstatefishingllc" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light">
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
       <rect x="2" y="2" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.5"/>
