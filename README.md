@@ -1,125 +1,254 @@
-# Ghost Starter Theme
+# Flowstate Fishing 🎣
 
-A starter framework for Ghost themes! Click **Use this template** to create a copy of this repo for everything you need to get started developing a custom Ghost theme.
+A premium Ghost theme for fly fishing instructors and guides, featuring elegant design, smooth animations, and integrated booking capabilities.
 
-&nbsp;
+## 🎯 Features
 
-## First time using a Ghost theme?
+- **Professional Design**: Clean, modern layout optimized for fly fishing instruction businesses
+- **Integrated Booking**: Calendly integration for seamless appointment scheduling
+- **Responsive Layout**: Mobile-first design that looks great on all devices
+- **Service Showcase**: Beautiful service cards with pricing and details
+- **Image Gallery**: Showcase your fishing experiences and locations
+- **Blog Integration**: Share stories, tips, and fishing insights
+- **Smooth Animations**: Subtle scroll animations and transitions
+- **SEO Optimized**: Built with Ghost's SEO best practices
+- **Performance Focused**: Optimized assets and fast load times
 
-Ghost uses a simple templating language called [Handlebars](http://handlebarsjs.com/) for its themes.
+## 📋 Prerequisites
 
-We've documented this starter theme pretty heavily so that it should be possible to work out what's going on just by reading the code and the comments. We also have a robust set of resources to help you build awesome custom themes:
+Before you begin, ensure you have the following installed:
+- **Node.js** (v18 or higher) - [Download Node.js](https://nodejs.org/)
+- **npm** or **yarn** (comes with Node.js)
+- **Ghost-CLI** - Install globally with `npm install -g ghost-cli`
 
-- The official [theme documentation](https://ghost.org/docs/themes) is the complete resource for everything you need to know about Ghost theme development
-- [Tutorials](https://ghost.org/tutorials/) offer a step-by-step guide to building the most common features in Ghost themes
-- The [Ghost VS Code extension](https://marketplace.visualstudio.com/items?itemName=TryGhost.ghost) speeds up theme development and provides quick access to helpful info
-- All of Ghost's official themes are [open source](https://github.com/tryghost) and are a great reference for learning how to create a theme
+## 🚀 Ghost Setup
 
-&nbsp;
+### Installing Ghost Locally
 
-## Starter theme features
-
-🔁&nbsp;Livereload by default. See changes instantly in the browser whenever you save a file.
-
-🔎&nbsp;Optimized for VS Code. Find the files you're looking for more easily.
-
-🗃️&nbsp;Write modern JavaScript. Use ESM out of the box to write more manageable Javascript.
-
-🗜️&nbsp;Assets optimized automatically. JavaScript and CSS are minified and transpiled by default.
-
-👟&nbsp;Fast compile times, powered by [Rollup](https://rollupjs.org).
-
-🦋&nbsp;Write next-gen CSS for today's browsers with [PostCSS](https://postcss.org/). Add the CSS tools you love via [`rollup.config.js`](rollup.config.js).
-
-🚢&nbsp;Ghost's [GH Deploy Action](.github/workflows/deploy-theme.yml) included by default. [Learn more how to deploy your theme automatically](https://github.com/TryGhost/action-deploy-theme)
-
-➕&nbsp;Extensible by design. Rollup's configuration structure makes it easy to add [any number of plugins easily](https://github.com/rollup/plugins). 
-
-&nbsp;
-
-## Theme structure
-
-The main files are:
-
-- [`default.hbs`](default.hbs) - The main template file
-- [`index.hbs`](index.hbs) - Used for the home page
-- [`post.hbs`](post.hbs) - Used for individual posts
-- [`page.hbs`](page.hbs) - Used for individual pages
-- [`tag.hbs`](tag.hbs) - Used for tag archives
-- [`author.hbs`](author.hbs) - Used for author archives
-
-One neat trick is that you can also create custom one-off templates just by adding the slug of a page to a template file. For example:
-
-- `page-about.hbs` - Custom template for the `/about/` page
-- `tag-news.hbs` - Custom template for `/tag/news/` archive
-- `author-jamie.hbs` - Custom template for `/author/jamie/` archive
-
-&nbsp;
-
-## Development guide
-
-The Starter theme provides a first-class development experience out of the box. 
-
-&nbsp;
-
-### Setup
-
-To see realtime changes during development, symlink the Starter theme folder to the `content/themes` folder in your local Ghost install. 
-
+1. Create a directory for your Ghost installation:
 ```bash
-ln -s /path/to/starter /ghost/content/themes/starter
+mkdir ghost-local
+cd ghost-local
 ```
 
-Restart Ghost and select the Starter theme from **Settings**.
+2. Install Ghost using Ghost-CLI:
+```bash
+ghost install local
+```
 
-From the theme's root directory, install the dependencies:
+This will:
+- Download and install Ghost
+- Set up a SQLite database
+- Create a local development environment
+- Start Ghost at `http://localhost:2368`
 
+3. Complete the setup:
+- Navigate to `http://localhost:2368/ghost`
+- Create your admin account
+- Complete the initial setup wizard
+
+## 🎨 Theme Installation
+
+### Getting the Theme Running
+
+1. Clone this repository:
+```bash
+cd ..
+git clone https://github.com/YOUR_USERNAME/flow-state-fishing.git
+cd flow-state-fishing
+```
+
+2. Install theme dependencies:
 ```bash
 npm install
 ```
 
-If Node isn't installed, follow the [official Node installation guide](https://nodejs.org/).
-
-&nbsp;
-
-### Start development mode
-
-From the Starter theme folder, start development mode:
-
+3. Create a symlink to Ghost's theme directory:
 ```bash
+# From the flow-state-fishing directory
+ln -s $(pwd) ../ghost-local/content/themes/flow-state-fishing
+```
+
+4. Restart Ghost:
+```bash
+cd ../ghost-local
+ghost restart
+```
+
+5. Activate the theme:
+- Go to `http://localhost:2368/ghost/#/settings/design`
+- Scroll to "Themes"
+- Find "Flow State Fishing" and click "Activate"
+
+### Starting Development Mode
+
+1. In the theme directory, start the development watcher:
+```bash
+cd ../flow-state-fishing
 npm run dev
 ```
 
-Changes you make to your styles, scripts, and Handlebars files will show up automatically in the browser. CSS and Javascript will be compiled and output to the `built` folder.
+This will:
+- Watch for changes in your theme files
+- Automatically compile CSS and JavaScript
+- Enable LiveReload on port 35730
+- Hot reload changes in your browser
 
-Press `ctrl + c` in the terminal to exit development mode.
+2. Open `http://localhost:2368` in your browser to see your site
 
-&nbsp;
+## 🛠️ Development Workflow
 
-### Build, zip, and test your theme
+### File Structure
 
-Compile your CSS and JavaScript assets for production with the following command:
+```
+flow-state-fishing/
+├── assets/
+│   ├── css/           # Source CSS files
+│   ├── js/            # Source JavaScript files
+│   ├── images/        # Theme images
+│   └── built/         # Compiled assets (gitignored)
+├── partials/
+│   ├── hero.hbs       # Hero section
+│   ├── navigation.hbs # Main navigation
+│   ├── services.hbs   # Services section
+│   ├── about.hbs      # About section
+│   ├── gallery.hbs    # Gallery section
+│   └── footer.hbs     # Footer section
+├── default.hbs        # Main template
+├── index.hbs          # Homepage
+├── post.hbs           # Single post template
+├── page.hbs           # Single page template
+├── home.hbs           # Custom homepage
+└── package.json       # Theme configuration
+```
 
+### Available Commands
+
+```bash
+# Start development mode with hot reload
+npm run dev
+
+# Build production assets
+npm run build
+
+# Create a zip file for theme upload
+npm run zip
+
+# Test theme compatibility
+npm run test
+```
+
+### Making Changes
+
+1. **CSS Changes**: Edit files in `assets/css/components/`
+2. **JavaScript**: Modify files in `assets/js/`
+3. **Templates**: Edit `.hbs` files in root and `partials/`
+4. **Images**: Add to `assets/images/`
+
+All changes are automatically compiled and reloaded in development mode.
+
+## 🎨 Customization
+
+### Theme Settings
+
+The theme includes custom settings configurable in Ghost Admin:
+
+- **Calendly URL**: Your Calendly scheduling link
+- **Hero Subtitle**: Main tagline text
+- **Service Details**: Titles and prices for services
+- **About Content**: Personal story and quotes
+- **Statistics**: Years experience, clients served, etc.
+
+Access these at: `Ghost Admin → Settings → Design → Theme Settings`
+
+### Color Scheme
+
+Main colors are defined in `assets/css/vars.css`:
+- Forest Green: `#2C5530`
+- Dark Teal: `#436C70`
+- Burnt Orange: `#C15F1C`
+- Olive Brown: `#57512D`
+- Warm Beige: `#F5E6D3`
+
+### Typography
+
+The theme uses:
+- **Headers**: Playfair Display
+- **Body**: Source Serif Pro
+- **UI Elements**: Inter
+- **Logo**: Pacifico
+
+## 📦 Production Deployment
+
+### Building for Production
+
+1. Build optimized assets:
 ```bash
 npm run build
 ```
 
-Create a zip archive:
-
+2. Create a theme zip:
 ```bash
 npm run zip
 ```
 
-Use `gscan` to test your theme for compatibility with Ghost:
+3. Upload to Ghost:
+- Go to `Ghost Admin → Settings → Design`
+- Click "Change theme"
+- Upload the `flow-state-fishing.zip` file
+
+### Using Ghost CLI for Production
+
+For production Ghost installations:
 
 ```bash
-npm run test
+# Install Ghost in production mode
+ghost install
+
+# Configure your domain, database, etc.
+ghost config
+
+# Start Ghost
+ghost start
 ```
 
-&nbsp;
+## 🔧 Troubleshooting
 
+### Ghost won't start
+- Check if port 2368 is available: `lsof -i :2368`
+- Stop Ghost: `ghost stop`
+- Start again: `ghost start`
 
+### Theme changes not showing
+- Ensure development mode is running: `npm run dev`
+- Clear browser cache
+- Check if symlink is correct: `ls -la ../ghost-local/content/themes/`
 
-## Copyright & License
+### LiveReload not working
+- Check if port 35730 is available
+- Restart the development watcher
+- Disable browser extensions that might interfere
 
-Copyright (c) 2013-2025 Ghost Foundation - Released under the [MIT license](LICENSE).
+### CSS/JS not compiling
+- Delete `node_modules` and reinstall: `rm -rf node_modules && npm install`
+- Check for syntax errors in your files
+- Ensure Node.js version is 18+
+
+## 📝 Ghost Resources
+
+- [Ghost Documentation](https://ghost.org/docs/)
+- [Ghost Themes Guide](https://ghost.org/docs/themes/)
+- [Handlebars Documentation](https://handlebarsjs.com/)
+- [Ghost API Reference](https://ghost.org/docs/content-api/)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+Copyright (c) 2024 - Released under the [MIT license](LICENSE).
+
+---
+
+Built with ❤️ for the fly fishing community
