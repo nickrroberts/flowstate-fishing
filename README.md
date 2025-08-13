@@ -1,6 +1,6 @@
-# Flowstate Fishing 🎣
+# Flowstate Fishing 🎣 420 69
 
-A premium Ghost theme for fly fishing instructors and guides, featuring elegant design, smooth animations, and integrated booking capabilities.
+A premium Ghost theme for Tanner.
 
 ## 🎯 Features
 
