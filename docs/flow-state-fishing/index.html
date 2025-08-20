@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow State Fishing - Design Concepts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Fish-Inspired Color Palette */
+            --primary-900: #2B4539;
+            --primary-800: #3A5A49;
+            --primary-700: #496F59;
+            --primary-600: #5DA477;
+            --primary-500: #6FB585;
+            --primary-400: #81C593;
+            --primary-300: #93D5A1;
+            --primary-200: #A5E5AF;
+            --primary-100: #B7F5BD;
+            --primary-50: #E8FCE8;
+            
+            --accent-600: #E85A6B;
+            --accent-500: #F57483;
+            --accent-400: #F78BA2;
+            --accent-300: #F9A2C1;
+            
+            --sage-600: #5DA477;
+            --sage-500: #6FB585;
+            --sage-400: #81C593;
+            --sage-300: #93D5A1;
+            
+            --white: #FCFEFA;
+            --black: #2B4539;
+            
+            /* Typography */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Fraunces', Georgia, serif;
+            
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            --space-32: 8rem;
+            
+            /* Design Tokens */
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            --shadow-sm: 0 2px 4px rgba(26, 22, 17, 0.04);
+            --shadow-md: 0 4px 6px rgba(26, 22, 17, 0.07);
+            --shadow-lg: 0 10px 15px rgba(26, 22, 17, 0.1);
+            --shadow-xl: 0 20px 25px rgba(26, 22, 17, 0.15);
+            --shadow-2xl: 0 25px 50px rgba(26, 22, 17, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--primary-900);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--primary-100);
+            padding: var(--space-8) 0;
+        }
+
+        .header-content {
+            text-align: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-4);
+        }
+
+        .logo-svg {
+            width: 200px;
+            height: auto;
+            fill: var(--primary-900);
+        }
+
+        .tagline {
+            font-size: 1.125rem;
+            color: var(--primary-600);
+            margin-bottom: var(--space-2);
+        }
+
+        .client-note {
+            font-size: 0.875rem;
+            color: var(--primary-500);
+            font-style: italic;
+        }
+
+        /* Main Content */
+        .main {
+            padding: var(--space-20) 0;
+            background: var(--primary-50);
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: var(--space-20);
+        }
+
+        .intro-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            color: var(--primary-900);
+            margin-bottom: var(--space-6);
+            font-variation-settings: 'opsz' 48;
+        }
+
+        .intro-description {
+            font-size: 1.25rem;
+            color: var(--primary-700);
+            max-width: 600px;
+            margin: 0 auto var(--space-8);
+            line-height: 1.7;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: var(--sage-300);
+            color: var(--primary-800);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Concept Grid */
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-8);
+            margin-top: var(--space-16);
+        }
+
+        .concept-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--primary-100);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+            border-color: var(--accent-300);
+        }
+
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-600), var(--sage-600));
+        }
+
+        .concept-header {
+            margin-bottom: var(--space-6);
+        }
+
+        .concept-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-900);
+            margin-bottom: var(--space-3);
+            font-variation-settings: 'opsz' 24;
+        }
+
+        .concept-description {
+            color: var(--primary-600);
+            line-height: 1.6;
+            margin-bottom: var(--space-6);
+        }
+
+        .concept-features {
+            margin-bottom: var(--space-8);
+        }
+
+        .concept-features h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary-800);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-3);
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .features-list li {
+            color: var(--primary-700);
+            font-size: 0.875rem;
+            margin-bottom: var(--space-1);
+            padding-left: var(--space-4);
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--sage-600);
+            font-weight: bold;
+        }
+
+        .concept-actions {
+            display: flex;
+            gap: var(--space-4);
+        }
+
+        .btn-primary {
+            background: var(--accent-600);
+            color: var(--white);
+            padding: var(--space-3) var(--space-6);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            flex: 1;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-500);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            color: var(--primary-700);
+            background: transparent;
+            padding: var(--space-3) var(--space-6);
+            border: 2px solid var(--primary-200);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-600);
+            color: var(--accent-600);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-900);
+            color: var(--primary-200);
+            padding: var(--space-16) 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent-400);
+            margin-bottom: var(--space-4);
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .concepts-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-6);
+            }
+            
+            .concept-actions {
+                flex-direction: column;
+            }
+        }
+
+        /* Status Indicators */
+        .status-ready {
+            background: var(--sage-300);
+            color: var(--primary-800);
+        }
+
+        .status-coming-soon {
+            background: var(--accent-300);
+            color: var(--primary-800);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="assets/images/logo.svg" alt="Flow State Fishing Logo" class="logo-svg">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="intro">
+                <h2 class="intro-title">Design Concepts for Tanner</h2>
+            </div>
+
+            <div class="concepts-grid">
+                <!-- Concept 5 - Award-Winning Layouts -->
+                <div class="concept-card">
+                    <div class="concept-header">
+                        <h3 class="concept-title">Award-Winning Layout Patterns</h3>
+                        <p class="concept-description">
+                            A sophisticated design featuring award-winning layout principles, premium typography, and a refined southwestern color palette. This concept balances technical expertise with approachable instruction.
+                        </p>
+                    </div>
+                    
+                    <div class="concept-features">
+                        <h4>Key Features</h4>
+                        <ul class="features-list">
+                            <li>Fraunces & Inter typography system</li>
+                            <li>Sophisticated southwestern color palette</li>
+                            <li>Award-winning grid layouts</li>
+                            <li>Premium visual hierarchy</li>
+                            <li>Instructor-focused design</li>
+                            <li>Mobile-responsive layout</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="concept-actions">
+                        <a href="concept-5-award-winning-layouts.html" class="btn-primary" target="_blank">View Concept</a>
+                    </div>
+                </div>
+
+                <!-- Future Concepts Placeholder -->
+                <div class="concept-card" style="opacity: 0.6;">
+                    <div class="concept-header">
+                        <h3 class="concept-title">Colorful Flat Design</h3>
+                        <p class="concept-description">
+                            An upcoming concept featuring vibrant SVG illustrations, modern flat design principles, and engaging visual storytelling perfect for instructional content.
+                        </p>
+                    </div>
+                    
+                    <div class="concept-features">
+                        <h4>Planned Features</h4>
+                        <ul class="features-list">
+                            <li>Custom SVG fishing illustrations</li>
+                            <li>Bright, engaging color palette</li>
+                            <li>Interactive step-by-step guides</li>
+                            <li>Mailchimp-inspired friendly design</li>
+                            <li>Educational visual hierarchy</li>
+                            <li>Scalable vector graphics</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="concept-actions">
+                        <span class="btn-primary" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</span>
+                    </div>
+                </div>
+
+                <!-- Western Typography Concept -->
+                <div class="concept-card" style="opacity: 0.6;">
+                    <div class="concept-header">
+                        <h3 class="concept-title">Western Typography & Branding</h3>
+                        <p class="concept-description">
+                            A bold western-inspired design featuring dramatic typography, authentic southwestern aesthetics, and integrated brand elements including the fish logo.
+                        </p>
+                    </div>
+                    
+                    <div class="concept-features">
+                        <h4>Planned Features</h4>
+                        <ul class="features-list">
+                            <li>Alfa Slab One bold typography</li>
+                            <li>Integrated fish logo design</li>
+                            <li>Western/frontier aesthetic</li>
+                            <li>Enhanced southwestern palette</li>
+                            <li>Dramatic visual impact</li>
+                            <li>Authentic outdoor branding</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="concept-actions">
+                        <span class="btn-primary" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Flow State Fishing</h3>
+                <p class="footer-text">
+                    Professional website design concepts • Santa Fe, New Mexico<br>
+                    Crafted with excellence for premium fly casting instruction
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple analytics for concept viewing
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (!this.href) return;
+                
+                // Log concept view
+                console.log('Concept viewed:', this.href);
+                
+                // Optional: Add tracking here
+            });
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
