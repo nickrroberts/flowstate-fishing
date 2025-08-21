@@ -69,13 +69,6 @@
                 "label": "Formspree Form URL",
                 "description": "Your Formspree form endpoint URL (e.g. https://formspree.io/f/YOUR_FORM_ID)"
             },
-            "hero_subtitle": {
-                "type": "text",
-                "default": "Wanna catch fish? Hell yeah you do. Let's slap some water and trick some trout. Warning: May cause excessive good times and uncontrollable fish stories.",
-                "group": "hero",
-                "label": "Hero Subtitle",
-                "description": "Subtitle text that appears below the main title"
-            },
             "services_subtitle": {
                 "type": "text",
                 "default": "Whether you're a total rookie or a seasoned fish botherer, we've got the perfect lesson to get you absolutely sending it. Choose your class and let's get weird with some fish.",
@@ -217,5 +210,8 @@
             }
         }
     },
-    "type": "module"
+    "type": "module",
+    "dependencies": {
+        "playwright": "^1.55.0"
+    }
 }

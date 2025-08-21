@@ -6,7 +6,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
+    width: 100%;
     z-index: 50;
     background: linear-gradient(90deg, rgba(75, 0, 130, 0.6) 0%, rgba(255, 0, 128, 0.6) 50%, rgba(255, 69, 0, 0.6) 100%);
     backdrop-filter: blur(16px);
@@ -17,6 +17,7 @@
     transition: all var(--transition-base);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 0, 128, 0.3);
     border-bottom: 3px solid var(--acid-green);
+    box-sizing: border-box;
 }
 
 .gh-head-inner {
@@ -24,9 +25,10 @@
     align-items: center;
     justify-content: space-between;
     height: 120px;
-    padding: 0;
+    padding: 0 1rem;
     max-width: 1280px;
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
 /* Brand/Logo Section */
@@ -56,7 +58,6 @@
     height: 90px !important;
     width: auto !important;
     max-width: 500px !important;
-    min-width: 400px !important;
     object-fit: contain;
     transition: transform var(--transition-fast);
 }
@@ -106,12 +107,12 @@
     display: inline-block;
     padding: 0.5rem 0.25rem;
     font-family: var(--font-sans);
-    font-size: 0.875rem;
+    font-size: var(--text-base);
     font-weight: 700;
     color: var(--white);
     text-decoration: none;
-    letter-spacing: var(--tracking-wide);
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-transform: none;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.8);
     transition: all var(--transition-base);
 }
@@ -204,11 +205,11 @@
     border: 3px solid var(--neon-pink);
     border-radius: 50px;
     font-family: var(--font-sans);
-    font-size: 0.875rem;
+    font-size: var(--text-base);
     font-weight: 700;
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    text-transform: none;
+    letter-spacing: 0.02em;
     text-shadow: none;
     box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all var(--transition-base);
@@ -231,8 +232,8 @@
     margin-left: 0;
     font-family: var(--font-sans);
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    text-transform: none;
+    letter-spacing: 0.02em;
     text-shadow: none;
     box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 50px;
@@ -285,18 +286,22 @@
 
 /* Mobile Menu Button */
 .gh-burger {
-    display: none;
+    display: none; /* Hidden by default, shown in mobile media query */
     position: relative;
-    padding: 12px;
+    padding: 0;
+    margin: 0;
     border: none;
     background: transparent;
     cursor: pointer;
     color: var(--deep-purple);
     transition: all var(--transition-base);
     flex-shrink: 0;
-    min-width: 48px;
-    min-height: 48px;
-    margin-right: 0;
+    width: 40px;
+    height: 40px;
+    z-index: 100;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
 }
 
 .gh-burger:hover {
@@ -307,8 +312,8 @@
 .gh-burger-icon,
 .gh-burger-close {
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     transition: opacity var(--transition-fast), transform var(--transition-fast);
     color: var(--deep-purple);
 }
@@ -356,45 +361,73 @@ body {
 }
 
 @media (max-width: 900px) {
-    .gh-burger {
-        display: block;
-    }
-    
+    /* Mobile navbar with consistent positioning */
     #gh-head {
         transition: all 0.4s ease-out;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     #gh-head .gh-head-inner {
-        height: 100px;
-        padding: 0 1rem;
+        /* Consistent flexbox layout */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 90px;
+        width: 100%;
+        padding: 0 15px; /* Consistent padding */
+        margin: 0;
+        max-width: none;
+        box-sizing: border-box;
+        position: relative;
     }
     
     body {
-        padding-top: 100px;
+        padding-top: 90px;
     }
     
+    /* Logo container - consistent sizing */
     #gh-head .gh-head-brand {
-        flex: 1;
-        padding: 0;
+        flex: 0 1 auto;
         display: flex;
-        justify-content: center;
-        margin-left: -48px; /* Offset to center logo accounting for hamburger button */
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        max-width: calc(100% - 60px); /* Reserve space for hamburger + gap */
     }
     
-    /* Much larger logo on mobile - take up more width */
+    .gh-head-logo {
+        display: block;
+        max-width: 100%;
+    }
+    
     .gh-head-logo img.logo-svg {
-        height: 85px !important;
+        display: block;
+        height: 70px !important;
         width: auto !important;
-        max-width: calc(100vw - 120px) !important;
-        max-height: 85px !important;
+        max-width: 100% !important;
+        min-width: 0;
+        object-fit: contain;
+        object-position: left center;
+        margin: 0 !important;
     }
     
-    /* When menu is open, adjust logo size to fit with close button */
-    .gh-head-open .gh-head-logo img.logo-svg {
-        min-width: calc(100vw - 120px) !important;
-        max-width: calc(100vw - 120px) !important;
+    /* Hamburger - consistent size and position */
+    .gh-burger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 40px;
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        z-index: 10;
     }
     
+    /* Hide desktop menu items */
     #gh-head .gh-head-menu {
         display: none;
     }
@@ -421,36 +454,90 @@ body {
         animation: rainbow-shift 8s linear infinite;
     }
     
+    /* Open state - use column layout to stack header and menu */
     .gh-head-open #gh-head .gh-head-inner {
         display: flex;
         flex-direction: column;
         height: 100vh;
-        height: 100dvh;
+        min-height: 100vh;
         padding: 0;
         max-width: none;
+        box-sizing: border-box;
+        position: relative;
     }
     
+    /* Create header row container */
+    .gh-head-open #gh-head .gh-head-inner::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 90px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+        z-index: 10000;
+        box-sizing: border-box;
+        pointer-events: none; /* Allow clicks to pass through to actual elements */
+    }
+    
+    /* Add header background bar */
+    .gh-head-open #gh-head .gh-head-inner::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 90px;
+        background: rgba(0, 0, 0, 0.3);
+        border-bottom: 1px solid var(--color-border);
+        z-index: 1;
+    }
+    
+    /* Logo - fixed position to stay in header */
     .gh-head-open #gh-head .gh-head-brand {
+        position: fixed !important;
+        top: 0 !important;
+        left: 15px !important;
+        height: 90px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        height: 100px;
-        min-height: 100px;
-        max-height: 100px;
-        width: 100%;
-        padding: 0 1.5rem;
-        border-bottom: 1px solid var(--color-border);
-        flex-shrink: 0;
-        flex-grow: 0;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        max-width: calc(100% - 60px);
+        z-index: 10001;
+        transition: none !important; /* Disable transitions to prevent animation */
+        transform: none !important; /* Reset any transforms */
+    }
+    
+    /* Hamburger - fixed position to stay in header */
+    .gh-head-open #gh-head .gh-burger {
+        position: fixed !important;
+        top: 0 !important;
+        right: 15px !important;
+        width: 40px;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        z-index: 10001;
+        transition: none !important; /* Disable transitions to prevent animation */
+        transform: none !important; /* Reset any transforms */
     }
     
     .gh-head-open #gh-head .gh-head-menu {
+        /* Menu takes full screen below header */
         display: flex;
         flex-direction: column;
         flex: 1;
         align-items: center;
         justify-content: center;
-        padding: 2rem 1.5rem;
+        padding: 90px 1.5rem 2rem; /* Top padding to clear fixed header */
         overflow-y: auto;
     }
     
@@ -501,25 +588,37 @@ body {
 }
 
 @media (max-width: 480px) {
-    #gh-head .gh-head-logo {
-        font-size: var(--text-lg);
-        max-height: 75px;
+    /* Smaller screens - maintain consistent structure */
+    #gh-head .gh-head-inner {
+        height: 80px;
+        padding: 0 10px; /* Consistent smaller padding */
+    }
+    
+    body {
+        padding-top: 80px;
     }
     
     #gh-head .gh-head-logo img.logo-svg {
-        height: 65px !important;
-        max-height: 65px !important;
-        width: auto !important;
-        max-width: calc(100vw - 100px) !important;
+        height: 60px !important;
     }
     
-    #gh-head .gh-head-logo-text {
-        font-size: 1.3rem;
+    /* Open state adjustments for smaller screens */
+    .gh-head-open #gh-head .gh-head-inner::before {
+        height: 80px; /* Match header height */
     }
     
     .gh-head-open #gh-head .gh-head-brand {
-        height: 100px !important;
-        min-height: 100px !important;
-        max-height: 100px !important;
+        height: 80px; /* Match header height */
+        left: 10px !important; /* Match smaller padding */
+        max-width: calc(100% - 55px); /* Adjust for smaller padding */
+    }
+    
+    .gh-head-open #gh-head .gh-burger {
+        height: 80px; /* Match header height */
+        right: 10px !important; /* Match smaller padding */
+    }
+    
+    .gh-head-open #gh-head .gh-head-menu {
+        padding-top: 80px; /* Clear smaller header */
     }
 }

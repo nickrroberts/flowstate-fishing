@@ -1,0 +1,18 @@
+{{!-- Pagination for Ghost Theme --}}
+<nav class="pagination" role="navigation" aria-label="Pagination Navigation">
+    {{#if prev}}
+        <a class="newer-posts" href="{{page_url prev}}" aria-label="Previous page">
+            {{> "icons/arrow-left"}}
+            <span>Newer Posts</span>
+        </a>
+    {{/if}}
+    
+    <span class="page-number">Page {{page}} of {{pages}}</span>
+    
+    {{#if next}}
+        <a class="older-posts" href="{{page_url next}}" aria-label="Next page">
+            <span>Older Posts</span>
+            {{> "icons/arrow-right"}}
+        </a>
+    {{/if}}
+</nav>

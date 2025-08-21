@@ -45,7 +45,7 @@
 }
 
 .services-title {
-  font-family: var(--font-fun);
+  font-family: 'Kaushan Script', cursive;
   font-size: clamp(var(--text-4xl), 5vw, var(--text-6xl));
   color: white;
   margin-bottom: 1.5rem;
@@ -121,7 +121,7 @@
   display: inline-block;
   padding: 0.25rem 0.75rem;
   margin: 0 auto 1.5rem;
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-family: var(--font-sans);
   font-size: 10px;
   font-weight: var(--font-bold);
   text-transform: uppercase;
@@ -159,7 +159,7 @@
   padding: 0.35rem 0.75rem;
   background: linear-gradient(45deg, var(--hot-magenta), var(--laser-orange));
   color: var(--cream);
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-family: var(--font-sans);
   font-size: 11px;
   font-weight: var(--font-bold);
   text-transform: uppercase;
@@ -189,7 +189,7 @@
 }
 
 .service-title {
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-family: var(--font-sans);
   font-size: var(--text-2xl);
   font-weight: var(--font-bold);
   color: var(--deep-purple);
@@ -280,7 +280,7 @@
   color: var(--white) !important;
   border: 3px solid #F57483;
   border-radius: var(--radius-lg);
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-family: var(--font-sans);
   font-size: var(--text-base);
   font-weight: var(--font-bold);
   text-align: center;
@@ -356,7 +356,7 @@
 }
 
 .feature-item h4 {
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-family: var(--font-sans);
   font-size: var(--text-base);
   font-weight: var(--font-bold);
   color: var(--neon-pink);

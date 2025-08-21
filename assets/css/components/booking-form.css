@@ -272,8 +272,8 @@
   font-family: var(--font-sans);
   font-size: var(--text-lg);
   font-weight: var(--font-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  text-transform: none;
+  letter-spacing: 0.02em;
   cursor: pointer;
   transition: all var(--transition-base);
   box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3);

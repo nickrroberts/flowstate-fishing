@@ -167,15 +167,15 @@ input, textarea, select {
 }
 
 .font-display {
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-family: var(--font-sans);
 }
 
 .font-chunky {
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-family: var(--font-sans);
 }
 
 .font-fun {
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-family: var(--font-sans);
 }
 
 .font-light {

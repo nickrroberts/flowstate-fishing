@@ -50,7 +50,7 @@
 }
 
 .gallery-title {
-  font-family: var(--font-fun);
+  font-family: 'Kaushan Script', cursive;
   font-size: clamp(var(--text-4xl), 5vw, var(--text-6xl));
   color: white;
   margin-bottom: 1.5rem;
@@ -173,7 +173,7 @@
 }
 
 .gallery-item h3 {
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-family: var(--font-sans);
   font-size: var(--text-lg);
   font-weight: var(--font-bold);
   color: var(--cream);
@@ -186,7 +186,7 @@
   padding: 0.25rem 0.75rem;
   background: linear-gradient(45deg, var(--lime-shock), var(--acid-green));
   color: var(--deep-purple);
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-family: var(--font-sans);
   font-size: var(--text-xs);
   font-weight: var(--font-bold);
   text-transform: uppercase;

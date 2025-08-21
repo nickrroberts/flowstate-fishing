@@ -17,7 +17,6 @@
           <div id="booking-form-container">
             <form id="booking-form" class="booking-form">
               <div class="form-intro">
-                <p class="form-tagline">Ready to level up your fishing game?</p>
                 <p class="form-description">Fill out this form and we'll get you on the water ASAP!</p>
               </div>
               
@@ -84,7 +83,7 @@
               
               <div class="form-actions">
                 <button type="submit" class="btn-submit">
-                  <span class="btn-text">Book Now!</span>
+                  <span class="btn-text">Book now</span>
                   <span class="btn-loading" style="display: none;">Sending...</span>
                 </button>
               </div>

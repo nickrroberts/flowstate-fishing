@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow State Fishing - Glassmorphism Concept</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Glassmorphism Color Palette */
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-bg-strong: rgba(255, 255, 255, 0.2);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --glass-shadow: rgba(31, 38, 135, 0.37);
+            
+            --primary-900: #0a0a23;
+            --primary-800: #1a1a3a;
+            --primary-700: #2a2a4a;
+            --primary-600: #5DA477;
+            --primary-500: #6FB585;
+            --primary-400: #81C593;
+            --primary-300: #93D5A1;
+            --primary-200: #A5E5AF;
+            --primary-100: #B7F5BD;
+            --primary-50: #E8FCE8;
+            
+            --accent-600: #E85A6B;
+            --accent-500: #F57483;
+            --accent-400: #F78BA2;
+            --accent-300: #F9A2C1;
+            
+            --sage-600: #5DA477;
+            --sage-500: #6FB585;
+            --sage-400: #81C593;
+            --sage-300: #93D5A1;
+            
+            --white: #FFFFFF;
+            --black: #0a0a23;
+            
+            /* Typography */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Poppins', Georgia, serif;
+            
+            /* Award-Winning Spacing System */
+            --space-px: 1px;
+            --space-0: 0;
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            --space-32: 8rem;
+            --space-40: 10rem;
+            --space-48: 12rem;
+            --space-56: 14rem;
+            --space-64: 16rem;
+            
+            /* Grid System */
+            --container-sm: 640px;
+            --container-md: 768px;
+            --container-lg: 1024px;
+            --container-xl: 1280px;
+            --container-2xl: 1536px;
+            
+            /* Design Tokens */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            --shadow-sm: 0 2px 4px rgba(26, 22, 17, 0.04);
+            --shadow-md: 0 4px 6px rgba(26, 22, 17, 0.07);
+            --shadow-lg: 0 10px 15px rgba(26, 22, 17, 0.1);
+            --shadow-xl: 0 20px 25px rgba(26, 22, 17, 0.15);
+            --shadow-2xl: 0 25px 50px rgba(26, 22, 17, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--white);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--container-2xl);
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Glass Navigation */
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            z-index: 1000;
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.37),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-4) 0;
+            min-height: 80px;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-8);
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 10px;
+        }
+
+        .nav-link:hover {
+            background: var(--glass-bg-strong);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-600);
+            transition: width 0.2s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .cta-nav {
+            background: var(--primary-900);
+            color: var(--white);
+            padding: var(--space-3) var(--space-6);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .cta-nav:hover {
+            background: var(--accent-600);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Hero Section - Award-Winning Layout */
+        .hero {
+            padding-top: 120px;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: var(--space-20) 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            color: var(--white);
+            padding: var(--space-3) var(--space-6);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-8);
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.37),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--white);
+            margin-bottom: var(--space-8);
+            text-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.3),
+                0 2px 20px rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title-accent {
+            color: var(--accent-600);
+            font-style: italic;
+            position: relative;
+        }
+
+        .hero-title-accent::after {
+            content: '';
+            position: absolute;
+            bottom: 0.1em;
+            left: 0;
+            right: 0;
+            height: 0.15em;
+            background: linear-gradient(90deg, var(--accent-400), var(--sage-400));
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--space-8);
+            line-height: 1.6;
+            font-weight: 400;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: var(--space-12);
+            line-height: 1.7;
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--space-4);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            padding: var(--space-5) var(--space-10);
+            border-radius: 50px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.37),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                0 1px 3px rgba(0, 0, 0, 0.12);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 
+                0 16px 48px rgba(31, 38, 135, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            padding: var(--space-4) var(--space-6);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary:hover {
+            color: var(--white);
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Floating Glass Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .glass-orb {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.37),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-orb:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 15%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .glass-orb:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 15%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .glass-orb:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            right: 30%;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .glass-orb:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            bottom: 20%;
+            left: 20%;
+            animation: float 7s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .glass-panel {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.37),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-panel:nth-child(5) {
+            width: 300px;
+            height: 150px;
+            top: 10%;
+            right: 5%;
+            transform: rotate(-15deg);
+            animation: rotate 20s linear infinite;
+        }
+
+        .glass-panel:nth-child(6) {
+            width: 250px;
+            height: 120px;
+            bottom: 15%;
+            right: 10%;
+            transform: rotate(25deg);
+            animation: rotate 15s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(-15deg); }
+            to { transform: rotate(345deg); }
+        }
+
+        /* About Section with Glass Morphism */
+        .about {
+            padding: var(--space-32) 0;
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-16);
+            align-items: center;
+            text-align: center;
+        }
+
+        .instructor-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 30px;
+            padding: var(--space-12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.37),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            margin: 0 auto var(--space-16);
+            max-width: 500px;
+        }
+
+        .instructor-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent-600), var(--sage-600));
+            border-radius: 50%;
+            margin: 0 auto var(--space-6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--white);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .instructor-name {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            color: var(--white);
+            margin-bottom: var(--space-2);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-variation-settings: 'opsz' 24;
+        }
+
+        .instructor-title {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-6);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .instructor-quote {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            line-height: 1.6;
+            position: relative;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            font-variation-settings: 'opsz' 14;
+        }
+
+        .instructor-quote::before,
+        .instructor-quote::after {
+            content: '"';
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            position: absolute;
+            font-style: normal;
+        }
+
+        .instructor-quote::before {
+            top: -8px;
+            left: -16px;
+        }
+
+        .instructor-quote::after {
+            bottom: -16px;
+            right: -8px;
+        }
+
+        .about-content {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 30px;
+            padding: var(--space-12);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.37),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: var(--space-4);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.25rem, 5vw, 3.75rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--white);
+            margin-bottom: var(--space-8);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            font-variation-settings: 'opsz' 48;
+        }
+
+        .section-title-accent {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-style: italic;
+        }
+
+        .about-text {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            margin-bottom: var(--space-6);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-text.lead {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+        }
+
+        /* Stats Grid - Award-Winning Pattern */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-8);
+            margin-top: var(--space-16);
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: var(--space-8);
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.37),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 16px 48px rgba(31, 38, 135, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: var(--space-2);
+            display: block;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-variation-settings: 'opsz' 48;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-1);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-description {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Glass Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            padding: var(--space-16) 0 var(--space-8);
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--space-4);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-variation-settings: 'opsz' 24;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            opacity: 0.7;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 var(--space-4);
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: var(--space-16);
+                text-align: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-16);
+            }
+
+            .instructor-card {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-container {
+                padding: var(--space-16) 0;
+            }
+
+            .about {
+                padding: var(--space-24) 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+
+            .hero-visual {
+                height: 400px;
+            }
+        }
+
+        /* Micro-interactions */
+        @media (prefers-reduced-motion: no-preference) {
+            .hero-title-accent::after {
+                animation: underlineGrow 2s ease-out 1s both;
+            }
+
+            @keyframes underlineGrow {
+                from {
+                    transform: scaleX(0);
+                }
+                to {
+                    transform: scaleX(1);
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">
+                    <img src="assets/images/logo.svg" alt="Flow State Fishing Logo" style="height: 40px; width: auto;">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#blog" class="nav-link">Blog</a></li>
+                </ul>
+                <a href="#booking" class="cta-nav">Book Session</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="floating-elements">
+                <div class="glass-orb"></div>
+                <div class="glass-orb"></div>
+                <div class="glass-orb"></div>
+                <div class="glass-orb"></div>
+                <div class="glass-panel"></div>
+                <div class="glass-panel"></div>
+            </div>
+            <div class="container">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <span class="hero-badge">Glassmorphic Experience</span>
+                        <h1 class="hero-title">
+                            Flow State 
+                            <span class="hero-title-accent">Transcendence</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Immerse yourself in a translucent world where artistry meets technique
+                        </p>
+                        <p class="hero-description">
+                            Experience the ethereal beauty of fly casting through our revolutionary glassmorphic approach. Where traditional boundaries dissolve and pure technique emerges through crystalline clarity.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#booking" class="btn-primary">
+                                Enter the Glass
+                                <span>✦</span>
+                            </a>
+                            <a href="#about" class="btn-secondary">
+                                Discover More
+                                <span>↓</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="instructor-card">
+                        <div class="instructor-avatar">TH</div>
+                        <h3 class="instructor-name">Tanner Hall</h3>
+                        <p class="instructor-title">Master Instructor</p>
+                        <blockquote class="instructor-quote">
+                            Flow state is where perfect technique meets perfect timing—it's the moment when casting becomes poetry.
+                        </blockquote>
+                    </div>
+                    <div class="about-content">
+                        <p class="section-eyebrow">The Flow State Philosophy</p>
+                        <h2 class="section-title">
+                            Where <span class="section-title-accent">Mastery</span> Begins
+                        </h2>
+                        <p class="about-text lead">
+                            True flow state in fly casting isn't just about perfect loops or precise presentations—it's about finding that magical moment where conscious effort dissolves into unconscious competence.
+                        </p>
+                        <p class="about-text">
+                            With over 12 years dedicated to perfecting both the art and science of fly casting instruction, I've developed a methodology that honors the meditative aspects of the sport while building rock-solid technical foundations. Each lesson is designed to meet you exactly where you are while guiding you toward breakthrough moments on the water.
+                        </p>
+                        <p class="about-text">
+                            My approach combines biomechanically sound casting principles with mindfulness practices that help you develop not just better technique, but a deeper relationship with the rhythms of water, weather, and fish. This is instruction that transforms both your casting and your perspective.
+                        </p>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <span class="stat-number">12+</span>
+                                <p class="stat-label">Years Teaching</p>
+                                <p class="stat-description">Dedicated to casting excellence</p>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">500+</span>
+                                <p class="stat-label">Students Guided</p>
+                                <p class="stat-description">To their flow state</p>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">95%</span>
+                                <p class="stat-label">Success Rate</p>
+                                <p class="stat-description">Measurable improvement</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-logo">Flow State Fishing</h3>
+                <p class="footer-text">
+                    &copy; 2025 Flow State Fishing • Santa Fe, New Mexico • Excellence in Every Cast
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create and inject "Back to concepts" button
+        (function() {
+            // Create button element
+            const backButton = document.createElement('button');
+            backButton.textContent = 'Back to concepts';
+            backButton.id = 'back-to-concepts-btn';
+            
+            // Style the button
+            Object.assign(backButton.style, {
+                position: 'fixed',
+                top: '20px',
+                left: '20px',
+                zIndex: '9999',
+                backgroundColor: 'var(--accent-600, #E85A6B)',
+                color: 'var(--white, #FCFEFA)',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '12px 20px',
+                fontSize: '14px',
+                fontWeight: '600',
+                fontFamily: 'var(--font-sans, Inter, sans-serif)',
+                cursor: 'pointer',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                transition: 'all 0.2s ease',
+                textDecoration: 'none'
+            });
+            
+            // Add hover effects
+            backButton.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = 'var(--accent-500, #F57483)';
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.15)';
+            });
+            
+            backButton.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = 'var(--accent-600, #E85A6B)';
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            });
+            
+            // Add click handler to navigate back
+            backButton.addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+            
+            // Inject button into page
+            document.body.appendChild(backButton);
+        })();
+    </script>
+</body>
+</html>

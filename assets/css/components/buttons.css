@@ -13,13 +13,13 @@
     border-radius: var(--radius-lg);
     cursor: pointer;
     font-family: var(--font-sans);
-    font-size: var(--text-base);
-    font-weight: 800;
+    font-size: var(--text-lg);
+    font-weight: 700;
     line-height: 1.4;
     text-align: center;
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
+    text-transform: none;
+    letter-spacing: 0.02em;
     white-space: nowrap;
     appearance: none;
     transition: all var(--transition-base);
@@ -245,10 +245,10 @@
     color: var(--white);
     border: 3px solid #F57483;
     padding: 1rem 2.5rem;
-    font-size: var(--text-lg);
+    font-size: var(--text-xl);
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    text-transform: none;
+    letter-spacing: 0.02em;
     box-shadow: 0 8px 16px rgba(245, 116, 131, 0.4), 0 4px 8px rgba(0, 0, 0, 0.2);
     text-shadow: none;
 }

@@ -223,7 +223,7 @@
 }
 
 .stat-number {
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-family: var(--font-sans);
   font-size: var(--text-3xl);
   font-weight: var(--font-bold);
   color: #4B0082 !important;
@@ -239,7 +239,7 @@
 }
 
 .stat-label {
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-family: var(--font-sans);
   font-size: var(--text-sm);
   font-weight: var(--font-bold);
   text-transform: uppercase;
@@ -301,7 +301,7 @@
   background: #F57483;
   color: white;
   padding: 12px 24px;
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-family: var(--font-sans);
   font-size: 1.25rem;
   font-weight: bold;
   transform: rotate(-8deg);
