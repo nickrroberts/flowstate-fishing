@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow State Fishing - Bold Asymmetric Concept</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-green: #5DA477;
+            --electric-lime: #A8E05F;
+            --coral: #FF6B6B;
+            --sunset: #FFA07A;
+            --deep-ocean: #1a2332;
+            --midnight: #0d1117;
+            --cream: #FFF8F3;
+            --sand: #F5E6D3;
+            
+            --font-display: 'Bebas Neue', impact, sans-serif;
+            --font-mono: 'Space Mono', monospace;
+            --font-serif: 'Playfair Display', Georgia, serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Removed custom cursor for better performance */
+
+        body {
+            font-family: var(--font-mono);
+            background: var(--cream);
+            color: var(--deep-ocean);
+            overflow-x: hidden;
+        }
+
+        /* Floating Background Elements */
+        .bg-float {
+            position: fixed;
+            border-radius: 50%;
+            opacity: 0.1;
+            pointer-events: none;
+            animation: float-random 20s ease-in-out infinite;
+        }
+
+        /* Floating Fish */
+        .floating-fish {
+            position: fixed;
+            width: 40px;
+            height: auto;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 1;
+            animation: fishSwim 30s linear infinite;
+        }
+
+        .floating-fish-1 {
+            top: 20%;
+            animation-delay: 0s;
+        }
+
+        .floating-fish-2 {
+            top: 60%;
+            animation-delay: -10s;
+            animation-duration: 25s;
+        }
+
+        @keyframes fishSwim {
+            0% {
+                left: -50px;
+                transform: rotate(0deg) scaleX(1);
+            }
+            49% {
+                transform: rotate(0deg) scaleX(1);
+            }
+            50% {
+                left: calc(100% + 50px);
+                transform: rotate(0deg) scaleX(-1);
+            }
+            99% {
+                transform: rotate(0deg) scaleX(-1);
+            }
+            100% {
+                left: -50px;
+                transform: rotate(0deg) scaleX(1);
+            }
+        }
+
+        .bg-float-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--coral);
+            top: 10%;
+            left: -5%;
+            animation-duration: 25s;
+        }
+
+        .bg-float-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--electric-lime);
+            bottom: 20%;
+            right: -5%;
+            animation-duration: 30s;
+            animation-delay: -5s;
+        }
+
+        .bg-float-3 {
+            width: 150px;
+            height: 150px;
+            background: var(--sunset);
+            top: 60%;
+            left: 70%;
+            animation-duration: 22s;
+            animation-delay: -10s;
+        }
+
+        @keyframes float-random {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(50px, -30px) rotate(90deg);
+            }
+            50% {
+                transform: translate(-30px, 50px) rotate(180deg);
+            }
+            75% {
+                transform: translate(30px, 30px) rotate(270deg);
+            }
+        }
+
+        /* Navigation - Minimal and Offset */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 2rem 3rem;
+            background: rgba(255, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+        }
+
+        .logo-fish {
+            width: 200px;
+            height: auto;
+            filter: drop-shadow(3px 3px 0 var(--coral));
+            animation: swim 4s ease-in-out infinite;
+        }
+
+        @keyframes swim {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(5px) rotate(-5deg); }
+            75% { transform: translateX(-5px) rotate(5deg); }
+        }
+
+        .logo-text {
+            display: none;
+        }
+
+        .logo:hover {
+            transform: rotate(2deg) scale(1.05);
+        }
+
+        .logo:hover .logo-fish {
+            filter: drop-shadow(5px 5px 0 var(--sunset));
+            animation-duration: 1s;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: var(--deep-ocean);
+            margin: 4px 0;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--cream);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(26, 35, 50, 0.1);
+                z-index: 999;
+                border-left: 3px solid var(--neon-green);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-link {
+                font-size: 1.25rem;
+            }
+
+            .logo-fish {
+                width: 150px;
+            }
+        }
+
+        .nav-link {
+            color: var(--deep-ocean);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--coral);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--neon-green);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section - Split Diagonal */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-split {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .hero-left {
+            background: var(--cream);
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+            z-index: 2;
+        }
+
+        .hero-right {
+            background: linear-gradient(135deg, var(--neon-green), var(--electric-lime));
+            position: relative;
+            margin-left: -20%;
+            overflow: hidden;
+        }
+
+        /* Animated Sine Waves */
+        @keyframes wave {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .waves-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .wave {
+            position: absolute;
+            left: 0;
+            width: 200%;
+            height: 50px;
+            pointer-events: none;
+        }
+
+        .wave svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .wave-1 {
+            bottom: 70%;
+            animation: wave 8s linear infinite;
+        }
+
+        .wave-2 {
+            bottom: 62%;
+            animation: wave 10s linear infinite;
+            animation-delay: -2s;
+        }
+
+        .wave-3 {
+            bottom: 54%;
+            animation: wave 12s linear infinite;
+            animation-delay: -4s;
+        }
+
+        .wave-4 {
+            bottom: 46%;
+            animation: wave 9s linear infinite;
+            animation-delay: -3s;
+        }
+
+        .wave-5 {
+            bottom: 38%;
+            animation: wave 11s linear infinite;
+            animation-delay: -5s;
+        }
+
+        .wave-6 {
+            bottom: 30%;
+            animation: wave 13s linear infinite;
+            animation-delay: -1s;
+        }
+
+        .wave-7 {
+            bottom: 22%;
+            animation: wave 14s linear infinite;
+            animation-delay: -6s;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--coral);
+            color: var(--cream);
+            padding: 0.5rem 1.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transform: rotate(-2deg);
+            margin-bottom: 2rem;
+            box-shadow: 5px 5px 0 var(--deep-ocean);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 12vw, 7rem);
+            line-height: 0.9;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .hero-title-line1 {
+            display: block;
+            color: var(--deep-ocean);
+            transform: translateX(-10px);
+        }
+
+        .hero-title-line2 {
+            display: block;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--deep-ocean);
+            transform: translateX(20px);
+            margin-top: -0.2em;
+        }
+
+        .hero-title-line3 {
+            display: block;
+            background: linear-gradient(90deg, var(--coral), var(--sunset));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transform: translateX(-5px) rotate(-1deg);
+            display: inline-block;
+            margin-top: -0.1em;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--deep-ocean);
+            margin: 2rem 0;
+            opacity: 0.8;
+            max-width: 500px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .btn-wild {
+            background: var(--deep-ocean);
+            color: var(--cream);
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 6px 6px 0 var(--neon-green);
+        }
+
+        .btn-wild:hover {
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0 var(--neon-green);
+        }
+
+        .btn-ghost {
+            color: var(--deep-ocean);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.875rem;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .btn-ghost::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--coral);
+            transform: scaleX(1);
+            transition: transform 0.3s ease;
+        }
+
+        .btn-ghost:hover::after {
+            transform: scaleX(1.2);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .visual-card {
+            background: var(--cream);
+            padding: 3rem;
+            box-shadow: 20px 20px 0 var(--deep-ocean);
+            transform: rotate(5deg);
+            position: relative;
+            animation: wiggle 4s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(5deg); }
+            50% { transform: rotate(-5deg); }
+        }
+
+        .visual-emoji {
+            font-size: 5rem;
+            display: block;
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .visual-text {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            text-align: center;
+            color: var(--deep-ocean);
+            letter-spacing: 2px;
+        }
+
+        /* About Section - Offset Grid */
+        .about {
+            padding: 8rem 0;
+            position: relative;
+            background: var(--sand);
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: 'ABOUT';
+            position: absolute;
+            top: 2rem;
+            left: -2rem;
+            font-family: var(--font-display);
+            font-size: 15rem;
+            color: var(--cream);
+            opacity: 0.5;
+            z-index: 0;
+            transform: rotate(-90deg);
+            transform-origin: center;
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .instructor-profile {
+            position: sticky;
+            top: 6rem;
+        }
+
+        .profile-card {
+            background: var(--cream);
+            padding: 2rem;
+            transform: rotate(-3deg);
+            box-shadow: 15px 15px 0 var(--neon-green);
+            position: relative;
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--coral), var(--sunset));
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: var(--cream);
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+        }
+
+        .profile-name {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .profile-title {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-align: center;
+            color: var(--neon-green);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 3px solid var(--deep-ocean);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--coral);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        .about-content {
+            position: relative;
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--coral);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 4rem);
+            line-height: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .title-highlight {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--neon-green);
+        }
+
+        .about-text {
+            font-family: var(--font-serif);
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--deep-ocean);
+        }
+
+        .about-text:first-of-type {
+            font-size: 1.375rem;
+            font-style: italic;
+            color: var(--deep-ocean);
+            opacity: 0.9;
+        }
+
+        .quote-block {
+            background: var(--deep-ocean);
+            color: var(--cream);
+            padding: 2rem;
+            margin: 3rem 0;
+            transform: rotate(1deg);
+            position: relative;
+            box-shadow: 10px 10px 0 var(--coral);
+        }
+
+        .quote-text {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .quote-author {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-align: right;
+            color: var(--electric-lime);
+            letter-spacing: 1px;
+        }
+
+        /* Services Grid - Masonry Style */
+        .services {
+            padding: 8rem 0;
+            background: var(--cream);
+            position: relative;
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .services-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin-bottom: 1rem;
+        }
+
+        .services-title span:nth-child(1) {
+            color: var(--deep-ocean);
+        }
+
+        .services-title span:nth-child(2) {
+            color: var(--coral);
+            transform: rotate(-5deg);
+            display: inline-block;
+        }
+
+        .services-title span:nth-child(3) {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--neon-green);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            grid-auto-flow: dense;
+        }
+
+        .service-card {
+            background: var(--sand);
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:nth-child(1) {
+            transform: rotate(-2deg);
+            box-shadow: 10px 10px 0 var(--coral);
+        }
+
+        .service-card:nth-child(2) {
+            transform: rotate(1deg);
+            box-shadow: 10px 10px 0 var(--neon-green);
+            grid-row: span 2;
+        }
+
+        .service-card:nth-child(3) {
+            transform: rotate(-1deg);
+            box-shadow: 10px 10px 0 var(--sunset);
+        }
+
+        .service-card:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-name {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .service-description {
+            font-family: var(--font-serif);
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--deep-ocean);
+            color: var(--cream);
+            padding: 4rem 0 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '🎣';
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+            animation: swing 3s ease-in-out infinite;
+        }
+
+        @keyframes swing {
+            0%, 100% { transform: translateX(-50%) rotate(-10deg); }
+            50% { transform: translateX(-50%) rotate(10deg); }
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-text {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .instructor-profile {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1.5rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: clamp(3.5rem, 15vw, 5rem);
+            }
+
+            .hero-content {
+                padding: 0 1.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-right {
+                display: none;
+            }
+
+            .hero-left {
+                clip-path: none;
+            }
+
+            .hero-split {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                transform: none !important;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+
+            .stat {
+                margin-bottom: 0;
+            }
+        }
+
+        /* Back Button */
+        #back-to-concepts-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--coral);
+            color: var(--cream);
+            border: none;
+            padding: 1rem 2rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transform: rotate(2deg);
+            box-shadow: 5px 5px 0 var(--deep-ocean);
+            transition: all 0.3s ease;
+            z-index: 999;
+            cursor: pointer;
+        }
+
+        #back-to-concepts-btn:hover {
+            transform: rotate(-2deg) scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Background Elements -->
+    <div class="bg-float bg-float-1"></div>
+    <div class="bg-float bg-float-2"></div>
+    <div class="bg-float bg-float-3"></div>
+    
+    <!-- Floating Fish -->
+    <img src="assets/images/logo.svg" alt="" class="floating-fish floating-fish-1">
+    <img src="assets/images/logo.svg" alt="" class="floating-fish floating-fish-2">
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="logo">
+                <img src="assets/images/logo.svg" alt="Flow State Fish" class="logo-fish">
+            </a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#about" class="nav-link">ABOUT</a></li>
+                <li><a href="#services" class="nav-link">SERVICES</a></li>
+                <li><a href="blog-index-asymmetric.html" class="nav-link">BLOG</a></li>
+                <li><a href="#book" class="nav-link">BOOK NOW</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-split">
+            <div class="hero-left"></div>
+            <div class="hero-right">
+                <!-- Animated Sine Waves -->
+                <div class="waves-container">
+                    <div class="wave wave-1">
+                        <svg viewBox="0 0 1200 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 0 25 Q 150 5, 300 25 T 600 25 T 900 25 T 1200 25 Q 1350 5, 1500 25 T 1800 25 T 2100 25 T 2400 25" 
+                                  stroke="#FF1493" stroke-width="3" fill="none" opacity="0.8"/>
+                        </svg>
+                    </div>
+                    <div class="wave wave-2">
+                        <svg viewBox="0 0 1200 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 0 25 Q 150 45, 300 25 T 600 25 T 900 25 T 1200 25 Q 1350 45, 1500 25 T 1800 25 T 2100 25 T 2400 25" 
+                                  stroke="#FF69B4" stroke-width="2.5" fill="none" opacity="0.7"/>
+                        </svg>
+                    </div>
+                    <div class="wave wave-3">
+                        <svg viewBox="0 0 1200 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 0 25 Q 150 5, 300 25 T 600 25 T 900 25 T 1200 25 Q 1350 5, 1500 25 T 1800 25 T 2100 25 T 2400 25" 
+                                  stroke="#FF1493" stroke-width="2" fill="none" opacity="0.6"/>
+                        </svg>
+                    </div>
+                    <div class="wave wave-4">
+                        <svg viewBox="0 0 1200 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 0 25 Q 150 45, 300 25 T 600 25 T 900 25 T 1200 25 Q 1350 45, 1500 25 T 1800 25 T 2100 25 T 2400 25" 
+                                  stroke="#FF69B4" stroke-width="2.5" fill="none" opacity="0.5"/>
+                        </svg>
+                    </div>
+                    <div class="wave wave-5">
+                        <svg viewBox="0 0 1200 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 0 25 Q 150 5, 300 25 T 600 25 T 900 25 T 1200 25 Q 1350 5, 1500 25 T 1800 25 T 2100 25 T 2400 25" 
+                                  stroke="#FF1493" stroke-width="3" fill="none" opacity="0.6"/>
+                        </svg>
+                    </div>
+                    <div class="wave wave-6">
+                        <svg viewBox="0 0 1200 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 0 25 Q 150 45, 300 25 T 600 25 T 900 25 T 1200 25 Q 1350 45, 1500 25 T 1800 25 T 2100 25 T 2400 25" 
+                                  stroke="#FF69B4" stroke-width="2" fill="none" opacity="0.4"/>
+                        </svg>
+                    </div>
+                    <div class="wave wave-7">
+                        <svg viewBox="0 0 1200 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 0 25 Q 150 5, 300 25 T 600 25 T 900 25 T 1200 25 Q 1350 5, 1500 25 T 1800 25 T 2100 25 T 2400 25" 
+                                  stroke="#FF1493" stroke-width="2.5" fill="none" opacity="0.5"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">New Mexico's Finest</div>
+                <h1 class="hero-title">
+                    <span class="hero-title-line1">CATCH</span>
+                    <span class="hero-title-line2">MORE</span>
+                    <span class="hero-title-line3">FISH</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Let's be honest, you want to catch fish. 
+                    I'll teach you how to do it with style, 
+                    finesse, and maybe a little swagger.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="#book" class="btn-wild">LET'S GO FISHING</a>
+                    <a href="#about" class="btn-ghost">Learn my secrets</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="visual-card">
+                    <span class="visual-emoji">🎣</span>
+                    <div class="visual-text">FLOW STATE<br>ACTIVATED</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-grid">
+                <div class="instructor-profile">
+                    <div class="profile-card">
+                        <div class="profile-avatar">TH</div>
+                        <h3 class="profile-name">TANNER HALL</h3>
+                        <p class="profile-title">Fish Whisperer</p>
+                        
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-number">12+</span>
+                                <span class="stat-label">Years</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Happy</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">∞</span>
+                                <span class="stat-label">Fish</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-content">
+                    <div class="section-label">The Legend</div>
+                    <h2 class="section-title">
+                        I TEACH FISH
+                        <span class="title-highlight">PSYCHOLOGY</span>
+                    </h2>
+                    
+                    <p class="about-text">
+                        Look, anyone can wave a stick with string attached. 
+                        But can they make a trout question its entire existence? 
+                        That's where I come in.
+                    </p>
+                    
+                    <p class="about-text">
+                        After 12 years of sweet-talking fish across New Mexico's waters, 
+                        I've developed a system that's part science, part art, and 
+                        part pure magic. My students don't just learn to cast—they 
+                        learn to think like a fish, move like water, and strike like lightning.
+                    </p>
+                    
+                    <div class="quote-block">
+                        <p class="quote-text">
+                            "Every fish has a weakness. My job is to teach you 
+                            how to exploit it... respectfully, of course."
+                        </p>
+                        <p class="quote-author">— TANNER, PROBABLY</p>
+                    </div>
+                    
+                    <p class="about-text">
+                        Whether you're a complete beginner who doesn't know a rod from a reel, 
+                        or you're already pretty good but want to achieve fishing enlightenment, 
+                        I've got you covered. We'll work on technique, sure, but we'll also 
+                        dive deep into the metaphysical aspects of becoming one with the river.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <div class="services-header">
+                <h2 class="services-title">
+                    <span>PICK</span> <span>YOUR</span> <span>POISON</span>
+                </h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3 class="service-name">BEGINNER'S LUCK</h3>
+                    <p class="service-description">
+                        Never held a rod? Perfect. We'll start from zero 
+                        and have you casting like you were born with fins. 
+                        Includes complimentary ego boost.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3 class="service-name">FLOW STATE INTENSIVE</h3>
+                    <p class="service-description">
+                        This is where things get weird (in a good way). 
+                        We're talking advanced techniques, water reading, 
+                        fish psychology, and maybe some light meditation. 
+                        You'll leave this session seeing the matrix of fly fishing. 
+                        Side effects may include: permanent stoke, uncontrollable 
+                        urge to quit your job, speaking fluent trout.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔥</div>
+                    <h3 class="service-name">MULTI-DAY MADNESS</h3>
+                    <p class="service-description">
+                        For the truly committed. Multiple days of fishing 
+                        across New Mexico's best spots. We'll cover everything 
+                        from dawn patrol to sunset slaying.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-title">FLOW STATE FISHING</h3>
+            <p class="footer-text">
+                © 2025 • SANTA FE, NM • CATCHING FEELINGS & FISH SINCE 2013
+            </p>
+        </div>
+    </footer>
+
+    <!-- Back Button -->
+    <button id="back-to-concepts-btn">← BACK</button>
+
+    <script>
+        // Removed custom cursor for better performance
+
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Back button
+        document.getElementById('back-to-concepts-btn').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.bg-float');
+            
+            parallax.forEach((element, index) => {
+                const speed = (index + 1) * 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

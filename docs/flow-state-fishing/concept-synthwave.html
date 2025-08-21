@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow State Fishing - Synthwave Cyberpunk Concept</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Russo+One&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Cyberpunk Neon Palette */
+            --cyber-black: #0a0a0a;
+            --cyber-dark: #1a0e2e;
+            --cyber-purple: #2d1b69;
+            --cyber-blue: #0f3460;
+            --cyber-navy: #16213e;
+            
+            --neon-pink: #ff0080;
+            --neon-cyan: #00ffff;
+            --neon-purple: #8a2be2;
+            --neon-green: #39ff14;
+            --neon-orange: #ff6600;
+            --neon-yellow: #ffff00;
+            --neon-blue: #0099ff;
+            
+            --grid-cyan: #00ffff;
+            --grid-pink: #ff0080;
+            --scan-line: rgba(0, 255, 255, 0.1);
+            
+            /* Cyberpunk Typography */
+            --font-cyber: 'Orbitron', monospace;
+            --font-mono: 'Share Tech Mono', monospace;
+            --font-title: 'Russo One', sans-serif;
+            
+            /* Glow Effects */
+            --glow-cyan: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff, 0 0 20px #00ffff;
+            --glow-pink: 0 0 5px #ff0080, 0 0 10px #ff0080, 0 0 15px #ff0080, 0 0 20px #ff0080;
+            --glow-purple: 0 0 5px #8a2be2, 0 0 10px #8a2be2, 0 0 15px #8a2be2, 0 0 20px #8a2be2;
+            --glow-green: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 15px #39ff14, 0 0 20px #39ff14;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            --space-4xl: 6rem;
+            --space-5xl: 8rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-cyber);
+            background: var(--cyber-black);
+            color: var(--neon-cyan);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Grid */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 49%, var(--grid-cyan) 50%, var(--grid-cyan) 51%, transparent 52%),
+                linear-gradient(0deg, transparent 49%, var(--grid-cyan) 50%, var(--grid-cyan) 51%, transparent 52%);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Cyberpunk Background */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--cyber-purple) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, var(--cyber-blue) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, var(--cyber-dark) 0%, transparent 60%);
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Scan Lines Effect */
+        .scan-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                var(--scan-line) 2px,
+                var(--scan-line) 4px
+            );
+            pointer-events: none;
+            z-index: 1000;
+            animation: scanMove 0.1s linear infinite;
+        }
+
+        @keyframes scanMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(4px); }
+        }
+
+        /* Cyberpunk Navigation */
+        .header {
+            position: fixed;
+            top: var(--space-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 2rem);
+            max-width: 1400px;
+            background: rgba(10, 10, 10, 0.9);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 0;
+            box-shadow: 
+                var(--glow-cyan),
+                inset 0 0 20px rgba(0, 255, 255, 0.1);
+            z-index: 999;
+            padding: var(--space-md);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+
+        .logo {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--neon-pink);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-shadow: var(--glow-pink);
+            animation: logoGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            0% { text-shadow: var(--glow-pink); }
+            100% { text-shadow: 0 0 10px #ff0080, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-xl);
+            list-style: none;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            font-family: var(--font-cyber);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            text-decoration: none;
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--neon-cyan);
+            background: rgba(0, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            transition: left 0.5s;
+            opacity: 0.3;
+        }
+
+        .nav-link:hover {
+            color: var(--cyber-black);
+            background: var(--neon-cyan);
+            box-shadow: var(--glow-cyan);
+            text-shadow: none;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .cta-nav {
+            background: var(--neon-pink);
+            color: var(--cyber-black);
+            padding: var(--space-md) var(--space-xl);
+            border: 2px solid var(--neon-pink);
+            font-family: var(--font-cyber);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            box-shadow: var(--glow-pink);
+            animation: ctaPulse 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes ctaPulse {
+            0% { box-shadow: var(--glow-pink); }
+            100% { box-shadow: 0 0 10px #ff0080, 0 0 20px #ff0080, 0 0 30px #ff0080; }
+        }
+
+        .cta-nav:hover {
+            background: var(--cyber-black);
+            color: var(--neon-pink);
+            border-color: var(--neon-pink);
+        }
+
+        /* Cyberpunk Hero Section */
+        .hero {
+            padding-top: 140px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Digital Rain Effect */
+        .digital-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .rain-column {
+            position: absolute;
+            top: -100%;
+            width: 2px;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                var(--neon-green),
+                transparent
+            );
+            animation: rain 3s linear infinite;
+        }
+
+        @keyframes rain {
+            0% { top: -100%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(138, 43, 226, 0.2);
+            color: var(--neon-purple);
+            padding: var(--space-sm) var(--space-lg);
+            border: 1px solid var(--neon-purple);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: var(--space-2xl);
+            box-shadow: var(--glow-purple);
+            animation: badgeFlicker 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes badgeFlicker {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        .hero-title {
+            font-family: var(--font-title);
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 900;
+            line-height: 0.9;
+            color: var(--neon-cyan);
+            margin-bottom: var(--space-xl);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-shadow: var(--glow-cyan);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { 
+                text-shadow: var(--glow-cyan);
+                transform: scale(1);
+            }
+            100% { 
+                text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff, 0 0 50px #00ffff;
+                transform: scale(1.02);
+            }
+        }
+
+        .hero-title-cyber {
+            color: var(--neon-pink);
+            text-shadow: var(--glow-pink);
+            display: block;
+            margin-top: var(--space-md);
+            position: relative;
+        }
+
+        .hero-title-cyber::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--neon-pink), transparent);
+            animation: underlineMove 2s linear infinite;
+        }
+
+        @keyframes underlineMove {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-cyber);
+            font-size: 1.2rem;
+            color: var(--neon-green);
+            margin-bottom: var(--space-xl);
+            line-height: 1.4;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-shadow: var(--glow-green);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-description {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--neon-cyan);
+            margin-bottom: var(--space-3xl);
+            line-height: 1.6;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--space-xl);
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--neon-cyan);
+            color: var(--cyber-black);
+            padding: var(--space-lg) var(--space-2xl);
+            border: 2px solid var(--neon-cyan);
+            font-family: var(--font-cyber);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-md);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: var(--glow-cyan);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover {
+            background: var(--cyber-black);
+            color: var(--neon-cyan);
+            transform: scale(1.05);
+            box-shadow: 
+                0 0 10px #00ffff, 
+                0 0 20px #00ffff, 
+                0 0 30px #00ffff,
+                0 0 40px #00ffff;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            color: var(--neon-pink);
+            font-family: var(--font-cyber);
+            font-size: 1rem;
+            font-weight: 400;
+            text-decoration: none;
+            padding: var(--space-lg) var(--space-xl);
+            border: 1px solid var(--neon-pink);
+            background: rgba(255, 0, 128, 0.1);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .btn-secondary:hover {
+            background: var(--neon-pink);
+            color: var(--cyber-black);
+            box-shadow: var(--glow-pink);
+        }
+
+        /* Cyberpunk About Section */
+        .about {
+            padding: var(--space-5xl) 0;
+            position: relative;
+            background: rgba(26, 14, 46, 0.5);
+            border-top: 2px solid var(--neon-cyan);
+            border-bottom: 2px solid var(--neon-pink);
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 50px,
+                    rgba(0, 255, 255, 0.02) 50px,
+                    rgba(0, 255, 255, 0.02) 100px
+                );
+            pointer-events: none;
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+        }
+
+        .instructor-card {
+            background: rgba(10, 10, 10, 0.8);
+            border: 2px solid var(--neon-purple);
+            padding: var(--space-2xl);
+            box-shadow: 
+                var(--glow-purple),
+                inset 0 0 20px rgba(138, 43, 226, 0.1);
+            margin: 0 auto;
+            max-width: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .instructor-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-cyan), var(--neon-pink), var(--neon-purple));
+            background-size: 400% 400%;
+            animation: borderFlow 4s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes borderFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .instructor-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
+            border: 3px solid var(--neon-purple);
+            margin: 0 auto var(--space-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--cyber-black);
+            clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+            animation: avatarSpin 6s linear infinite;
+        }
+
+        @keyframes avatarSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .instructor-name {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            font-weight: 900;
+            text-align: center;
+            color: var(--neon-cyan);
+            margin-bottom: var(--space-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-shadow: var(--glow-cyan);
+        }
+
+        .instructor-title {
+            text-align: center;
+            color: var(--neon-pink);
+            font-family: var(--font-cyber);
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: var(--space-xl);
+            text-shadow: var(--glow-pink);
+        }
+
+        .instructor-quote {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--neon-green);
+            text-align: center;
+            line-height: 1.5;
+            background: rgba(57, 255, 20, 0.05);
+            padding: var(--space-xl);
+            border: 1px solid var(--neon-green);
+            margin-top: var(--space-lg);
+            position: relative;
+        }
+
+        .instructor-quote::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: var(--space-lg);
+            font-size: 2rem;
+            color: var(--neon-green);
+            background: rgba(10, 10, 10, 0.9);
+            padding: 0 var(--space-sm);
+        }
+
+        .about-content {
+            background: rgba(10, 10, 10, 0.8);
+            border: 2px solid var(--neon-cyan);
+            padding: var(--space-2xl);
+            box-shadow: 
+                var(--glow-cyan),
+                inset 0 0 20px rgba(0, 255, 255, 0.1);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--neon-purple);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: var(--space-lg);
+            text-shadow: var(--glow-purple);
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            color: var(--neon-cyan);
+            margin-bottom: var(--space-xl);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-shadow: var(--glow-cyan);
+        }
+
+        .section-title-accent {
+            color: var(--neon-pink);
+            text-shadow: var(--glow-pink);
+        }
+
+        .about-text {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--neon-cyan);
+            line-height: 1.6;
+            margin-bottom: var(--space-lg);
+            text-align: left;
+            opacity: 0.9;
+        }
+
+        .about-text.lead {
+            font-size: 1.1rem;
+            color: var(--neon-green);
+            font-weight: 400;
+            text-shadow: var(--glow-green);
+        }
+
+        /* Cyberpunk Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-xl);
+            margin-top: var(--space-3xl);
+        }
+
+        .stat-card {
+            background: rgba(10, 10, 10, 0.9);
+            border: 2px solid var(--neon-green);
+            padding: var(--space-xl);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--glow-green);
+        }
+
+        .stat-card:nth-child(2) {
+            border-color: var(--neon-pink);
+            box-shadow: var(--glow-pink);
+        }
+
+        .stat-card:nth-child(3) {
+            border-color: var(--neon-purple);
+            box-shadow: var(--glow-purple);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 1s;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-number {
+            font-family: var(--font-title);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--neon-green);
+            line-height: 1;
+            margin-bottom: var(--space-sm);
+            display: block;
+            text-shadow: var(--glow-green);
+            text-transform: uppercase;
+        }
+
+        .stat-card:nth-child(2) .stat-number {
+            color: var(--neon-pink);
+            text-shadow: var(--glow-pink);
+        }
+
+        .stat-card:nth-child(3) .stat-number {
+            color: var(--neon-purple);
+            text-shadow: var(--glow-purple);
+        }
+
+        .stat-label {
+            font-family: var(--font-cyber);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .stat-description {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--neon-cyan);
+            line-height: 1.4;
+            opacity: 0.8;
+        }
+
+        /* Cyberpunk Footer */
+        .footer {
+            background: var(--cyber-black);
+            color: var(--neon-cyan);
+            padding: var(--space-3xl) 0 var(--space-xl);
+            border-top: 2px solid var(--neon-cyan);
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+            background-size: 200% 100%;
+            animation: footerFlow 3s linear infinite;
+        }
+
+        @keyframes footerFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .footer-content {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+        }
+
+        .footer-logo {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--neon-pink);
+            margin-bottom: var(--space-lg);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-shadow: var(--glow-pink);
+        }
+
+        .footer-text {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                width: calc(100% - 1rem);
+                padding: var(--space-sm);
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: var(--space-sm);
+            }
+
+            .hero-container {
+                padding: 0 var(--space-lg);
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                gap: var(--space-lg);
+            }
+
+            .about-container {
+                padding: 0 var(--space-lg);
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+        }
+
+        /* Digital Rain Generator */
+        .digital-rain .rain-column:nth-child(1) { left: 5%; animation-delay: 0s; }
+        .digital-rain .rain-column:nth-child(2) { left: 15%; animation-delay: 0.5s; }
+        .digital-rain .rain-column:nth-child(3) { left: 25%; animation-delay: 1s; }
+        .digital-rain .rain-column:nth-child(4) { left: 35%; animation-delay: 1.5s; }
+        .digital-rain .rain-column:nth-child(5) { left: 45%; animation-delay: 2s; }
+        .digital-rain .rain-column:nth-child(6) { left: 55%; animation-delay: 2.5s; }
+        .digital-rain .rain-column:nth-child(7) { left: 65%; animation-delay: 0.3s; }
+        .digital-rain .rain-column:nth-child(8) { left: 75%; animation-delay: 0.8s; }
+        .digital-rain .rain-column:nth-child(9) { left: 85%; animation-delay: 1.3s; }
+        .digital-rain .rain-column:nth-child(10) { left: 95%; animation-delay: 1.8s; }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scan-lines"></div>
+    
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <img src="assets/images/logo.svg" alt="Flow State Fishing Logo" style="height: 35px; width: auto; filter: hue-rotate(180deg) saturate(2) brightness(2);">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+            </ul>
+            <a href="#booking" class="cta-nav">Jack In</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="digital-rain">
+                <div class="rain-column"></div>
+                <div class="rain-column"></div>
+                <div class="rain-column"></div>
+                <div class="rain-column"></div>
+                <div class="rain-column"></div>
+                <div class="rain-column"></div>
+                <div class="rain-column"></div>
+                <div class="rain-column"></div>
+                <div class="rain-column"></div>
+                <div class="rain-column"></div>
+            </div>
+            
+            <div class="hero-container">
+                <span class="hero-badge">NEURAL INTERFACE ACTIVATED</span>
+                <h1 class="hero-title">
+                    NEURAL
+                    <span class="hero-title-cyber">FLOW STATE</span>
+                </h1>
+                <p class="hero-subtitle">
+                    JACK INTO THE MATRIX OF FLY CASTING EXCELLENCE
+                </p>
+                <p class="hero-description">
+                    Enter the cybernetic realm where ancient fishing wisdom meets cutting-edge neural enhancement. Our bio-digital interface downloads pure casting mastery directly into your motor cortex, bypassing years of traditional learning. Welcome to the future of angling enlightenment.
+                </p>
+                <div class="hero-actions">
+                    <a href="#booking" class="btn-primary">
+                        INITIATE PROTOCOL
+                        <span>►</span>
+                    </a>
+                    <a href="#about" class="btn-secondary">
+                        ACCESS DATA
+                        <span>↓</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="about-container">
+                <div class="about-grid">
+                    <div class="instructor-card">
+                        <div class="instructor-avatar">TH</div>
+                        <h3 class="instructor-name">TANNER HALL</h3>
+                        <p class="instructor-title">CYBER SENSEI</p>
+                        <blockquote class="instructor-quote">
+                            The matrix of water reveals its secrets only to those who can decode the binary rhythm of current and consciousness. I am your guide in this digital stream.
+                        </blockquote>
+                    </div>
+                    
+                    <div class="about-content">
+                        <p class="section-eyebrow">NEURAL PROTOCOL INITIALIZED</p>
+                        <h2 class="section-title">
+                            WHERE <span class="section-title-accent">CYBERNETICS</span> CONVERGE
+                        </h2>
+                        <p class="about-text lead">
+                            In the neon-lit streams of tomorrow, casting mastery isn't learned—it's downloaded, integrated, and executed with machine precision.
+                        </p>
+                        <p class="about-text">
+                            Our proprietary bio-neural interface technology merges human intuition with synthetic precision, creating casting abilities that transcend traditional limitations. Each session uploads critical data to your muscle memory banks while your consciousness navigates the digital currents of perfect technique.
+                        </p>
+                        <p class="about-text">
+                            Through quantum-encrypted instruction protocols and real-time biometric feedback loops, we'll hack your natural casting algorithms and reprogram them for optimal performance. This isn't just fishing—it's evolution.
+                        </p>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <span class="stat-number">2077</span>
+                                <p class="stat-label">Neural Uploads</p>
+                                <p class="stat-description">Direct cortex enhancement</p>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">∞</span>
+                                <p class="stat-label">Data Streams</p>
+                                <p class="stat-description">Processed per nanosecond</p>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">100%</span>
+                                <p class="stat-label">Success Rate</p>
+                                <p class="stat-description">Matrix synchronization</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-logo">FLOW STATE FISHING</h3>
+            <p class="footer-text">
+                &copy; 2077 FLOW STATE FISHING • NEURAL SANTA FE • CYBERNETIC EXCELLENCE PROTOCOL
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Create and inject "Back to concepts" button with cyberpunk styling
+        (function() {
+            const backButton = document.createElement('button');
+            backButton.textContent = 'BACK TO CONCEPTS';
+            backButton.id = 'back-to-concepts-btn';
+            
+            Object.assign(backButton.style, {
+                position: 'fixed',
+                top: '20px',
+                left: '20px',
+                zIndex: '9999',
+                backgroundColor: 'var(--cyber-black, #0a0a0a)',
+                color: 'var(--neon-cyan, #00ffff)',
+                border: '2px solid var(--neon-cyan, #00ffff)',
+                borderRadius: '0',
+                padding: '12px 20px',
+                fontSize: '12px',
+                fontWeight: '700',
+                fontFamily: 'var(--font-cyber, Orbitron, monospace)',
+                cursor: 'pointer',
+                boxShadow: '0 0 5px #00ffff, 0 0 10px #00ffff',
+                transition: 'all 0.3s ease',
+                textDecoration: 'none',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+            });
+            
+            backButton.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = 'var(--neon-cyan, #00ffff)';
+                this.style.color = 'var(--cyber-black, #0a0a0a)';
+                this.style.boxShadow = '0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff';
+            });
+            
+            backButton.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = 'var(--cyber-black, #0a0a0a)';
+                this.style.color = 'var(--neon-cyan, #00ffff)';
+                this.style.boxShadow = '0 0 5px #00ffff, 0 0 10px #00ffff';
+            });
+            
+            backButton.addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+            
+            document.body.appendChild(backButton);
+        })();
+
+        // Cyberpunk interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Random glitch effect on text elements
+            const glitchElements = document.querySelectorAll('.hero-title, .section-title, .stat-number');
+            
+            function glitch(element) {
+                const originalText = element.textContent;
+                const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+                let iterations = 0;
+                
+                const interval = setInterval(() => {
+                    element.textContent = originalText
+                        .split('')
+                        .map((char, index) => {
+                            if (index < iterations) {
+                                return originalText[index];
+                            }
+                            return chars[Math.floor(Math.random() * chars.length)];
+                        })
+                        .join('');
+                    
+                    if (iterations >= originalText.length) {
+                        clearInterval(interval);
+                        element.textContent = originalText;
+                    }
+                    
+                    iterations += 1 / 3;
+                }, 30);
+            }
+            
+            // Trigger random glitches
+            setInterval(() => {
+                if (Math.random() > 0.95) {
+                    const element = glitchElements[Math.floor(Math.random() * glitchElements.length)];
+                    glitch(element);
+                }
+            }, 1000);
+
+            // Mouse trail effect
+            let mouseTrail = [];
+            document.addEventListener('mousemove', (e) => {
+                mouseTrail.push({x: e.clientX, y: e.clientY, time: Date.now()});
+                
+                // Remove old trail points
+                mouseTrail = mouseTrail.filter(point => Date.now() - point.time < 1000);
+                
+                // Create trail effect
+                if (mouseTrail.length > 5) {
+                    const trail = document.createElement('div');
+                    trail.style.cssText = `
+                        position: fixed;
+                        width: 4px;
+                        height: 4px;
+                        background: var(--neon-cyan);
+                        border-radius: 50%;
+                        pointer-events: none;
+                        z-index: 9998;
+                        left: ${e.clientX}px;
+                        top: ${e.clientY}px;
+                        box-shadow: 0 0 5px var(--neon-cyan);
+                        animation: fadeOut 1s ease-out forwards;
+                    `;
+                    
+                    document.body.appendChild(trail);
+                    setTimeout(() => trail.remove(), 1000);
+                }
+            });
+
+            // Add fade out animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeOut {
+                    0% { opacity: 1; transform: scale(1); }
+                    100% { opacity: 0; transform: scale(0); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>

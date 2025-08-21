@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fish Tales - Flow State Fishing Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-green: #5DA477;
+            --electric-lime: #A8E05F;
+            --coral: #FF6B6B;
+            --sunset: #FFA07A;
+            --deep-ocean: #1a2332;
+            --midnight: #0d1117;
+            --cream: #FFF8F3;
+            --sand: #F5E6D3;
+            
+            --font-display: 'Bebas Neue', impact, sans-serif;
+            --font-mono: 'Space Mono', monospace;
+            --font-serif: 'Playfair Display', Georgia, serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-mono);
+            background: var(--cream);
+            color: var(--deep-ocean);
+            overflow-x: hidden;
+        }
+
+        /* Floating Fish Background */
+        .floating-fish {
+            position: fixed;
+            width: 40px;
+            height: auto;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 1;
+            animation: fishSwim 30s linear infinite;
+        }
+
+        @keyframes fishSwim {
+            from { transform: translateX(-100px); }
+            to { transform: translateX(calc(100vw + 100px)); }
+        }
+
+        .floating-fish-1 { top: 15%; animation-delay: 0s; }
+        .floating-fish-2 { top: 45%; animation-delay: 10s; }
+        .floating-fish-3 { top: 75%; animation-delay: 20s; }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 2rem 3rem;
+            background: rgba(255, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--neon-green);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+        }
+
+        .logo-fish {
+            width: 160px;
+            height: auto;
+            filter: drop-shadow(3px 3px 0 var(--coral));
+            animation: swim 4s ease-in-out infinite;
+        }
+
+        @keyframes swim {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(5px) rotate(-5deg); }
+            75% { transform: translateX(-5px) rotate(5deg); }
+        }
+
+        .logo:hover {
+            transform: rotate(2deg) scale(1.05);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: var(--deep-ocean);
+            margin: 4px 0;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--cream);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(26, 35, 50, 0.1);
+                z-index: 999;
+                border-left: 3px solid var(--neon-green);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-link {
+                font-size: 1.25rem;
+            }
+
+            .logo-fish {
+                width: 120px;
+            }
+
+            .nav {
+                padding: 1.5rem;
+            }
+
+            .blog-hero-title {
+                font-size: clamp(2.5rem, 12vw, 6rem);
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+
+        .nav-link {
+            color: var(--deep-ocean);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--coral);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--neon-green);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--neon-green);
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+            background: var(--neon-green);
+        }
+
+        /* Hero Section */
+        .blog-hero {
+            margin-top: 120px;
+            padding: 4rem 3rem;
+            background: linear-gradient(135deg, var(--neon-green) 0%, var(--electric-lime) 100%);
+            transform: skewY(-3deg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-hero::before {
+            content: '🎣';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.1;
+            right: -50px;
+            top: -50px;
+            transform: rotate(15deg);
+        }
+
+        .blog-hero-content {
+            transform: skewY(3deg);
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .blog-hero-badge {
+            display: inline-block;
+            background: var(--coral);
+            color: var(--cream);
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            transform: rotate(-2deg);
+        }
+
+        .blog-hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 0.9;
+            color: var(--cream);
+            margin-bottom: 1rem;
+            text-shadow: 5px 5px 0 rgba(26, 35, 50, 0.2);
+        }
+
+        .blog-hero-title span {
+            display: block;
+            transform: translateX(2rem);
+        }
+
+        .blog-hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--deep-ocean);
+            font-style: italic;
+            max-width: 600px;
+        }
+
+        /* Blog Grid */
+        .blog-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Blog Card */
+        .blog-card {
+            background: var(--cream);
+            border: 3px solid var(--deep-ocean);
+            position: relative;
+            transition: all 0.3s ease;
+            transform: rotate(-1deg);
+        }
+
+        .blog-card:nth-child(even) {
+            transform: rotate(1deg);
+        }
+
+        .blog-card:hover {
+            transform: rotate(0deg) translateY(-10px);
+            box-shadow: 10px 10px 0 var(--neon-green);
+        }
+
+        .blog-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .blog-card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--deep-ocean);
+        }
+
+        .blog-card-content {
+            padding: 2rem;
+        }
+
+        .blog-card-category {
+            display: inline-block;
+            background: var(--coral);
+            color: var(--cream);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            transform: rotate(-2deg);
+        }
+
+        .blog-card-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            line-height: 1.1;
+            color: var(--deep-ocean);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .blog-card-excerpt {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--deep-ocean);
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--deep-ocean);
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .blog-card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--neon-green);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover .blog-card-cta {
+            gap: 1rem;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: var(--deep-ocean);
+            padding: 4rem 3rem;
+            margin-top: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--neon-green) 0,
+                var(--neon-green) 10px,
+                var(--coral) 10px,
+                var(--coral) 20px
+            );
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter-title {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .newsletter-text {
+            color: var(--cream);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            background: var(--cream);
+            border: 3px solid var(--neon-green);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .newsletter-submit {
+            padding: 1rem 2rem;
+            background: var(--coral);
+            color: var(--cream);
+            border: none;
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-submit:hover {
+            background: var(--sunset);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 4rem 0;
+        }
+
+        .pagination-link {
+            padding: 0.75rem 1.5rem;
+            background: var(--cream);
+            border: 3px solid var(--deep-ocean);
+            color: var(--deep-ocean);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            transform: rotate(-2deg);
+        }
+
+        .pagination-link:hover {
+            background: var(--neon-green);
+            color: var(--cream);
+            transform: rotate(2deg);
+        }
+
+        .pagination-link.active {
+            background: var(--coral);
+            color: var(--cream);
+            border-color: var(--coral);
+        }
+
+        .pagination-info {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--deep-ocean);
+            opacity: 0.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--deep-ocean);
+            color: var(--cream);
+            padding: 3rem;
+            text-align: center;
+            border-top: 10px solid var(--neon-green);
+        }
+
+        .footer-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            background: var(--coral);
+            color: var(--cream);
+            border: none;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+            transform: rotate(-2deg);
+        }
+
+        .back-btn:hover {
+            background: var(--sunset);
+            transform: rotate(2deg) scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Fish Background -->
+    <img src="assets/images/logo.svg" class="floating-fish floating-fish-1" alt="">
+    <img src="assets/images/logo.svg" class="floating-fish floating-fish-2" alt="">
+    <img src="assets/images/logo.svg" class="floating-fish floating-fish-3" alt="">
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="concept-bold-asymmetric.html" class="logo">
+                <img src="assets/images/logo.svg" alt="Flow State Fish" class="logo-fish">
+            </a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="concept-bold-asymmetric.html" class="nav-link">HOME</a></li>
+                <li><a href="concept-bold-asymmetric.html#about" class="nav-link">ABOUT</a></li>
+                <li><a href="concept-bold-asymmetric.html#services" class="nav-link">SERVICES</a></li>
+                <li><a href="#" class="nav-link active">BLOG</a></li>
+                <li><a href="concept-bold-asymmetric.html#book" class="nav-link">BOOK NOW</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <div class="blog-hero-content">
+            <span class="blog-hero-badge">Fish Tales & Hot Tips</span>
+            <h1 class="blog-hero-title">
+                STORIES FROM
+                <span>THE WATER</span>
+            </h1>
+            <p class="blog-hero-subtitle">
+                Where fish stories are actually true (mostly) and the tips actually work (usually)
+            </p>
+        </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <div class="blog-container">
+        <div class="blog-grid">
+            <!-- Blog Card 1 -->
+            <article class="blog-card">
+                <a href="blog-post-asymmetric.html" class="blog-card-link">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800" alt="Fly fishing at sunrise" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <span class="blog-card-category">Technique</span>
+                        <h2 class="blog-card-title">The Secret to Perfect Presentation</h2>
+                        <p class="blog-card-excerpt">
+                            After years of watching flies land like drunk helicopters, I finally cracked the code to presentation that makes trout lose their minds...
+                        </p>
+                        <div class="blog-card-meta">
+                            <span>5 MIN READ</span>
+                            <span>NOV 15, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Blog Card 2 -->
+            <article class="blog-card">
+                <a href="#" class="blog-card-link">
+                    <img src="https://images.unsplash.com/photo-1523041652606-a3c84b8cb715?w=800" alt="Rainbow trout" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <span class="blog-card-category">Stories</span>
+                        <h2 class="blog-card-title">That Time I Outsmarted a 20-Inch Rainbow</h2>
+                        <p class="blog-card-excerpt">
+                            It was the kind of fish that makes grown adults cry. Three hours, seven fly changes, and one epic battle later...
+                        </p>
+                        <div class="blog-card-meta">
+                            <span>8 MIN READ</span>
+                            <span>NOV 10, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Blog Card 3 -->
+            <article class="blog-card">
+                <a href="#" class="blog-card-link">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800" alt="Mountain river" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <span class="blog-card-category">Locations</span>
+                        <h2 class="blog-card-title">Secret Spots: Pecos Wilderness Edition</h2>
+                        <p class="blog-card-excerpt">
+                            I'm about to break the first rule of fishing: never share your secret spots. But these waters are too good to keep to myself...
+                        </p>
+                        <div class="blog-card-meta">
+                            <span>6 MIN READ</span>
+                            <span>NOV 5, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Blog Card 4 -->
+            <article class="blog-card">
+                <a href="#" class="blog-card-link">
+                    <img src="https://images.unsplash.com/photo-1529230117010-b6c436154f25?w=800" alt="Fly tying" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <span class="blog-card-category">DIY</span>
+                        <h2 class="blog-card-title">Tying the "Flow State Special"</h2>
+                        <p class="blog-card-excerpt">
+                            This fly has caught more fish than I can count. It's ugly, it shouldn't work, but the trout absolutely lose it when they see this thing...
+                        </p>
+                        <div class="blog-card-meta">
+                            <span>10 MIN READ</span>
+                            <span>OCT 28, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Blog Card 5 -->
+            <article class="blog-card">
+                <a href="#" class="blog-card-link">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800" alt="Morning mist on river" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <span class="blog-card-category">Philosophy</span>
+                        <h2 class="blog-card-title">Why 4am Wake-Ups Are Worth It</h2>
+                        <p class="blog-card-excerpt">
+                            There's something magical about being on the water before the world wakes up. Let me convince you to become a morning person...
+                        </p>
+                        <div class="blog-card-meta">
+                            <span>7 MIN READ</span>
+                            <span>OCT 20, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Blog Card 6 -->
+            <article class="blog-card">
+                <a href="#" class="blog-card-link">
+                    <img src="https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=800" alt="Fishing gear" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <span class="blog-card-category">Gear</span>
+                        <h2 class="blog-card-title">Gear That Actually Matters (And What's BS)</h2>
+                        <p class="blog-card-excerpt">
+                            You don't need a $1000 rod to catch fish. But there are a few things worth splurging on. Here's the real talk on gear...
+                        </p>
+                        <div class="blog-card-meta">
+                            <span>12 MIN READ</span>
+                            <span>OCT 15, 2024</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="pagination">
+            <a href="#" class="pagination-link">← PREV</a>
+            <span class="pagination-info">Page 1 of 3</span>
+            <a href="#" class="pagination-link">NEXT →</a>
+        </nav>
+    </div>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="newsletter-content">
+            <h2 class="newsletter-title">Weekly Water Reports</h2>
+            <p class="newsletter-text">
+                Get the inside scoop on what's biting, where they're hiding, and which flies are absolutely killing it.
+            </p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="your@email.com" required>
+                <button type="submit" class="newsletter-submit">SUBSCRIBE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h3 class="footer-title">FLOW STATE FISHING</h3>
+        <p class="footer-text">© 2025 • SANTA FE, NM • CATCHING FEELINGS & FISH SINCE 2013</p>
+    </footer>
+
+    <!-- Back Button -->
+    <button class="back-btn" onclick="window.location.href='concept-bold-asymmetric.html'">← BACK</button>
+
+    <script>
+        // Add some playful interactions
+        document.querySelectorAll('.blog-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Newsletter form handler
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Welcome to the fishing fam! Check your inbox for weekly water wisdom.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

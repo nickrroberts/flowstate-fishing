@@ -164,7 +164,7 @@
         /* Concept Grid */
         .concepts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: var(--space-8);
             margin-top: var(--space-16);
         }
@@ -293,6 +293,26 @@
             color: var(--accent-600);
         }
 
+        .btn-small {
+            background: var(--accent-600);
+            color: var(--white);
+            padding: var(--space-1) var(--space-3);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-block;
+            margin-top: var(--space-2);
+        }
+
+        .btn-small:hover {
+            background: var(--accent-500);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
         /* Footer */
         .footer {
             background: var(--primary-900);
@@ -358,87 +378,122 @@
     <main class="main">
         <div class="container">
             <div class="intro">
-                <h2 class="intro-title">Design Concepts for Tanner</h2>
+                <h2 class="intro-title">Design Concepts for Tanner #42069</h2>
             </div>
 
             <div class="concepts-grid">
-                <!-- Concept 5 - Award-Winning Layouts -->
+                <!-- Bold Asymmetric Concept (moved to top) -->
                 <div class="concept-card">
                     <div class="concept-header">
-                        <h3 class="concept-title">Award-Winning Layout Patterns</h3>
-                        <p class="concept-description">
-                            A sophisticated design featuring award-winning layout principles, premium typography, and a refined southwestern color palette. This concept balances technical expertise with approachable instruction.
-                        </p>
+                        <h3 class="concept-title">Bold Asymmetric</h3>
+                        <a href="concept-bold-asymmetric.html" class="btn-small" target="_blank">View Concept</a>
                     </div>
                     
-                    <div class="concept-features">
-                        <h4>Key Features</h4>
-                        <ul class="features-list">
-                            <li>Fraunces & Inter typography system</li>
-                            <li>Sophisticated southwestern color palette</li>
-                            <li>Award-winning grid layouts</li>
-                            <li>Premium visual hierarchy</li>
-                            <li>Instructor-focused design</li>
-                            <li>Mobile-responsive layout</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="concept-actions">
-                        <a href="concept-5-award-winning-layouts.html" class="btn-primary" target="_blank">View Concept</a>
+                    <div class="concept-preview">
+                        <a href="concept-bold-asymmetric.html" target="_blank">
+                            <img src="assets/images/bold-asymmetric-preview.png" alt="Bold asymmetric concept preview" style="width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--primary-200); box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.2s ease;">
+                        </a>
                     </div>
                 </div>
 
-                <!-- Future Concepts Placeholder -->
-                <div class="concept-card" style="opacity: 0.6;">
+                <!-- Minimal, clean Concept -->
+                <div class="concept-card">
                     <div class="concept-header">
-                        <h3 class="concept-title">Colorful Flat Design</h3>
-                        <p class="concept-description">
-                            An upcoming concept featuring vibrant SVG illustrations, modern flat design principles, and engaging visual storytelling perfect for instructional content.
-                        </p>
+                        <h3 class="concept-title">Minimal, clean</h3>
+                        <a href="concept-5-award-winning-layouts.html" class="btn-small" target="_blank">View Concept</a>
                     </div>
                     
-                    <div class="concept-features">
-                        <h4>Planned Features</h4>
-                        <ul class="features-list">
-                            <li>Custom SVG fishing illustrations</li>
-                            <li>Bright, engaging color palette</li>
-                            <li>Interactive step-by-step guides</li>
-                            <li>Mailchimp-inspired friendly design</li>
-                            <li>Educational visual hierarchy</li>
-                            <li>Scalable vector graphics</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="concept-actions">
-                        <span class="btn-primary" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</span>
+                    <div class="concept-preview">
+                        <a href="concept-5-award-winning-layouts.html" target="_blank">
+                            <img src="assets/images/minimal-clean-preview.png" alt="Minimal, clean concept preview" style="width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--primary-200); box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.2s ease;">
+                        </a>
                     </div>
                 </div>
 
-                <!-- Western Typography Concept -->
-                <div class="concept-card" style="opacity: 0.6;">
+                <!-- Sophisticated Geometric Concept -->
+                <div class="concept-card">
                     <div class="concept-header">
-                        <h3 class="concept-title">Western Typography & Branding</h3>
-                        <p class="concept-description">
-                            A bold western-inspired design featuring dramatic typography, authentic southwestern aesthetics, and integrated brand elements including the fish logo.
-                        </p>
+                        <h3 class="concept-title">Sophisticated Geometric</h3>
+                        <a href="concept-sophisticated.html" class="btn-small" target="_blank">View Concept</a>
                     </div>
                     
-                    <div class="concept-features">
-                        <h4>Planned Features</h4>
-                        <ul class="features-list">
-                            <li>Alfa Slab One bold typography</li>
-                            <li>Integrated fish logo design</li>
-                            <li>Western/frontier aesthetic</li>
-                            <li>Enhanced southwestern palette</li>
-                            <li>Dramatic visual impact</li>
-                            <li>Authentic outdoor branding</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="concept-actions">
-                        <span class="btn-primary" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</span>
+                    <div class="concept-preview">
+                        <a href="concept-sophisticated.html" target="_blank">
+                            <img src="assets/images/sophisticated-preview.png" alt="Sophisticated geometric concept preview" style="width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--primary-200); box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.2s ease;">
+                        </a>
                     </div>
                 </div>
+
+                <!-- Brutalist Concept -->
+                <div class="concept-card">
+                    <div class="concept-header">
+                        <h3 class="concept-title">Brutalist</h3>
+                        <a href="index-brutalist.html" class="btn-small" target="_blank">View Concept</a>
+                    </div>
+                    
+                    <div class="concept-preview">
+                        <a href="index-brutalist.html" target="_blank">
+                            <img src="assets/images/brutalist-preview.png" alt="Brutalist concept preview" style="width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--primary-200); box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.2s ease;">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Glassmorphism Concept -->
+                <div class="concept-card">
+                    <div class="concept-header">
+                        <h3 class="concept-title">Glassmorphism</h3>
+                        <a href="concept-glassmorphism.html" class="btn-small" target="_blank">View Concept</a>
+                    </div>
+                    
+                    <div class="concept-preview">
+                        <a href="concept-glassmorphism.html" target="_blank">
+                            <img src="assets/images/glassmorphism-preview.png" alt="Glassmorphism concept preview" style="width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--primary-200); box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.2s ease;">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hand-Drawn Organic Concept -->
+                <div class="concept-card">
+                    <div class="concept-header">
+                        <h3 class="concept-title">Hand-Drawn Organic</h3>
+                        <a href="concept-organic.html" class="btn-small" target="_blank">View Concept</a>
+                    </div>
+                    
+                    <div class="concept-preview">
+                        <a href="concept-organic.html" target="_blank">
+                            <img src="assets/images/organic-preview.png" alt="Hand-drawn organic concept preview" style="width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--primary-200); box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.2s ease;">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Synthwave Cyberpunk Concept -->
+                <div class="concept-card">
+                    <div class="concept-header">
+                        <h3 class="concept-title">Synthwave Cyberpunk</h3>
+                        <a href="concept-synthwave.html" class="btn-small" target="_blank">View Concept</a>
+                    </div>
+                    
+                    <div class="concept-preview">
+                        <a href="concept-synthwave.html" target="_blank">
+                            <img src="assets/images/synthwave-preview.png" alt="Synthwave cyberpunk concept preview" style="width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--primary-200); box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.2s ease;">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Modern Professional Concept -->
+                <div class="concept-card">
+                    <div class="concept-header">
+                        <h3 class="concept-title">Modern Professional</h3>
+                        <a href="concept-modern-professional.html" class="btn-small" target="_blank">View Concept</a>
+                    </div>
+                    
+                    <div class="concept-preview">
+                        <a href="concept-modern-professional.html" target="_blank">
+                            <img src="assets/images/modern-professional-preview.png" alt="Modern professional concept preview" style="width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--primary-200); box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.2s ease;">
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </main>
@@ -447,10 +502,6 @@
         <div class="container">
             <div class="footer-content">
                 <h3 class="footer-title">Flow State Fishing</h3>
-                <p class="footer-text">
-                    Professional website design concepts • Santa Fe, New Mexico<br>
-                    Crafted with excellence for premium fly casting instruction
-                </p>
             </div>
         </div>
     </footer>

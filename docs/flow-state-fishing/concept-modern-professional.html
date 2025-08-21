@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow State Fishing - Modern Professional Concept</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Warm, Approachable Color Palette */
+            --forest-900: #1a2e1a;
+            --forest-800: #234023;
+            --forest-700: #2d522d;
+            --forest-600: #376437;
+            --forest-500: #417641;
+            
+            --sage-600: #5DA477;
+            --sage-500: #6FB585;
+            --sage-400: #81C593;
+            --sage-300: #93D5A1;
+            --sage-200: #A5E5AF;
+            --sage-100: #E8FCE8;
+            
+            --warm-600: #D97B5A;
+            --warm-500: #E89A7B;
+            --warm-400: #F0AA8D;
+            --warm-300: #F8BBA0;
+            
+            --neutral-900: #1a1a1a;
+            --neutral-800: #2d2d2d;
+            --neutral-700: #404040;
+            --neutral-600: #525252;
+            --neutral-500: #737373;
+            --neutral-400: #a3a3a3;
+            --neutral-300: #d4d4d4;
+            --neutral-200: #e5e5e5;
+            --neutral-100: #f5f5f5;
+            --neutral-50: #fafafa;
+            
+            --white: #ffffff;
+            --black: #0a0a0a;
+            
+            /* Typography */
+            --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-accent: 'Merriweather', Georgia, serif;
+            
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            
+            /* Design Tokens */
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-2xl: 32px;
+            
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--neutral-800);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Modern Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .logo:hover {
+            transform: translateX(2px);
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--forest-800);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-8);
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--neutral-700);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--sage-600);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--sage-600);
+            transition: width 0.2s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .cta-nav {
+            background: var(--sage-600);
+            color: var(--white);
+            padding: var(--space-3) var(--space-6);
+            border-radius: var(--radius-lg);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .cta-nav:hover {
+            background: var(--sage-500);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(93, 164, 119, 0.25);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 72px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--neutral-50) 0%, var(--sage-100) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -20%;
+            width: 60%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%235DA477' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            opacity: 0.5;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 540px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            background: var(--sage-100);
+            color: var(--forest-700);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-2xl);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--space-6);
+            border: 1px solid var(--sage-200);
+        }
+
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--sage-600);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--forest-900);
+            margin-bottom: var(--space-6);
+            letter-spacing: -0.03em;
+        }
+
+        .hero-title-accent {
+            background: linear-gradient(135deg, var(--sage-600), var(--sage-500));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-accent);
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: var(--neutral-700);
+            margin-bottom: var(--space-8);
+            line-height: 1.6;
+        }
+
+        .hero-description {
+            font-size: 1.0625rem;
+            color: var(--neutral-600);
+            margin-bottom: var(--space-10);
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--space-4);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--sage-600);
+            color: var(--white);
+            padding: var(--space-4) var(--space-8);
+            border-radius: var(--radius-lg);
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(93, 164, 119, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--sage-500);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(93, 164, 119, 0.3);
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            color: var(--forest-700);
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            padding: var(--space-4) var(--space-6);
+            border: 2px solid var(--sage-300);
+            border-radius: var(--radius-lg);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--sage-600);
+            color: var(--sage-600);
+            background: var(--sage-100);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .visual-card {
+            background: var(--white);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-10);
+            box-shadow: var(--shadow-xl);
+            text-align: center;
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid var(--neutral-100);
+        }
+
+        .visual-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, var(--sage-400), var(--warm-400));
+            border-radius: var(--radius-2xl);
+            z-index: -1;
+            opacity: 0.2;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.3; }
+        }
+
+        .visual-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--sage-600), var(--sage-500));
+            border-radius: 50%;
+            margin: 0 auto var(--space-6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--white);
+            box-shadow: 0 12px 32px rgba(93, 164, 119, 0.25);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .visual-title {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--forest-900);
+            margin-bottom: var(--space-3);
+        }
+
+        .visual-subtitle {
+            font-family: var(--font-accent);
+            font-size: 1.125rem;
+            color: var(--neutral-600);
+            margin-bottom: var(--space-6);
+        }
+
+        .visual-stats {
+            display: flex;
+            justify-content: space-around;
+            padding-top: var(--space-6);
+            border-top: 1px solid var(--neutral-100);
+        }
+
+        .visual-stat {
+            text-align: center;
+        }
+
+        .visual-stat-number {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--sage-600);
+            display: block;
+            margin-bottom: var(--space-1);
+        }
+
+        .visual-stat-label {
+            font-size: 0.875rem;
+            color: var(--neutral-500);
+        }
+
+        /* About Section */
+        .about {
+            padding: var(--space-24) 0;
+            background: var(--white);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: var(--space-16);
+            align-items: start;
+        }
+
+        .instructor-card {
+            background: var(--white);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            position: sticky;
+            top: var(--space-24);
+            border: 1px solid var(--neutral-100);
+        }
+
+        .instructor-avatar {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, var(--sage-600), var(--sage-500));
+            border-radius: 50%;
+            margin: 0 auto var(--space-6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--white);
+            box-shadow: 0 12px 32px rgba(93, 164, 119, 0.25);
+            position: relative;
+        }
+
+        .instructor-avatar::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border: 2px solid var(--sage-400);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .instructor-name {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--forest-900);
+            margin-bottom: var(--space-2);
+        }
+
+        .instructor-title {
+            font-family: var(--font-accent);
+            font-size: 1rem;
+            color: var(--sage-600);
+            margin-bottom: var(--space-6);
+            font-weight: 500;
+        }
+
+        .instructor-bio {
+            font-size: 0.9375rem;
+            color: var(--neutral-600);
+            line-height: 1.7;
+            margin-bottom: var(--space-6);
+        }
+
+        .instructor-quote {
+            background: var(--sage-100);
+            padding: var(--space-6);
+            border-radius: var(--radius-xl);
+            border-left: 4px solid var(--sage-600);
+            margin-top: var(--space-6);
+        }
+
+        .instructor-quote-text {
+            font-family: var(--font-accent);
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--forest-700);
+            line-height: 1.6;
+        }
+
+        .about-content {
+            max-width: 640px;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            background: var(--warm-300);
+            color: var(--forest-800);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-2xl);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--forest-900);
+            margin-bottom: var(--space-6);
+            letter-spacing: -0.02em;
+        }
+
+        .section-title-accent {
+            background: linear-gradient(135deg, var(--warm-600), var(--warm-500));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-lead {
+            font-family: var(--font-accent);
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--neutral-700);
+            line-height: 1.6;
+            margin-bottom: var(--space-6);
+        }
+
+        .about-text {
+            font-size: 1.0625rem;
+            color: var(--neutral-600);
+            line-height: 1.7;
+            margin-bottom: var(--space-6);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-6);
+            margin-top: var(--space-12);
+        }
+
+        .stat-card {
+            background: var(--neutral-50);
+            padding: var(--space-6);
+            border-radius: var(--radius-xl);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--neutral-100);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--sage-600), var(--warm-500));
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--sage-300);
+        }
+
+        .stat-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--sage-600), var(--forest-700));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: var(--space-2);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--forest-700);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-1);
+        }
+
+        .stat-description {
+            font-size: 0.875rem;
+            color: var(--neutral-500);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--forest-900);
+            color: var(--neutral-300);
+            padding: var(--space-16) 0 var(--space-8);
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sage-600), var(--warm-500), var(--sage-500));
+        }
+
+        .footer-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: var(--space-4);
+        }
+
+        .footer-text {
+            font-size: 0.9375rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: var(--space-12);
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: var(--space-12);
+            }
+
+            .instructor-card {
+                position: static;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: var(--space-20) 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+
+            .visual-card {
+                padding: var(--space-6);
+            }
+        }
+
+        /* Back Button */
+        #back-to-concepts-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            background: var(--forest-900);
+            color: var(--white);
+            border: 1px solid var(--forest-700);
+            border-radius: var(--radius-md);
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        #back-to-concepts-btn:hover {
+            background: var(--forest-800);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <img src="assets/images/logo.svg" alt="Flow State Fishing Logo" style="height: 36px; width: auto;">
+                <span class="logo-text">Flow State Fishing</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+                <li><a href="#booking" class="cta-nav">Book Your Session</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        Professional Fly Casting Instruction
+                    </div>
+                    <h1 class="hero-title">
+                        Master the Art of
+                        <span class="hero-title-accent">Fly Fishing</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Discover your flow state on New Mexico's pristine waters
+                    </p>
+                    <p class="hero-description">
+                        Whether you're picking up a rod for the first time or looking to refine your technique, our personalized instruction will transform your casting and deepen your connection with the water. Join us for an experience that's equal parts adventure and zen.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#booking" class="btn-primary">
+                            Start Your Journey
+                            <span>→</span>
+                        </a>
+                        <a href="#about" class="btn-secondary">
+                            Learn More
+                            <span>↓</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="visual-card">
+                        <div class="visual-icon">🎣</div>
+                        <h3 class="visual-title">Find Your Flow</h3>
+                        <p class="visual-subtitle">Expert guidance meets natural beauty</p>
+                        
+                        <div class="visual-stats">
+                            <div class="visual-stat">
+                                <span class="visual-stat-number">12+</span>
+                                <span class="visual-stat-label">Years</span>
+                            </div>
+                            <div class="visual-stat">
+                                <span class="visual-stat-number">500+</span>
+                                <span class="visual-stat-label">Students</span>
+                            </div>
+                            <div class="visual-stat">
+                                <span class="visual-stat-number">95%</span>
+                                <span class="visual-stat-label">Success</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="about-container">
+                <div class="instructor-card">
+                    <div class="instructor-avatar">TH</div>
+                    <h3 class="instructor-name">Tanner Hall</h3>
+                    <p class="instructor-title">Professional Fly Casting Instructor</p>
+                    <p class="instructor-bio">
+                        With over a decade of experience guiding anglers of all skill levels, I bring passion, expertise, and a genuine love for the sport to every lesson.
+                    </p>
+                    <div class="instructor-quote">
+                        <p class="instructor-quote-text">
+                            "Every cast is an opportunity to connect with nature and find your rhythm. Let's discover yours together."
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="about-content">
+                    <div class="section-badge">
+                        Meet Your Guide
+                    </div>
+                    <h2 class="section-title">
+                        Your Journey to
+                        <span class="section-title-accent">Mastery</span>
+                    </h2>
+                    <p class="about-lead">
+                        Flow state isn't just a buzzword—it's that perfect moment when technique, timing, and intuition align on the water.
+                    </p>
+                    <p class="about-text">
+                        Hi, I'm Tanner. After 12 years of guiding anglers through New Mexico's diverse waters, I've learned that great fly fishing isn't just about perfect casts—it's about understanding the water, reading the conditions, and finding your personal rhythm.
+                    </p>
+                    <p class="about-text">
+                        My approach combines technical precision with mindful practice. Whether you're brand new to fly fishing or looking to elevate your skills, I'll help you develop confidence, improve your technique, and most importantly, have an incredible time on the water.
+                    </p>
+                    <p class="about-text">
+                        From the high mountain streams to the legendary waters of the San Juan, every session is tailored to your goals and skill level. Together, we'll work on everything from basic casting mechanics to advanced presentation techniques, all while enjoying some of the most beautiful fishing destinations in the Southwest.
+                    </p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-number">12+</span>
+                            <p class="stat-label">Years Experience</p>
+                            <p class="stat-description">Dedicated to the craft</p>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">500+</span>
+                            <p class="stat-label">Happy Anglers</p>
+                            <p class="stat-description">Guided to success</p>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">95%</span>
+                            <p class="stat-label">Success Rate</p>
+                            <p class="stat-description">Measurable improvement</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-logo">Flow State Fishing</h3>
+            <p class="footer-text">
+                © 2025 Flow State Fishing • Santa Fe, New Mexico • Professional Fly Casting Instruction
+            </p>
+        </div>
+    </footer>
+
+    <button id="back-to-concepts-btn">Back to concepts</button>
+
+    <script>
+        // Back button functionality
+        document.getElementById('back-to-concepts-btn').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
